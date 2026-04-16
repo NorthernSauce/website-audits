@@ -3,586 +3,566 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Website audit report</title>
+<title>Website Audit — Kenworth Engineering · Northern Sauce</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --bg: #ffffff;
-    --bg-sec: #f7f6f3;
-    --bg-ter: #f1f0ec;
-    --border: rgba(55,53,47,0.12);
-    --border-med: rgba(55,53,47,0.22);
-    --text: #37352f;
-    --text-sec: #787774;
-    --text-ter: #9b9a97;
-    --radius: 8px;
-    --radius-lg: 10px;
-    --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --pass: #1D9E75;
-    --pass-bg: #d1fae5;
-    --pass-text: #065f46;
-    --partial: #d97706;
-    --partial-bg: #fef3e2;
-    --partial-text: #8a5000;
-    --fail: #dc2626;
-    --fail-bg: #fde8e8;
-    --fail-text: #9b2020;
-    --red-rag: #dc2626;
-    --red-rag-bg: #fde8e8;
-    --amber-rag: #d97706;
-    --amber-rag-bg: #fef3e2;
-    --green-rag: #1D9E75;
-    --green-rag-bg: #d1fae5;
-  }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap');
+:root {
+  --yellow:       #fbfa00;
+  --black:        #0b0b0b;
+  --white:        #ffffff;
+  --grey:         #f4f4f4;
+  --grey-border:  #e0e0e0;
+  --grey-mid:     #999999;
+  --grey-text:    #555555;
 
-  body {
-    font-family: var(--font);
-    background: var(--bg);
-    color: var(--text);
-    font-size: 14px;
-    line-height: 1.6;
-    padding: 32px 24px 64px;
-    max-width: 860px;
-    margin: 0 auto;
-  }
+  --pass:         #16a34a;
+  --pass-bg:      #f0fdf4;
+  --pass-text:    #166534;
+  --partial:      #ca8a04;
+  --partial-bg:   #fefce8;
+  --partial-text: #854d0e;
+  --fail:         #dc2626;
+  --fail-bg:      #fef2f2;
+  --fail-text:    #991b1b;
 
-  /* ── Header ── */
-  .report-header {
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 24px;
-    margin-bottom: 28px;
-  }
+  --red-rag:      #dc2626;
+  --red-bg:       #fef2f2;
+  --amber-rag:    #d97706;
+  --amber-bg:     #fffbeb;
+  --green-rag:    #16a34a;
+  --green-bg:     #f0fdf4;
 
-  .report-meta {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
+  --font-head:    'Anton', sans-serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius:       6px;
+  --radius-lg:    8px;
+}
 
-  .report-title-block h1 {
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--black);
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto;
+}
 
-  .report-url {
-    font-size: 13px;
-    color: var(--text-sec);
-  }
+/* ── Header ── */
+.report-header {
+  background: var(--white);
+  color: var(--black);
+  padding: 24px 32px 32px;
+  border-bottom: 3px solid var(--yellow);
+}
 
-  .report-url a {
-    color: var(--text-sec);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
+.header-brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--grey-border);
+}
 
-  .report-date {
-    font-size: 12px;
-    color: var(--text-ter);
-    margin-top: 4px;
-  }
+.brand-logo {
+  height: 36px;
+  width: auto;
+  display: block;
+}
 
-  /* ── RAG status ── */
-  .rag-block {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-  }
+.brand-url {
+  font-size: 12px;
+  color: var(--grey-mid);
+}
 
-  .rag-pill {
-    font-size: 13px;
-    font-weight: 600;
-    padding: 6px 16px;
-    border-radius: 100px;
-    letter-spacing: 0.02em;
-  }
+.header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+}
 
-  .rag-red    { background: var(--red-rag-bg);   color: var(--red-rag);   }
-  .rag-amber  { background: var(--amber-rag-bg); color: var(--amber-rag); }
-  .rag-green  { background: var(--green-rag-bg); color: var(--green-rag); }
+.header-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+  margin-bottom: 8px;
+}
 
-  /* ── Score row ── */
-  .score-row {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
+.header-title {
+  font-family: var(--font-head);
+  font-size: 44px;
+  line-height: 1;
+  color: var(--black);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin-bottom: 10px;
+}
 
-  .score-card {
-    background: var(--bg-sec);
-    border-radius: var(--radius);
-    padding: 12px 16px;
-    flex: 1;
-    min-width: 100px;
-  }
+.header-meta {
+  font-size: 13px;
+  color: var(--grey-mid);
+}
 
-  .score-label {
-    font-size: 10px;
-    color: var(--text-ter);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 3px;
-  }
+.header-meta a { color: var(--grey-mid); text-decoration: none; }
 
-  .score-val {
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--text);
-  }
+.rag-pill {
+  font-family: var(--font-head);
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border-radius: 100px;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
 
-  .score-sub {
-    font-size: 11px;
-    color: var(--text-ter);
-    margin-top: 1px;
-  }
+.rag-red   { background: var(--red-bg);   color: var(--red-rag);   }
+.rag-amber { background: var(--amber-bg); color: var(--amber-rag); }
+.rag-green { background: var(--green-bg); color: var(--green-rag); }
 
-  /* ── Verdict ── */
-  .verdict-block {
-    background: var(--bg-sec);
-    border-radius: var(--radius-lg);
-    border-left: 3px solid var(--border-med);
-    padding: 14px 16px;
-    margin-top: 20px;
-    font-size: 14px;
-    color: var(--text);
-    font-style: italic;
-  }
+/* ── Scores + Verdict ── */
+.scores-section {
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--grey-border);
+}
 
-  .verdict-block.red    { border-left-color: var(--red-rag);   }
-  .verdict-block.amber  { border-left-color: var(--amber-rag); }
-  .verdict-block.green  { border-left-color: var(--green-rag); }
+.score-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
 
-  /* ── Section headings ── */
-  .section-heading {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text-ter);
-    margin: 28px 0 12px;
-  }
+.score-card {
+  flex: 1;
+  min-width: 110px;
+  border: 1.5px solid var(--black);
+  border-bottom: 3px solid var(--yellow);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  background: var(--white);
+}
 
-  /* ── Priority fixes ── */
-  .fix-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 28px;
-  }
+.score-num {
+  font-family: var(--font-head);
+  font-size: 38px;
+  line-height: 1;
+  color: var(--black);
+  margin-bottom: 4px;
+}
 
-  .fix-item {
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 14px 16px;
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-  }
+.score-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--grey-mid);
+}
 
-  .fix-num {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-ter);
-    flex-shrink: 0;
-    width: 20px;
-    text-align: right;
-    padding-top: 1px;
-  }
+.score-sub {
+  font-size: 11px;
+  color: var(--grey-mid);
+  margin-top: 2px;
+}
 
-  .fix-body { flex: 1; }
+.verdict-block {
+  background: var(--yellow);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+}
 
-  .fix-title {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
+.verdict-eyebrow {
+  font-family: var(--font-head);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.45);
+  display: block;
+  margin-bottom: 4px;
+}
 
-  .fix-detail {
-    font-size: 13px;
-    color: var(--text-sec);
-    line-height: 1.55;
-  }
+.verdict-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black);
+  line-height: 1.55;
+}
 
-  .fix-action {
-    font-size: 12px;
-    color: var(--text-ter);
-    margin-top: 6px;
-    padding-top: 6px;
-    border-top: 1px solid var(--border);
-  }
+/* ── Content sections ── */
+.content-section {
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--grey-border);
+}
 
-  .fix-action strong {
-    color: var(--text-sec);
-    font-weight: 500;
-  }
+.content-section:last-child { border-bottom: none; }
 
-  /* ── Audit sections ── */
-  .audit-section {
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    margin-bottom: 10px;
-    overflow: hidden;
-  }
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  background: var(--yellow);
+  color: var(--black);
+  font-family: var(--font-head);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 4px;
+  margin-bottom: 18px;
+}
 
-  .audit-sec-head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 16px;
-    cursor: pointer;
-    user-select: none;
-    transition: background 0.1s;
-  }
+/* ── Top 5 fixes ── */
+.fix-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
-  .audit-sec-head:hover { background: var(--bg-sec); }
+.fix-item {
+  border: 1.5px solid var(--black);
+  border-bottom: 3px solid var(--yellow);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
 
-  .audit-sec-head h2 {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
-    flex: 1;
-  }
+.fix-num {
+  font-family: var(--font-head);
+  font-size: 32px;
+  line-height: 1;
+  color: var(--black);
+  flex-shrink: 0;
+  width: 28px;
+  text-align: center;
+  padding-top: 2px;
+}
 
-  .sec-badge {
-    font-size: 11px;
-    font-weight: 500;
-    padding: 3px 9px;
-    border-radius: 5px;
-    white-space: nowrap;
-  }
+.fix-body { flex: 1; }
 
-  .sec-score {
-    font-size: 12px;
-    color: var(--text-ter);
-    white-space: nowrap;
-    margin-left: auto;
-  }
+.fix-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
 
-  .chev {
-    font-size: 10px;
-    color: var(--text-ter);
-    transition: transform 0.2s;
-  }
+.fix-detail {
+  font-size: 13px;
+  color: var(--grey-text);
+  line-height: 1.55;
+}
 
-  .chev.open { transform: rotate(180deg); }
+.fix-action {
+  font-size: 12px;
+  color: var(--grey-text);
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--grey-border);
+  line-height: 1.5;
+}
 
-  .sec-prog-wrap { height: 3px; background: var(--bg-ter); }
-  .sec-prog-bar  { height: 3px; transition: width 0.3s; }
+.fix-action strong { color: var(--black); font-weight: 600; }
 
-  /* ── Findings ── */
-  .findings-list {
-    border-top: 1px solid var(--border);
-  }
+/* ── Audit sections ── */
+.audit-section {
+  border: 1.5px solid var(--black);
+  border-radius: var(--radius-lg);
+  margin-bottom: 10px;
+  overflow: hidden;
+}
 
-  .finding {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--border);
-  }
+.audit-sec-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  cursor: pointer;
+  user-select: none;
+  background: var(--white);
+  border-bottom: 3px solid var(--yellow);
+  transition: background 0.1s;
+}
 
-  .finding:last-child { border-bottom: none; }
+.audit-sec-head:hover { background: var(--grey); }
 
-  .verdict-dot {
-    flex-shrink: 0;
-    margin-top: 3px;
-    width: 60px;
-    text-align: center;
-  }
+.sec-badge {
+  font-family: var(--font-head);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: var(--yellow);
+  color: var(--black);
+  flex-shrink: 0;
+}
 
-  .verdict-tag {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 4px;
-    letter-spacing: 0.03em;
-  }
+.sec-title {
+  font-family: var(--font-head);
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  flex: 1;
+  color: var(--black);
+}
 
-  .v-pass    { background: var(--pass-bg);    color: var(--pass-text);    }
-  .v-partial { background: var(--partial-bg); color: var(--partial-text); }
-  .v-fail    { background: var(--fail-bg);    color: var(--fail-text);    }
-  .v-na      { background: var(--bg-ter);     color: var(--text-ter);     }
+.sec-score {
+  font-size: 12px;
+  color: var(--grey-mid);
+  white-space: nowrap;
+}
 
-  .finding-body { flex: 1; }
+.chev {
+  font-size: 10px;
+  color: var(--grey-mid);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
 
-  .finding-check {
-    font-size: 13.5px;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 4px;
-    line-height: 1.4;
-  }
+.chev.open { transform: rotate(180deg); }
 
-  .finding-note {
-    font-size: 12px;
-    color: var(--text-sec);
-    line-height: 1.55;
-  }
+.sec-prog-wrap { height: 3px; background: var(--grey); }
+.sec-prog-bar  { height: 3px; background: var(--yellow); }
 
-  .finding-rec {
-    font-size: 12px;
-    color: var(--text-sec);
-    margin-top: 6px;
-    padding: 6px 10px;
-    background: var(--bg-sec);
-    border-radius: 5px;
-    border-left: 2px solid var(--border-med);
-    line-height: 1.5;
-  }
+/* ── Findings ── */
+.findings-list { border-top: 1px solid var(--grey-border); }
 
-  .finding-rec strong {
-    color: var(--text);
-    font-weight: 500;
-    display: block;
-    margin-bottom: 2px;
-  }
+.finding {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--grey-border);
+}
 
-  /* ── Positives ── */
-  .positives-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 28px;
-  }
+.finding:last-child { border-bottom: none; }
 
-  .positive-item {
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    padding: 11px 14px;
-    background: var(--pass-bg);
-    border-radius: var(--radius);
-    font-size: 13px;
-    color: var(--pass-text);
-    line-height: 1.5;
-  }
+.verdict-dot {
+  flex-shrink: 0;
+  margin-top: 3px;
+  width: 58px;
+  text-align: center;
+}
 
-  .positive-dot {
-    font-size: 14px;
-    flex-shrink: 0;
-    margin-top: 1px;
-    color: var(--pass);
-  }
+.verdict-tag {
+  font-family: var(--font-head);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
 
-  /* ── Section badges ── */
-  .b-strategy  { background: #ede9fe; color: #5b21b6; }
-  .b-messaging { background: #fde8e8; color: #9b2020; }
-  .b-copy      { background: #fef3e2; color: #8a5000; }
-  .b-trust     { background: #fce7f3; color: #9d174d; }
-  .b-journey   { background: #dbeafe; color: #1e40af; }
-  .b-design    { background: #d1fae5; color: #065f46; }
-  .b-content   { background: #f1f0ec; color: #57534e; }
-  .b-tech      { background: #ffedd5; color: #9a3412; }
+.v-pass    { background: var(--pass-bg);    color: var(--pass);    }
+.v-partial { background: var(--partial-bg); color: var(--partial); }
+.v-fail    { background: var(--fail-bg);    color: var(--fail);    }
+.v-na      { background: var(--grey);       color: var(--grey-mid);}
 
-  /* ── Footer ── */
-  .report-footer {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
+.finding-body { flex: 1; }
 
-  .footer-brand {
-    font-size: 12px;
-    color: var(--text-ter);
-  }
+.finding-check {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
 
-  .footer-brand strong {
-    color: var(--text-sec);
-    font-weight: 500;
-  }
+.finding-note {
+  font-size: 12px;
+  color: var(--grey-text);
+  line-height: 1.55;
+}
 
-  @media (max-width: 560px) {
-    body { padding: 20px 14px 48px; }
-    .report-meta { flex-direction: column; }
-    .score-card { min-width: 80px; }
-  }
+.finding-rec {
+  font-size: 12px;
+  color: var(--grey-text);
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: var(--grey);
+  border-radius: 5px;
+  border-left: 3px solid var(--black);
+  line-height: 1.5;
+}
+
+.finding-rec strong {
+  color: var(--black);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 3px;
+}
+
+/* ── Positives ── */
+.positives-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.positive-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  background: var(--black);
+  border-radius: var(--radius-lg);
+  font-size: 13px;
+  color: var(--white);
+  line-height: 1.5;
+}
+
+.positive-dot {
+  color: var(--yellow);
+  font-size: 18px;
+  flex-shrink: 0;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* ── Footer ── */
+.report-footer {
+  background: var(--white);
+  padding: 24px 32px;
+  border-top: 3px solid var(--yellow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-logo {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+.footer-meta {
+  font-size: 12px;
+  color: var(--grey-mid);
+}
+
+@media (max-width: 600px) {
+  .report-header, .scores-section, .content-section { padding: 20px 16px; }
+  .header-title { font-size: 30px; }
+  .score-card   { min-width: 80px; }
+  .fix-item     { flex-direction: column; gap: 8px; }
+  .fix-num      { width: auto; font-size: 24px; }
+}
+
 </style>
 </head>
 <body>
 
 <div class="report-header">
-  <div class="report-meta">
-    <div class="report-title-block">
-      <h1>Website audit — Kenworth Engineering</h1>
-      <div class="report-url"><a href="https://www.kenworthengineering.co.uk" target="_blank">kenworthengineering.co.uk</a></div>
-      <div class="report-date">Audit date: 16 April 2026 &nbsp;·&nbsp; Prepared by Northern Sauce</div>
-    </div>
-    <div class="rag-block">
-      <span class="rag-pill rag-red">Red</span>
-    </div>
+  <div class="header-brand">
+    <img src="https://northernsauce.uk/wp-content/uploads/2026/04/Ns-EmblemDark.png" alt="Northern Sauce" class="brand-logo">
+    <span class="brand-url">northernsauce.uk</span>
   </div>
+  <div class="header-main">
+    <div>
+      <div class="header-eyebrow">Website Audit Report</div>
+      <h1 class="header-title">Kenworth Engineering</h1>
+      <div class="header-meta">
+        <a href="https://www.kenworthengineering.co.uk" target="_blank">kenworthengineering.co.uk</a>
+        &nbsp;·&nbsp; 16 April 2026
+      </div>
+    </div>
+    <span class="rag-pill rag-red">Red</span>
+  </div>
+</div>
 
+
+<div class="scores-section">
   <div class="score-row">
     <div class="score-card">
-      <div class="score-label">Checks passed</div>
-      <div class="score-val">21</div>
+      <div class="score-num">21</div>
+      <div class="score-label">Passed</div>
       <div class="score-sub">out of 56 assessed</div>
     </div>
     <div class="score-card">
-      <div class="score-label">Checks failed</div>
-      <div class="score-val">22</div>
+      <div class="score-num">22</div>
+      <div class="score-label">Failed</div>
       <div class="score-sub">need attention</div>
     </div>
     <div class="score-card">
+      <div class="score-num">13</div>
       <div class="score-label">Partial</div>
-      <div class="score-val">13</div>
       <div class="score-sub">could be stronger</div>
     </div>
     <div class="score-card">
+      <div class="score-num">38%</div>
       <div class="score-label">Score</div>
-      <div class="score-val">38%</div>
       <div class="score-sub">overall</div>
     </div>
   </div>
 
-  <div class="verdict-block red">
-    Your site looks professional and the technical content is thorough — but staging domain errors may be stopping Google from showing you in search results at all, the contact page lists email addresses that might not reach you, and there's almost no social proof despite working with Formula 1 teams and global companies.
+  <div class="verdict-block">
+    <span class="verdict-eyebrow">The verdict</span>
+    <div class="verdict-text">Your site looks professional and the technical content is thorough — but staging domain errors may be stopping Google from showing you in search results at all, the contact page lists email addresses that might not reach you, and there's almost no social proof despite working with Formula 1 teams and global companies.</div>
   </div>
 </div>
 
 
-<div class="section-heading">Top 5 priority fixes</div>
+<div class="content-section">
+  <div class="section-label">Top 5 Priority Fixes</div>
 
-<div class="fix-list">
+  <div class="fix-list">
 
-  <div class="fix-item">
-    <div class="fix-num">1</div>
-    <div class="fix-body">
-      <div class="fix-title">Fix the staging domain contamination — it may be hiding you from Google</div>
-      <div class="fix-detail">Your site's page metadata is pointing to a staging address (kenworthengineering-co-uk.stackstaging.com) rather than your live domain. Your contact page also shows email addresses and links using this staging address — anyone trying to email you directly from that page may never reach you. There's also a "noindex" instruction in your site's code that tells Google not to show you in search results. This looks like a leftover from when the site was being built that was never cleaned up. It could mean your site is effectively invisible to people searching for you.</div>
-      <div class="fix-action"><strong>Action:</strong> Ask whoever built your site — or a developer — to check your WordPress settings for any references to the staging domain, update all internal URLs to your live domain, and remove the "noindex" tag. Also test your contact form to confirm enquiries are actually landing in your inbox.</div>
-    </div>
-  </div>
-
-  <div class="fix-item">
-    <div class="fix-num">2</div>
-    <div class="fix-body">
-      <div class="fix-title">Add client testimonials and show the companies you work with</div>
-      <div class="fix-detail">Your site claims to work with "some of the world's largest companies" across automotive, F1, oil & gas, renewable energy and more — but there isn't a single client name, logo, quote, or outcome anywhere on the site. For a B2B precision engineering business where trust is everything, this is a significant gap. Prospects making big decisions about who machines their parts need proof before they pick up the phone.</div>
-      <div class="fix-action"><strong>Action:</strong> Gather 3–5 testimonials from existing clients, ideally with their name, company, and a specific outcome (delivery time hit, tolerance achieved, problem solved). Add at least one client logo strip to the homepage. Even a short case study — "we machined X for Y company, here's what was involved and what they said" — would do more work than anything else on the site.</div>
-    </div>
-  </div>
-
-  <div class="fix-item">
-    <div class="fix-num">3</div>
-    <div class="fix-body">
-      <div class="fix-title">Put a real person on the About page</div>
-      <div class="fix-detail">Your About page is a short paragraph about the company's history and capabilities. There's no mention of Natalie or the family behind the business, no photos of the team, and no personal story. For a family-run business with 30+ years of history, that's a missed opportunity — people buy from people, and "family-owned" is a differentiator that needs a face and a story to land.</div>
-      <div class="fix-action"><strong>Action:</strong> Rewrite the About page around the real story — who started it, why, what drives the business today, who the customer is talking to when they call. Add a photo of the team on the shop floor or the person they'll speak to when they enquire. This doesn't need to be polished — authentic beats professional here.</div>
-    </div>
-  </div>
-
-  <div class="fix-item">
-    <div class="fix-num">4</div>
-    <div class="fix-body">
-      <div class="fix-title">Rewrite the copy to lead with what clients get, not what you do</div>
-      <div class="fix-detail">Every page on your site — including the hero — talks about Kenworth's capabilities, machines, and processes. The visitor already knows they need CNC parts. What they're trying to work out is whether you're the right supplier. Copy that says "we manufacture parts to sub-10 micron tolerance for the world's most demanding industries" is less compelling than something that speaks to what that means for the client: right first time, on time, no rejected batches, no delays to your production line.</div>
-      <div class="fix-action"><strong>Action:</strong> Rewrite the hero subheading and the opening of each service page to lead with what the client gets — the outcome, the reassurance, the problem solved — before explaining how you do it. The machine specs and capabilities can stay, just move them further down the page.</div>
-    </div>
-  </div>
-
-  <div class="fix-item">
-    <div class="fix-num">5</div>
-    <div class="fix-body">
-      <div class="fix-title">Deal with the stale blog — update it or remove it</div>
-      <div class="fix-detail">Your News & Insights section shows three posts, the most recent from April 2023 — three years ago. A blog that hasn't been touched in three years signals an inactive business to anyone who spots it, and it's likely doing more harm than good.</div>
-      <div class="fix-action"><strong>Action:</strong> Either remove the News & Insights section from the main navigation and quietly archive it, or commit to publishing something quarterly — even a short update about a project, a new machine, or an industry sector you've been working in. If you're not going to maintain it, removing it is the better option.</div>
-    </div>
-  </div>
-
-</div>
-
-
-<div class="section-heading">Section findings</div>
-
-
-<!-- ── 1. Strategy ── -->
-<div class="audit-section">
-  <div class="audit-sec-head" onclick="toggleSec('strategy')">
-    <span class="sec-badge b-strategy">Strategy</span>
-    <h2>7 checks</h2>
-    <span class="sec-score" id="score-strategy">1/7 passed</span>
-    <span class="chev open" id="chev-strategy">&#9660;</span>
-  </div>
-  <div class="sec-prog-wrap">
-    <div class="sec-prog-bar" style="width:14%;background:#7c3aed"></div>
-  </div>
-  <div class="findings-list" id="body-strategy">
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is the ideal client defined specifically enough?</div>
-        <div class="finding-note">Your site lists 10 different industry sectors you serve — automotive, F1, renewable energy, oil & gas, medical, food & beverage, agriculture, subsea, electronics, and architectural. That's essentially everyone who might need CNC parts. There's no signal about which type of business you're best placed to serve, what size of project suits you, or what kind of client gets the most from working with you.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Decide on 2–3 industries where you do your best work and where you want more clients, and make those the focus of your homepage messaging. Keep the full industry list on a dedicated page, but stop leading with "we serve everyone" — it reads as "we're ideal for no one."</div>
+    <div class="fix-item">
+      <div class="fix-num">1</div>
+      <div class="fix-body">
+        <div class="fix-title">Fix the staging domain contamination — it may be hiding you from Google</div>
+        <div class="fix-detail">Your site's page metadata is pointing to a staging address (kenworthengineering-co-uk.stackstaging.com) rather than your live domain. Your contact page also shows email addresses using this staging address — anyone trying to email you directly from that page may never reach you. There's also a "noindex" instruction in your site's code that tells Google not to show you in search results. This looks like a leftover from when the site was being built that was never cleaned up.</div>
+        <div class="fix-action"><strong>Action:</strong> Ask whoever built your site — or a developer — to check your WordPress settings for any references to the staging domain, update all internal URLs to your live domain, and remove the "noindex" tag. Also test your contact form to confirm enquiries are actually landing in your inbox.</div>
       </div>
     </div>
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is there one primary conversion goal the whole site is built around?</div>
-        <div class="finding-note">Your site is consistently built around one goal: getting a quote. The "Get a Quote" CTA appears in the navigation, the hero, at the end of every service section, and at the bottom of the contact page. The navigation also offers a direct quote path. This is clear and well executed.</div>
+    <div class="fix-item">
+      <div class="fix-num">2</div>
+      <div class="fix-body">
+        <div class="fix-title">Add client testimonials and show the companies you work with</div>
+        <div class="fix-detail">Your site claims to work with "some of the world's largest companies" across automotive, F1, oil & gas, renewable energy and more — but there isn't a single client name, logo, quote, or outcome anywhere on the site. For a B2B precision engineering business where trust is everything, this is a significant gap. Prospects making big decisions about who machines their parts need proof before they pick up the phone.</div>
+        <div class="fix-action"><strong>Action:</strong> Gather 3–5 testimonials from existing clients with their name, company, and a specific outcome (delivery time hit, tolerance achieved, problem solved). Add at least one client logo strip to the homepage. Even a short case study would do more work than anything else on the site.</div>
       </div>
     </div>
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Does the site position the business as a specialist rather than a generalist?</div>
-        <div class="finding-note">Kenworth is genuinely a specialist — precision CNC machining is a specific discipline. But within that, the site positions itself as serving every industry at every scale, which weakens the specialist signal. The mention of Formula 1 is a strong differentiator but it's buried in an industry list rather than leading the conversation.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Lead with your most impressive work. If you've machined parts for F1 teams, say so prominently — it sets a quality benchmark that makes every other industry enquiry feel confident about the standard they'll get.</div>
+    <div class="fix-item">
+      <div class="fix-num">3</div>
+      <div class="fix-body">
+        <div class="fix-title">Put a real person on the About page</div>
+        <div class="fix-detail">Your About page is a short paragraph about the company's history and capabilities. There's no mention of Natalie or the family behind the business, no photos of the team, and no personal story. For a family-run business with 30+ years of history, that's a missed opportunity — people buy from people, and "family-owned" is a differentiator that needs a face and a story to land.</div>
+        <div class="fix-action"><strong>Action:</strong> Rewrite the About page around the real story — who started it, why, what drives the business today, who the customer is talking to when they call. Add a photo of the team on the shop floor. Authentic beats professional here.</div>
       </div>
     </div>
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is the offer clear — what you get, how it works, what it costs?</div>
-        <div class="finding-note">What you get is reasonably clear: precision CNC machined parts and components. The process is partially explained — you mention a 48-hour quote turnaround and your capabilities. But the enquiry-to-delivery journey isn't spelled out, and there's no pricing guidance at all. For someone new to working with a CNC subcontractor, this creates uncertainty.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Add a simple 3-step "how it works" section: send us your drawings → we quote within 48 hours → we machine and deliver. Even a broad ballpark on minimum order quantities or typical lead times would reduce friction for first-time enquirers.</div>
+    <div class="fix-item">
+      <div class="fix-num">4</div>
+      <div class="fix-body">
+        <div class="fix-title">Rewrite the copy to lead with what clients get, not what you do</div>
+        <div class="fix-detail">Every page on your site talks about Kenworth's capabilities, machines, and processes. The visitor already knows they need CNC parts. What they're trying to work out is whether you're the right supplier. Copy that explains what working with you means for the client — right first time, on time, no rejected batches, no delays — is far more persuasive than a list of capabilities.</div>
+        <div class="fix-action"><strong>Action:</strong> Rewrite the hero subheading and the opening of each service page to lead with the client outcome before explaining how you achieve it. The machine specs can stay — just move them further down the page.</div>
       </div>
     </div>
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is there a low-commitment next step for visitors who aren't ready to buy yet?</div>
-        <div class="finding-note">The only option on your site is to request a quote — there's no guide, no materials comparison tool, no newsletter, no downloadable spec sheet. A buyer who's researching suppliers but not yet at the quoting stage has no way to stay connected to Kenworth. They'll leave and likely never come back.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> A simple material selection guide, a "questions to ask your CNC supplier" PDF, or even a monthly update on capacity and capabilities would give early-stage prospects something to engage with before they're ready to send drawings.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Does the site reflect the current business — services, niche, positioning?</div>
-        <div class="finding-note">The core services (CNC milling, turning, sliding head turning) appear current and the machine list includes specific models with detail that suggests it's been maintained. However, the blog hasn't been updated since April 2023, and several internal links point to a staging domain rather than the live site — which raises a question about how actively the site is being managed.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Do a quarterly review: check all internal links, update any out-of-date machine specs, and either publish something to the blog or remove it from the nav.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is there a clear answer to "why this business and not a competitor"?</div>
-        <div class="finding-note">Your site mentions ISO 9001:2015, 30+ years of experience, and sub-10 micron tolerances — all of which are true and relevant. But most precision engineering firms of your size say exactly the same things. There's nothing on the site that could only be said about Kenworth: the F1 work, the specific machines you've invested in, the family history, the fact you've built custom automation to run jobs unmanned overnight.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Identify two or three things that are genuinely specific to Kenworth — not just what you do, but how you do it differently — and put those front and centre. The overnight unmanned running on your Citizen Miyano, the custom Rota-Rack, the F1 client list — these are the kinds of specific details that build trust with someone comparing three quotes.</div>
+    <div class="fix-item">
+      <div class="fix-num">5</div>
+      <div class="fix-body">
+        <div class="fix-title">Deal with the stale blog — update it or remove it</div>
+        <div class="fix-detail">Your News & Insights section shows three posts, the most recent from April 2023. A blog that hasn't been touched in three years signals an inactive business to anyone who spots it, and it's likely doing more harm than good.</div>
+        <div class="fix-action"><strong>Action:</strong> Either remove News & Insights from the main navigation and archive the existing posts, or commit to publishing something quarterly. If you're not going to maintain it, removing it is the better option.</div>
       </div>
     </div>
 
@@ -590,615 +570,686 @@
 </div>
 
 
-<!-- ── 2. Messaging ── -->
-<div class="audit-section">
-  <div class="audit-sec-head" onclick="toggleSec('messaging')">
-    <span class="sec-badge b-messaging">Messaging</span>
-    <h2>8 checks</h2>
-    <span class="sec-score" id="score-messaging">2/8 passed</span>
-    <span class="chev open" id="chev-messaging">&#9660;</span>
+<div class="content-section">
+  <div class="section-label">Section Findings</div>
+
+
+  <!-- ── 1. Strategy ── -->
+  <div class="audit-section">
+    <div class="audit-sec-head" onclick="toggleSec('strategy')">
+      <span class="sec-badge">Strategy</span>
+      <span class="sec-title">7 checks</span>
+      <span class="sec-score">1/7 passed</span>
+      <span class="chev open" id="chev-strategy">&#9660;</span>
+    </div>
+    <div class="sec-prog-wrap"><div class="sec-prog-bar" style="width:14%"></div></div>
+    <div class="findings-list" id="body-strategy">
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the ideal client defined specifically enough?</div>
+          <div class="finding-note">Your site lists 10 different industry sectors — automotive, F1, renewable energy, oil & gas, medical, food & beverage, agriculture, subsea, electronics, and architectural. That's essentially everyone who might need CNC parts. There's no signal about which type of business you're best placed to serve, what size of project suits you, or what kind of client gets the most from working with you.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Decide on 2–3 industries where you do your best work and make those the focus of your homepage messaging. Keep the full industry list on a dedicated page, but stop leading with "we serve everyone" — it reads as "we're ideal for no one."</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is there one primary conversion goal the whole site is built around?</div>
+          <div class="finding-note">Your site is consistently built around one goal: getting a quote. The "Get a Quote" CTA appears in the navigation, the hero, at the end of every service section, and at the bottom of the contact page. This is clear and well executed.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the site position the business as a specialist rather than a generalist?</div>
+          <div class="finding-note">Kenworth is genuinely a specialist — precision CNC machining is a specific discipline. But within that, the site positions itself as serving every industry at every scale, which weakens the specialist signal. The mention of Formula 1 is a strong differentiator but it's buried in an industry list rather than leading the conversation.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Lead with your most impressive work. If you've machined parts for F1 teams, say so prominently — it sets a quality benchmark that makes every other industry enquiry feel confident about the standard they'll get.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the offer clear — what you get, how it works, what it costs?</div>
+          <div class="finding-note">What you get is reasonably clear: precision CNC machined parts. The process is partially explained — you mention a 48-hour quote turnaround and your capabilities. But the enquiry-to-delivery journey isn't spelled out, and there's no pricing guidance at all.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Add a simple 3-step "how it works" section: send us your drawings → we quote within 48 hours → we machine and deliver. Even a broad ballpark on minimum order quantities or typical lead times would reduce friction for first-time enquirers.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is there a low-commitment next step for visitors who aren't ready to buy yet?</div>
+          <div class="finding-note">The only option on your site is to request a quote. There's no guide, no materials comparison tool, no newsletter, no downloadable spec sheet. A buyer who's researching suppliers but not yet at the quoting stage has no way to stay connected to Kenworth.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> A simple material selection guide, a "questions to ask your CNC supplier" PDF, or even a monthly capacity update would give early-stage prospects something to engage with before they're ready to send drawings.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the site reflect the current business — services, niche, positioning?</div>
+          <div class="finding-note">The core services appear current and the machine list includes specific models that suggest it's been maintained. However, the blog hasn't been updated since April 2023, and several internal links point to a staging domain rather than the live site.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Do a quarterly review: check all internal links, update any out-of-date machine specs, and either publish something to the blog or remove it from the nav.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is there a clear answer to "why this business and not a competitor"?</div>
+          <div class="finding-note">Your site mentions ISO 9001:2015, 30+ years of experience, and sub-10 micron tolerances — but most precision engineering firms of your size say exactly the same things. The F1 work, the specific machines you've invested in, the family history, the overnight unmanned running — none of these are front and centre.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Identify two or three things that are genuinely specific to Kenworth and put those front and centre. The overnight unmanned running on your Citizen Miyano, the custom Rota-Rack, the F1 client list — these are the specific details that build trust with someone comparing three quotes.</div>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <div class="sec-prog-wrap">
-    <div class="sec-prog-bar" style="width:25%;background:#dc2626"></div>
+
+
+  <!-- ── 2. Messaging ── -->
+  <div class="audit-section">
+    <div class="audit-sec-head" onclick="toggleSec('messaging')">
+      <span class="sec-badge">Messaging</span>
+      <span class="sec-title">8 checks</span>
+      <span class="sec-score">2/8 passed</span>
+      <span class="chev open" id="chev-messaging">&#9660;</span>
+    </div>
+    <div class="sec-prog-wrap"><div class="sec-prog-bar" style="width:25%"></div></div>
+    <div class="findings-list" id="body-messaging">
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the hero headline name the ideal client's specific situation or problem?</div>
+          <div class="finding-note">Your hero reads "Precision Engineering Services for Global Sectors" — this is a description of what you sell, not a statement about who you help or why it matters to them. It doesn't make any visitor think "that's exactly what I'm looking for."</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Rewrite the hero to speak to the moment your ideal client is in — the actual concern (quality, accuracy, delivery) rather than just naming a service category. Something like "CNC-machined parts that are right first time, every time — delivered on your timeline" does that job.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the copy lead with the client, not the business?</div>
+          <div class="finding-note">Almost every paragraph on the site begins with "At Kenworth Engineering, we…" or "Kenworth Engineering are…" — the homepage, the about page, the services page, and the contact page all open with the business as the subject. The visitor spends the whole visit reading about you rather than seeing their own problem reflected back at them.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Flip the subject of your opening sentences. Put the client in the sentence first — "When you need precision-machined parts with tight tolerances and fast turnaround…" instead of "At Kenworth Engineering, we offer…"</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the copy name the specific problem the ideal client is experiencing?</div>
+          <div class="finding-note">Your site assumes visitors already know they need CNC machining and are just comparing suppliers. There's no acknowledgement of the actual frustrations that drive a buying decision — rejected parts from a previous supplier, a last-minute urgent batch, tight tolerances a competitor couldn't hit.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Add a short section that names the scenarios where clients typically come to Kenworth — "Tolerances your current supplier can't hit. Urgent runs with a 48-hour turnaround. First-off prototypes that have to be right before production starts." This signals you understand the work.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the copy describe outcomes, not just services?</div>
+          <div class="finding-note">Throughout the site the copy describes the process and capabilities. These explain what you do but not what the client gets from it. The visitor wants to know: will my parts arrive on time? Will they be right first time? Will I have to chase for updates?</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Lead each service description with the client outcome before the technical detail. "Get your parts right first time, with quote turnaround in 48 hours and dedicated project support throughout" — then follow with the capabilities that make that possible.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the site create a sense that not acting has a cost?</div>
+          <div class="finding-note">There's no urgency or consequence anywhere on the site — no mention of capacity constraints, lead times, or what happens if a project is delayed by using the wrong supplier. A visitor who isn't ready to enquire today has no reason to feel they might miss out by waiting.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Even something as simple as mentioning current capacity — "We quote within 48 hours and can often start production within the week" — creates a reason to act now rather than later.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the tone of voice consistent across every page?</div>
+          <div class="finding-note">The tone is consistent throughout — professional, technical, and direct. The homepage, services pages, and contact page all read as though they were written by the same person. For a B2B precision engineering audience, this consistency is appropriate and well maintained.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the copy use language the ideal client actually uses?</div>
+          <div class="finding-note">The technical terminology used throughout — 3-axis, 5-axis, mill/turn, sliding head, bar-fed, sub-10 micron, CNC turning centres — is the language your clients use. This is appropriate for your B2B audience of engineers and procurement managers, and it signals credibility with people who know the industry.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is there a clear "for people like you" signal early on the homepage?</div>
+          <div class="finding-note">The industries section lists 10 sectors, which does allow a visitor to self-identify. But listing 10 industries is close to listing none — the signal would be much stronger if you led with two or three sectors where you have the deepest experience.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Lead with your strongest industry credentials. If F1 and aerospace are your most impressive sectors, name them first. A visitor from those industries will immediately feel they're in the right place.</div>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <div class="findings-list" id="body-messaging">
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Does the hero headline name the ideal client's specific situation or problem?</div>
-        <div class="finding-note">Your hero reads "Precision Engineering Services for Global Sectors" — this is a description of what you sell, not a statement about who you help or why it matters to them. It doesn't make any visitor think "that's exactly what I'm looking for."</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Rewrite the hero to speak to the moment your ideal client is in. Something like "CNC-machined parts that are right first time, every time — delivered on your timeline" speaks to the actual concern (quality, accuracy, delivery) rather than just naming a service category.</div>
-      </div>
+
+  <!-- ── 3. Copywriting ── -->
+  <div class="audit-section">
+    <div class="audit-sec-head" onclick="toggleSec('copy')">
+      <span class="sec-badge">Copywriting</span>
+      <span class="sec-title">9 checks</span>
+      <span class="sec-score">2/9 passed</span>
+      <span class="chev open" id="chev-copy">&#9660;</span>
     </div>
+    <div class="sec-prog-wrap"><div class="sec-prog-bar" style="width:22%"></div></div>
+    <div class="findings-list" id="body-copy">
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Does the copy lead with the client, not the business?</div>
-        <div class="finding-note">Almost every paragraph on the site begins with "At Kenworth Engineering, we…" or "Kenworth Engineering are…" — the homepage, the about page, the services page, and the contact page all open with the business as the subject. The visitor spends the whole visit reading about you rather than seeing their own problem reflected back at them.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Flip the subject of your opening sentences. Instead of "At Kenworth Engineering, we offer CNC machining services," try "When you need precision-machined parts with tight tolerances and fast turnaround, here's what working with us looks like." Put the client in the sentence first.</div>
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the homepage hero section pass the 5-second test?</div>
+          <div class="finding-note">Within 5 seconds you can understand what the business does and that there's a quote CTA. But "Precision Engineering Services for Global Sectors" doesn't tell you who this is best for, and the hero presents two separate CTAs ("Machining Services" and "Get Your Quote Today") which splits attention slightly.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Simplify to one primary CTA and tighten the sub-headline to speak to a specific benefit or audience rather than a generic service description.</div>
+        </div>
       </div>
-    </div>
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Does the copy name the specific problem the ideal client is experiencing?</div>
-        <div class="finding-note">Your site assumes visitors already know they need CNC machining and are just comparing suppliers. There's no acknowledgement of the actual frustrations that drive a buying decision — rejected parts from a previous supplier, a last-minute urgent batch, tight tolerances a competitor couldn't hit. Naming those problems builds immediate trust with the visitor who's experienced them.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Add a short section that names the scenarios where clients typically come to Kenworth — "Tolerances your current supplier can't hit. Urgent runs with a 48-hour turnaround. First-off prototypes that have to be right before production starts." This kind of specificity signals you understand the work, not just the theory.</div>
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is every headline doing a job — pulling the reader to the next line?</div>
+          <div class="finding-note">Your section headings are largely descriptive labels: "Precision Engineering Services suited to your industry," "Local expertise with global reach," "What is Precision Engineering?" — these tell the visitor what the section is about but don't give them a reason to keep reading.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Rewrite headings to earn the scroll. "Why engineers trust Kenworth with their most demanding work" does more work than "Local expertise with global reach." The FAQ headings are already doing this well — apply the same thinking to the rest of the page.</div>
+        </div>
       </div>
-    </div>
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Does the copy describe outcomes, not just services?</div>
-        <div class="finding-note">Throughout the site the copy describes the process and capabilities — "CNC milling is a highly efficient and precise method," "our advanced machinery enables us to produce parts to your exact specifications." These explain what you do but not what the client gets from it. The visitor wants to know: will my parts arrive on time? Will they be right first time? Will I have to chase for updates?</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Lead each service description with the client outcome before the technical detail. "Get your parts right first time, with quote turnaround in 48 hours and dedicated project support throughout" — then follow with the capabilities that make that possible.</div>
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the About page about the client, not just the business?</div>
+          <div class="finding-note">Your About page is a single short paragraph describing the company. There's no mention of an individual, no photos, no story about why the business exists, and nothing that connects Kenworth's history to the client's reason for being there.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Rewrite the About page to connect your story to the client's need. Why did this business start? What do you care about that a competitor doesn't? "We started machining parts in 1991 because we believed there was a better way to run a subcontract engineering business — one built on accuracy, communication, and not letting a customer down" is a reason to choose you.</div>
+        </div>
       </div>
-    </div>
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Does the site create a sense that not acting has a cost?</div>
-        <div class="finding-note">There's no urgency or consequence anywhere on the site — no mention of capacity constraints, lead times, or what happens if a project is delayed by using the wrong supplier. A visitor who isn't ready to enquire today has no reason to feel they might miss out by waiting.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Even something as simple as mentioning current capacity ("We quote within 48 hours and can often start production within the week — get your drawings to us and we'll give you a clear timeline") creates a reason to act now rather than later.</div>
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are CTAs specific and outcome-focused rather than generic?</div>
+          <div class="finding-note">"Get Your Quote Today" sets clear expectations for what happens next. It's not inspiring, but it is clear. Neither CTA explains what the quoting process involves or how long it takes.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Add a single sentence under your main CTA: "Send us your drawings — we'll come back with a detailed quote within 48 hours." That small addition removes uncertainty and makes clicking feel less like a commitment.</div>
+        </div>
       </div>
-    </div>
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is the tone of voice consistent across every page?</div>
-        <div class="finding-note">The tone is consistent throughout — professional, technical, and direct. The homepage, services pages, and contact page all read as though they were written by the same person with the same voice. For a B2B precision engineering audience, this consistency is appropriate and well maintained.</div>
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is long copy broken up so it's genuinely easy to scan?</div>
+          <div class="finding-note">Your services page handles long copy well — machine specs are broken out under individual headings, the FAQ section uses clear Q&A format, and capability specs are listed as short statements. A technical buyer scanning for specific capabilities can find what they need quickly.</div>
+        </div>
       </div>
-    </div>
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Does the copy use language the ideal client actually uses?</div>
-        <div class="finding-note">The technical terminology used throughout — 3-axis, 5-axis, mill/turn, sliding head, bar-fed, sub-10 micron, CNC turning centres — is the language your clients use when specifying and discussing work. This is appropriate for your B2B audience of engineers and procurement managers, and it signals credibility with people who know the industry.</div>
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the services page explain outcomes, process and who it's for?</div>
+          <div class="finding-note">Your services page goes into significant detail about capabilities and which industries you serve. But it doesn't explain the actual journey from enquiry to delivery, and it doesn't describe what the client gets beyond the part itself — no mention of communication, project management, or what happens if something needs adjusting.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Add a short "how it works" section near the top: send drawings → 48hr quote → production starts → part delivered with inspection report. Even a three-step summary makes the process tangible for a first-time enquirer.</div>
+        </div>
       </div>
-    </div>
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is there a clear "for people like you" signal early on the homepage?</div>
-        <div class="finding-note">The industries section lists 10 sectors, which does allow a visitor to self-identify — if you're in automotive or oil & gas, you can see your sector listed. But listing 10 industries is close to listing none. The signal would be much stronger if you led with two or three sectors where you have the deepest experience.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Lead with your strongest industry credentials — if F1 and aerospace are your most impressive sectors, name them first and let the others follow. A visitor from those industries will immediately feel they're in the right place.</div>
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are there weasel words or vague claims that could apply to anyone?</div>
+          <div class="finding-note">The services page and homepage use phrases like "exceptional customer service," "unbeatable accuracy," "best possible products," "expert team," and "cutting-edge machinery" — none of which are verifiable or specific to Kenworth. These are the same phrases every competitor uses.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Replace generic claims with specific, verifiable ones. "Exceptional customer service" becomes "we respond to every enquiry within 24 hours and give you a dedicated point of contact for every job." "Unbeatable accuracy" becomes "we machine to sub-10 micron tolerances, confirmed by our ISO 9001:2015-accredited inspection process."</div>
+        </div>
       </div>
-    </div>
 
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is price or pricing structure addressed somewhere?</div>
+          <div class="finding-note">There's no pricing information anywhere on the site, which is standard for bespoke CNC work. The 48-hour quote turnaround is mentioned, which partially addresses the concern. But there's no indication of minimum order quantities or what factors affect cost.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> A short paragraph explaining how your pricing works — "All our quotes are bespoke based on your drawings, materials, and quantities. We'll give you a detailed breakdown within 48 hours of receiving your files" — removes friction without committing to numbers you can't guarantee.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the copy handle the most common objections before the visitor raises them?</div>
+          <div class="finding-note">The FAQ section on your services page does a solid job of pre-empting common questions: can you handle small and large-scale projects? what materials? what lead times? what finishes? For a B2B technical audience doing due diligence, this kind of detail builds confidence.</div>
+        </div>
+      </div>
+
+    </div>
   </div>
-</div>
 
 
-<!-- ── 3. Copywriting ── -->
-<div class="audit-section">
-  <div class="audit-sec-head" onclick="toggleSec('copy')">
-    <span class="sec-badge b-copy">Copywriting</span>
-    <h2>9 checks</h2>
-    <span class="sec-score" id="score-copy">2/9 passed</span>
-    <span class="chev open" id="chev-copy">&#9660;</span>
+  <!-- ── 4. Trust & proof ── -->
+  <div class="audit-section">
+    <div class="audit-sec-head" onclick="toggleSec('trust')">
+      <span class="sec-badge">Trust &amp; Proof</span>
+      <span class="sec-title">7 checks</span>
+      <span class="sec-score">0/7 passed</span>
+      <span class="chev open" id="chev-trust">&#9660;</span>
+    </div>
+    <div class="sec-prog-wrap"><div class="sec-prog-bar" style="width:0%"></div></div>
+    <div class="findings-list" id="body-trust">
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are testimonials specific, attributed, and ideally include a photo or logo?</div>
+          <div class="finding-note">There are no testimonials anywhere on your site. For a business where trust is the primary purchasing factor, this is the single biggest gap. A buyer choosing a precision engineering subcontractor is making a significant decision — without any evidence that others have had a good experience, they're taking all the risk.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Ask your three best clients for a short testimonial — even a couple of sentences about what they value about working with Kenworth. Get their name, company, and if possible a photo or company logo. Add these to the homepage and services page.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Do testimonials speak to the outcome, not just say "great to work with"?</div>
+          <div class="finding-note">No testimonials exist on the site. When you do add them, focus on getting testimonials that describe a specific outcome — a tolerance hit, a turnaround achieved, a problem solved — rather than generic praise.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> When asking clients for testimonials, give them a prompt: "Can you tell us about a specific job we did for you, what the challenge was, and how it turned out?" Specific testimonials convert far better than vague ones.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is there a case study or worked example showing real results?</div>
+          <div class="finding-note">There are no case studies or worked examples anywhere on the site. You mention working with F1 teams and some of the world's largest companies in renewable energy, oil & gas and automotive — but there's no example that demonstrates what that looks like in practice.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Write up one real project as a case study: the industry, the challenge, the part or components, the tolerance requirements, the timeline, and the outcome. You don't need to name the client if confidentiality is a concern — "a major F1 team" is still compelling.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are logos of past clients shown where appropriate?</div>
+          <div class="finding-note">Your site states you work with "some of the world's largest companies" — but no client names or logos appear anywhere. This is a significant missed opportunity. If you have permission to reference even a handful of recognisable names, showing their logos would do more to establish credibility than any amount of copy.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Ask your key clients if you can use their logo on your site. Even three or four recognisable names from automotive, F1, or energy on the homepage would dramatically change how a new visitor evaluates the business.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the About page make the business owner feel like a real human being?</div>
+          <div class="finding-note">Your About page describes the company in one short paragraph with no individual names, no photographs, and no personal story. Kenworth is a family business with 30+ years of history — that's a genuinely compelling narrative. But the person reading the site has no idea who they're dealing with.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Add a photograph of the director or the team on the shop floor, and 2–3 sentences about the person behind the business — why they do it, what they care about, what makes them proud of the work.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are any awards, press mentions, or third-party validations shown?</div>
+          <div class="finding-note">Your ISO 9001:2015 certification is prominently mentioned across the homepage and services pages. For a precision engineering buyer, this is a meaningful trust signal. No press mentions or other awards are visible.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> If you have any other accreditations or industry memberships, add them. A "trusted by" or "accredited by" row on the homepage alongside the ISO badge would strengthen the trust foundation.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are trust signals placed near CTAs — not just on a dedicated reviews page?</div>
+          <div class="finding-note">There are no testimonials anywhere on the site. The ISO certification and stats appear on the homepage and services pages, but the areas immediately around the "Get Your Quote" CTAs are bare — there's no social proof to reassure a visitor at the moment they're deciding whether to take the next step.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Once you have testimonials, place at least one directly above or below your main CTA on each key page. The decision moment is exactly where proof does its best work.</div>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <div class="sec-prog-wrap">
-    <div class="sec-prog-bar" style="width:22%;background:#d97706"></div>
+
+
+  <!-- ── 5. User journey ── -->
+  <div class="audit-section">
+    <div class="audit-sec-head" onclick="toggleSec('journey')">
+      <span class="sec-badge">User Journey</span>
+      <span class="sec-title">8 checks (1 N/A)</span>
+      <span class="sec-score">5/7 assessed</span>
+      <span class="chev open" id="chev-journey">&#9660;</span>
+    </div>
+    <div class="sec-prog-wrap"><div class="sec-prog-bar" style="width:71%"></div></div>
+    <div class="findings-list" id="body-journey">
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is there one clear CTA visible above the fold on every page?</div>
+          <div class="finding-note">Every page includes a prominent "Get a Quote" button in the navigation, visible immediately on arrival. The homepage hero also has a "Get Your Quote Today" button in orange that stands out clearly against the dark background.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the CTA consistent across the site — same wording, same destination?</div>
+          <div class="finding-note">The CTA wording is consistent throughout — "Get Your Quote Today," "Get your quote," or "Get a Quote" appear on every page and all lead to the same destination. There's no confusion about what clicking will do.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the homepage tell a logical story — problem, solution, proof, action?</div>
+          <div class="finding-note">Your homepage flows through services, industries, a brief about section, FAQs, and a blog preview. It's logical but skips the "problem" step entirely — there's no section that names what a buyer is struggling with before you offer the solution. It reads like a catalogue rather than building a case.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Add a short section that names the problems Kenworth solves: "Tolerances your current supplier can't hold. Urgent jobs with a short window. First-offs that have to be right before you commit to a run." Then follow with how Kenworth addresses each one.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Can a visitor get from the homepage to submitting an enquiry in 3 clicks or fewer?</div>
+          <div class="finding-note">The "Get a Quote" button in the top navigation takes a visitor straight to the quote page in one click. The contact form on the contact page is also accessible in one click. There's no unnecessary journey between landing and being able to enquire.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the contact or booking process genuinely simple and low friction?</div>
+          <div class="finding-note">The contact page has a straightforward form (name, company, email, phone, message) and a clearly listed phone number. The form isn't excessively long and the 48-hour response commitment removes a common concern about responsiveness.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is navigation simple and focused on guiding visitors toward a decision?</div>
+          <div class="finding-note">The navigation covers the right areas — Services, About Us, Industries, Contact Us, and a prominent Get a Quote button. However, "Careers" is irrelevant for a prospect visiting to enquire, and "News & Insights" links to a stale blog which undermines confidence.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Move Careers to the footer rather than the main navigation. Consider hiding News & Insights from the main nav until the blog is active again — a three-year-old post in the nav does more harm than no post at all.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-na">N/A</span></div>
+        <div class="finding-body">
+          <div class="finding-check">On mobile, is the journey as smooth as on desktop?</div>
+          <div class="finding-note">The mobile journey couldn't be verified from this audit — only the desktop site was captured. The site is built on WordPress and the metadata indicates responsive design is configured, but the mobile experience should be manually tested by loading the site on a phone and going from homepage to submitting a contact form.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">After submitting an enquiry, is there a clear next step?</div>
+          <div class="finding-note">The contact page states "We aim to get back to you within 48 hours of receiving your contact request" — this sets a clear expectation for what happens after submitting. The same 48-hour turnaround is mentioned across the services pages.</div>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <div class="findings-list" id="body-copy">
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Does the homepage hero section pass the 5-second test?</div>
-        <div class="finding-note">Within 5 seconds you can understand what the business does and that there's a quote CTA — that part works. But "Precision Engineering Services for Global Sectors" doesn't tell you who this is best for, and the hero presents two separate CTAs ("Machining Services" and "Get Your Quote Today") which splits attention slightly.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Simplify the hero to one primary CTA and tighten the sub-headline to speak to a specific benefit or audience rather than a generic service description.</div>
-      </div>
+
+  <!-- ── 6. Design ── -->
+  <div class="audit-section">
+    <div class="audit-sec-head" onclick="toggleSec('design')">
+      <span class="sec-badge">Design</span>
+      <span class="sec-title">9 checks (1 N/A)</span>
+      <span class="sec-score">8/8 assessed</span>
+      <span class="chev open" id="chev-design">&#9660;</span>
     </div>
+    <div class="sec-prog-wrap"><div class="sec-prog-bar" style="width:100%"></div></div>
+    <div class="findings-list" id="body-design">
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is every headline doing a job — pulling the reader to the next line?</div>
-        <div class="finding-note">Your section headings are largely descriptive labels: "Precision Engineering Services suited to your industry," "Local expertise with global reach," "What is Precision Engineering?" — these tell the visitor what the section is about but don't give them a reason to keep reading. They're signposts, not hooks.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Rewrite headings to earn the scroll. "Why engineers trust Kenworth with their most demanding work" does more work than "Local expertise with global reach." The FAQ headings are already doing this well — apply the same thinking to the rest of the page.</div>
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the visual design match the positioning and price point of the business?</div>
+          <div class="finding-note">The dark charcoal background, bold white typography, and orange accent colour give the site a premium, industrial feel that suits a precision engineering business working with demanding clients. The design communicates seriousness and capability before a word is read.</div>
+        </div>
       </div>
-    </div>
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is the About page about the client, not just the business?</div>
-        <div class="finding-note">Your About page is a single short paragraph describing the company: family owned, 30+ years, based in Grimsby, global clients, investing in technology. There's no mention of an individual, no photos, no story about why the business exists, and nothing that connects Kenworth's history to the client's reason for being there. It reads like a company bio rather than a page designed to build trust.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Rewrite the About page to connect your story to the client's need. Why did this business start? What do you care about that a competitor doesn't? Then connect it: "We started machining parts in 1991 because we believed there was a better way to run a subcontract engineering business — one built on accuracy, communication, and not letting a customer down." That's a reason to choose you.</div>
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is there a clear visual hierarchy on every page?</div>
+          <div class="finding-note">The hero heading is the dominant visual element — large, bold, white text on a dark background with clear contrast. The orange CTA buttons draw the eye naturally after the headline. Section structure throughout creates a clear reading order.</div>
+        </div>
       </div>
-    </div>
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Are CTAs specific and outcome-focused rather than generic?</div>
-        <div class="finding-note">"Get Your Quote Today" is widely used and understood in your industry — it sets clear expectations for what happens next. It's not inspiring, but it is clear. The contact page CTA "Talk to us" is slightly vague, and neither CTA explains what the quoting process actually involves or how long it takes.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Add a single sentence under your main CTA to set expectations: "Send us your drawings — we'll come back with a detailed quote within 48 hours." That small addition removes uncertainty and makes clicking feel less like a commitment.</div>
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are images authentic rather than stock-photo generic?</div>
+          <div class="finding-note">The photography throughout appears to be genuine shots of the Kenworth Engineering facility — actual machines on the shop floor, real components, equipment from specific named manufacturers (Citizen Miyano, DMG-Mori, Fanuc Robodrill). The services page features individual named machines with accompanying photographs. This is authentic, specific imagery that builds credibility.</div>
+        </div>
       </div>
-    </div>
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is long copy broken up so it's genuinely easy to scan?</div>
-        <div class="finding-note">Your services page handles long copy well — machine specifications are broken out under individual headings, the FAQ section uses clear question-and-answer format, and capability specs (dimensions, diameters, lengths) are listed as short statements rather than dense paragraphs. A technical buyer scanning for specific capabilities can find what they need quickly.</div>
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the design feel current — or does it look like it was built a decade ago?</div>
+          <div class="finding-note">The site's design is clean and contemporary — full-width layout, strong typography, minimal clutter. The dark industrial aesthetic is consistent with how modern manufacturing and engineering businesses present themselves online. It doesn't feel dated.</div>
+        </div>
       </div>
-    </div>
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Does the services page explain outcomes, process and who it's for?</div>
-        <div class="finding-note">Your services page goes into significant detail about capabilities (machine specs, tolerances, materials, finishes) and mentions which industries you serve. But it doesn't explain the actual journey from enquiry to delivery, and it doesn't describe what the client gets beyond the part itself — no mention of communication, project management, or what happens if something needs adjusting.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Add a short "how it works" section near the top of the services page: send drawings → 48hr quote → production starts → part delivered with inspection report. Even a three-step summary would make the process tangible for a first-time enquirer.</div>
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is whitespace used intentionally or is the page cluttered and overwhelming?</div>
+          <div class="finding-note">The hero section has generous spacing with the headline and CTAs given clear room to breathe. The layout doesn't feel crowded. Individual sections are clearly separated and there's no sense of too much competing for attention at once.</div>
+        </div>
       </div>
-    </div>
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Are there weasel words or vague claims that could apply to anyone?</div>
-        <div class="finding-note">The services page and homepage use phrases like "exceptional customer service," "unbeatable accuracy," "best possible products," "expert team," "cutting-edge machinery," and "committed to quality" — none of which are verifiable or specific to Kenworth. These are the same phrases every competitor uses, and they do no work in convincing a visitor that Kenworth is the right choice.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Replace generic claims with specific, verifiable ones. "Exceptional customer service" becomes "we respond to every enquiry within 24 hours and give you a dedicated point of contact for every job." "Unbeatable accuracy" becomes "we machine to sub-10 micron tolerances, confirmed by our ISO 9001:2015-accredited inspection process."</div>
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is typography readable — font size, line height, contrast, and line length?</div>
+          <div class="finding-note">The large bold white text in the hero is high contrast and highly readable against the dark background. Body text throughout uses a clean sans-serif at a readable size. The combination of dark backgrounds with white text and light backgrounds with dark text maintains consistent contrast throughout.</div>
+        </div>
       </div>
-    </div>
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is price or pricing structure addressed somewhere?</div>
-        <div class="finding-note">There's no pricing information anywhere on the site, which is standard for bespoke CNC work where every job is different. The 48-hour quote turnaround is mentioned, which partially addresses the "how do I know if this is affordable?" concern. But there's no indication of minimum order quantities, typical ballpark ranges, or what factors affect cost — information that would help a visitor decide whether to invest the time in sending drawings.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> A short paragraph explaining how your pricing works — "All our quotes are bespoke based on your drawings, materials, and quantities. We'll give you a detailed breakdown within 48 hours of receiving your files" — removes friction without committing to numbers you can't guarantee.</div>
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is colour used consistently and purposefully?</div>
+          <div class="finding-note">The dark charcoal and orange colour palette is applied consistently across the site — the logo, navigation CTA button, in-page CTA buttons, and accent elements all use the same orange. The colour scheme reads as intentional rather than random and reinforces the brand identity across every page.</div>
+        </div>
       </div>
-    </div>
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Does the copy handle the most common objections before the visitor raises them?</div>
-        <div class="finding-note">The FAQ section on your services page does a solid job of pre-empting common questions: "Can you handle both small and large-scale projects?" (yes), "What materials do you work with?" (wide range listed), "What are the lead times?" (depends on complexity), "What finishes are available?" (listed). For a B2B technical audience doing due diligence, this kind of detail builds confidence.</div>
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-na">N/A</span></div>
+        <div class="finding-body">
+          <div class="finding-check">On mobile, does the layout actually work — or is it a squashed version of desktop?</div>
+          <div class="finding-note">The mobile layout couldn't be verified from this audit — only the desktop screenshot was captured. The site declares responsive design in its code, but the mobile experience should be manually tested on a real phone, particularly the contact form, navigation, and hero section.</div>
+        </div>
       </div>
-    </div>
 
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are buttons and CTAs visually prominent enough to stand out?</div>
+          <div class="finding-note">The orange CTA buttons stand out clearly against both the dark hero background and the lighter section backgrounds throughout the site. The "Get a Quote" button in the navigation uses the same orange, making it consistently visible. There's no ambiguity about where to click to take the next step.</div>
+        </div>
+      </div>
+
+    </div>
   </div>
-</div>
 
 
-<!-- ── 4. Trust & proof ── -->
-<div class="audit-section">
-  <div class="audit-sec-head" onclick="toggleSec('trust')">
-    <span class="sec-badge b-trust">Trust &amp; proof</span>
-    <h2>7 checks</h2>
-    <span class="sec-score" id="score-trust">0/7 passed</span>
-    <span class="chev open" id="chev-trust">&#9660;</span>
+  <!-- ── 7. Content & freshness ── -->
+  <div class="audit-section">
+    <div class="audit-sec-head" onclick="toggleSec('content')">
+      <span class="sec-badge">Content &amp; Freshness</span>
+      <span class="sec-title">6 checks (2 N/A)</span>
+      <span class="sec-score">1/4 assessed</span>
+      <span class="chev open" id="chev-content">&#9660;</span>
+    </div>
+    <div class="sec-prog-wrap"><div class="sec-prog-bar" style="width:25%"></div></div>
+    <div class="findings-list" id="body-content">
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-na">N/A</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the copyright year in the footer current?</div>
+          <div class="finding-note">The footer content wasn't captured in this audit's page scrape. Check manually — if the copyright year in your footer is anything other than 2026, update it.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the blog or news section active — or is it a graveyard?</div>
+          <div class="finding-note">Your News & Insights section shows three posts. The most recent is dated April 2023 — three years ago. The other two are from November 2022. A blog that hasn't been updated in three years signals an inactive or disengaged business, even if that isn't true.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Either remove News & Insights from the main navigation, or commit to adding something new at least quarterly — an update about a new machine, a recent project, or an industry you've been working in takes an hour to write and signals an active, engaged business.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the site have a content hub that moves visitors from curious to convinced?</div>
+          <div class="finding-note">The News & Insights section exists but is effectively dormant. Beyond that, there are no other content assets — no guides, no material comparison tools, no case studies, no FAQs outside the services pages. A buyer in the research phase has nothing to engage with.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> A single useful resource — "How to specify parts for CNC machining" or "Choosing the right material for your application" — would give early-stage prospects a reason to spend time on your site and remember Kenworth when the next job comes up.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are testimonials and case studies recent and clearly dated?</div>
+          <div class="finding-note">There are no testimonials or case studies on the site. When you add them, dating them clearly is important — an undated testimonial looks like it could be from 10 years ago.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Include the year and the client's name and company when adding testimonials or case studies. Recent, attributable proof is significantly more credible than undated anonymous quotes.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are there discontinued services, old offers, or out-of-date pricing still on the site?</div>
+          <div class="finding-note">The services listed — CNC milling, turning, sliding head turning — appear to be current and consistent with what an active precision engineering business would offer. No discontinued services or outdated offers were identified.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-na">N/A</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are team photos and bios current — and do they only include people still at the business?</div>
+          <div class="finding-note">Your site doesn't have a team page or individual staff profiles, so this check doesn't apply. See the Trust section for the finding about the absence of any human presence on the About page.</div>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <div class="sec-prog-wrap">
-    <div class="sec-prog-bar" style="width:0%;background:#be185d"></div>
+
+
+  <!-- ── 8. Technical ── -->
+  <div class="audit-section">
+    <div class="audit-sec-head" onclick="toggleSec('tech')">
+      <span class="sec-badge">Technical</span>
+      <span class="sec-title">7 checks (1 N/A)</span>
+      <span class="sec-score">2/6 assessed</span>
+      <span class="chev open" id="chev-tech">&#9660;</span>
+    </div>
+    <div class="sec-prog-wrap"><div class="sec-prog-bar" style="width:33%"></div></div>
+    <div class="findings-list" id="body-tech">
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the site on a CMS the owner can actually update without a developer?</div>
+          <div class="finding-note">Your site is built on WordPress — a CMS designed to be updated by the site owner. Adding content, updating pages, and managing the blog can all be done without coding knowledge.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-na">N/A</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the site load quickly — particularly on mobile?</div>
+          <div class="finding-note">Site speed couldn't be tested in this audit. Your images are served through an image optimisation service (Smush CDN) which suggests some performance work has been done. To get an accurate picture, run your homepage through Google's PageSpeed Insights tool and look at the mobile score specifically.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is SSL active — is the site served over https?</div>
+          <div class="finding-note">Your site loads correctly over HTTPS with no security warnings — the SSL certificate is active and working as expected.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are contact forms and booking tools actually working — tested recently?</div>
+          <div class="finding-note">Your contact page has a visible contact form and a phone number. However, the contact page shows two email addresses using a staging domain (info@kenworthengineering-co-uk.stackstaging.com and rfq@kenworthengineering-co-uk.stackstaging.com) rather than your live domain. If someone copies these email addresses directly from the page, their message may not reach you.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Test the contact form yourself by submitting it and confirming the message arrives in your inbox. Have whoever manages the site update the visible email addresses on the contact page to use your live domain.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the site indexed correctly and showing up for branded searches?</div>
+          <div class="finding-note">Your site's page metadata contains a "noindex" instruction for search engines, and the homepage metadata points to the staging domain rather than your live address. This strongly suggests a staging-to-live migration issue that was never fully resolved. If Google is following this instruction, your site may not be appearing in search results at all — including when someone searches directly for "Kenworth Engineering."</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Search for "Kenworth Engineering Grimsby" in Google and see what appears. If your site isn't on the first page, this is urgent. Ask your developer to check the robots meta tags in your WordPress settings and verify the site URL matches your live domain throughout.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are there any broken links or 404 errors on key pages?</div>
+          <div class="finding-note">Multiple pages on your site contain links that point to the staging domain rather than your live domain. The services page links to staging domain URLs for blog articles and the quote form. The contact page references a third domain (kenworthengineering.tempurl.host) for the privacy policy. A visitor following these links would likely hit an error or be redirected unexpectedly.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Ask your developer to do a full find-and-replace of staging domain references throughout the WordPress database, replacing them with your live domain. This is a straightforward fix and should be prioritised alongside the noindex issue.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is there basic analytics installed and is someone actually checking it?</div>
+          <div class="finding-note">Your cookie consent banner includes options for Statistics and Marketing cookies, which suggests analytics tracking is configured. However, it wasn't possible to confirm which analytics tool is installed or whether the data is actively being reviewed.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Confirm that Google Analytics 4 or an equivalent is installed and that you or someone at Kenworth has access to the dashboard. Without knowing where visitors come from and where they drop off, there's no basis for improving what's not working.</div>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <div class="findings-list" id="body-trust">
 
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Are testimonials specific, attributed, and ideally include a photo or logo?</div>
-        <div class="finding-note">There are no testimonials anywhere on your site — not on the homepage, the about page, the services pages, or the contact page. For a business where trust is the primary purchasing factor, this is the single biggest gap. A buyer choosing a precision engineering subcontractor is making a significant decision; without any evidence that others have had a good experience, they're taking all the risk.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Ask your three best clients for a short testimonial — even a couple of sentences about what they value about working with Kenworth. Get their name, company, and if possible a photo or company logo. Add these to the homepage and the services page, not just a dedicated reviews section nobody visits.</div>
-      </div>
+</div><!-- /content-section findings -->
+
+
+<div class="content-section">
+  <div class="section-label">What the site does well</div>
+
+  <div class="positives-list">
+    <div class="positive-item">
+      <div class="positive-dot">&#10003;</div>
+      <div>The design is genuinely strong — dark charcoal with orange accents, clean layout, bold typography. It looks like the website of a serious precision engineering business and sets the right expectations before anyone reads a word.</div>
     </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Do testimonials speak to the outcome, not just say "great to work with"?</div>
-        <div class="finding-note">No testimonials exist on the site, so this can't be assessed. When you do add them, focus on getting testimonials that describe a specific outcome — a tolerance hit, a turnaround achieved, a problem solved — rather than generic praise.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> When asking clients for testimonials, give them a prompt: "Can you tell us about a specific job we did for you, what the challenge was, and how it turned out?" Specific testimonials convert far better than vague ones.</div>
-      </div>
+    <div class="positive-item">
+      <div class="positive-dot">&#10003;</div>
+      <div>The photography is authentic: real machines, real components, real facility. The services page features photos of specific named machines (Citizen Miyano, DMG-Mori, Fanuc Robodrill) which signals to a technical buyer that the capability is real and current.</div>
     </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is there a case study or worked example showing real results?</div>
-        <div class="finding-note">There are no case studies or worked examples anywhere on the site. You mention working with F1 teams and some of the world's largest companies in renewable energy, oil & gas and automotive — but there's no example of a project that demonstrates what that looks like in practice. A single detailed case study ("here's the brief we got, here's what we machined, here's what the client said") would be more persuasive than everything else on the site combined.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Write up one real project as a case study: the industry, the challenge, the part or components, the tolerance requirements, the timeline, and the outcome. Add it as a standalone page and link to it from the homepage and services page. You don't need to name the client if confidentiality is a concern — "a major F1 team" is still compelling.</div>
-      </div>
+    <div class="positive-item">
+      <div class="positive-dot">&#10003;</div>
+      <div>The services page machine specifications are genuinely detailed and useful — dimensional capabilities, spindle speeds, bar feed setup, custom automation (the Hydrafeed Rota-Rack detail is the kind of specific information that wins trust with engineers doing due diligence).</div>
     </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Are logos of past clients shown where appropriate?</div>
-        <div class="finding-note">Your site states you work with "some of the world's largest companies" across multiple industries — but no client names or logos appear anywhere on the site. This is a significant missed opportunity. If you have permission to reference even a handful of recognisable names, showing their logos would do more to establish credibility than any amount of copy.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Ask your key clients if you can use their logo. Even three or four recognisable names from automotive, F1, or energy on the homepage would dramatically change how a new visitor evaluates the business.</div>
-      </div>
+    <div class="positive-item">
+      <div class="positive-dot">&#10003;</div>
+      <div>The quoting process is clearly signposted throughout — "Get Your Quote Today" in the nav, hero, and at the end of every section, with a 48-hour turnaround commitment. The path from landing to enquiring is frictionless.</div>
     </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Does the About page make the business owner feel like a real human being?</div>
-        <div class="finding-note">Your About page describes the company in one short paragraph with no individual names, no photographs, and no personal story. Kenworth is a family business with 30+ years of history — that's a genuinely compelling narrative. But the person reading the site has no idea who they're dealing with, who'll answer when they call, or why this family has been doing this for three decades.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Add a photograph of the director or the team on the shop floor, and 2–3 sentences about the person behind the business — why they do it, what they care about, what makes them proud of the work. "We've been machining parts since 1991 and we still check every critical component personally before it leaves the building" tells you more about the business than a paragraph of company description ever could.</div>
-      </div>
+    <div class="positive-item">
+      <div class="positive-dot">&#10003;</div>
+      <div>ISO 9001:2015 certification is displayed prominently and repeatedly. For a B2B buyer evaluating a new supplier, this is a meaningful quality signal that reduces perceived risk.</div>
     </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Are any awards, press mentions, or third-party validations shown?</div>
-        <div class="finding-note">Your ISO 9001:2015 certification is prominently mentioned across the homepage and services pages with a clear badge. For a precision engineering buyer, this is a meaningful trust signal — it's a recognised quality management standard and it tells them your processes are audited by a third party. No press mentions or other awards are visible.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> If you have any other accreditations, industry memberships, or have been featured in trade press, add them. A "trusted by" or "accredited by" row on the homepage alongside the ISO badge would strengthen the trust foundation.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Are trust signals placed near CTAs — not just on a dedicated reviews page?</div>
-        <div class="finding-note">There are no testimonials anywhere on the site, so there's nothing to place near CTAs. The ISO certification and stats (30+ years, sub-10 micron) appear on the homepage and services pages, but the areas immediately around the "Get Your Quote" CTAs are bare — there's no social proof to reassure a visitor at the moment they're deciding whether to take the next step.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Once you have testimonials, place at least one directly above or below your main CTA on each key page. The decision moment is exactly where proof does its best work.</div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
-<!-- ── 5. User journey ── -->
-<div class="audit-section">
-  <div class="audit-sec-head" onclick="toggleSec('journey')">
-    <span class="sec-badge b-journey">User journey</span>
-    <h2>8 checks</h2>
-    <span class="sec-score" id="score-journey">5/7 assessed</span>
-    <span class="chev open" id="chev-journey">&#9660;</span>
-  </div>
-  <div class="sec-prog-wrap">
-    <div class="sec-prog-bar" style="width:71%;background:#1d4ed8"></div>
-  </div>
-  <div class="findings-list" id="body-journey">
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is there one clear CTA visible above the fold on every page?</div>
-        <div class="finding-note">Every page includes a prominent "Get a Quote" button in the navigation, which is visible immediately on arrival. The homepage hero also has a "Get Your Quote Today" button with an orange colour that stands out clearly against the dark background. The quote path is consistently available throughout the site.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is the CTA consistent across the site — same wording, same destination?</div>
-        <div class="finding-note">The CTA wording is consistent throughout — "Get Your Quote Today," "Get your quote," or "Get a Quote" appear on every page and all lead to the same destination. There's no confusion about what clicking the CTA will do or where it goes.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Does the homepage tell a logical story — problem, solution, proof, action?</div>
-        <div class="finding-note">Your homepage flows through services, industries, a brief about section, FAQs, and a blog preview — it's logical in the sense that it covers the right topics. But it skips the "problem" step entirely: there's no section that names what a buyer is struggling with before you offer the solution. The result is a site that reads like a catalogue rather than building a case for Kenworth specifically.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Add a short section near the top that names the problems Kenworth solves: "Tolerances your current supplier can't hold. Urgent jobs with a short window. First-offs that have to be right before you commit to a run." Then follow with how Kenworth addresses each one. This creates a narrative arc rather than a list.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Can a visitor get from the homepage to submitting an enquiry in 3 clicks or fewer?</div>
-        <div class="finding-note">The quote path is direct: the "Get a Quote" button in the top navigation takes a visitor straight to the quote page in one click. The contact form on the contact page is also accessible in one click. There's no unnecessary journey between landing and being able to enquire.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is the contact or booking process genuinely simple and low friction?</div>
-        <div class="finding-note">The contact page has a straightforward form (name, company, email, phone, message) and a clearly listed phone number. The form isn't excessively long and there's no requirement to create an account or provide details before you've made contact. The 48-hour response commitment removes a common concern about responsiveness.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is navigation simple and focused on guiding visitors toward a decision?</div>
-        <div class="finding-note">The navigation covers the right areas — Services, About Us, Industries, Contact Us, and a prominent Get a Quote button. However, it also includes "Careers" which is irrelevant for a prospect visiting to enquire about machining work. "News & Insights" links to a stale blog, which undermines rather than supports the visitor's confidence in the business.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Move Careers to the footer rather than the main navigation. Consider hiding News & Insights from the main nav until the blog is active again — a three-year-old post in the nav does more harm than no post at all.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-na">N/A</span></div>
-      <div class="finding-body">
-        <div class="finding-check">On mobile, is the journey as smooth as on desktop?</div>
-        <div class="finding-note">The mobile journey couldn't be verified from this audit — only the desktop site was captured. The site is built on WordPress and the metadata indicates responsive design is configured, but the mobile experience should be manually tested by loading the site on a phone and going from homepage to submitting a contact form.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">After submitting an enquiry, what happens? Is there a clear next step?</div>
-        <div class="finding-note">The contact page states "We aim to get back to you within 48 hours of receiving your contact request" — this sets a clear expectation for what happens after submitting. The same 48-hour quote turnaround is mentioned across the services pages, so the prospect knows what they're committing to when they reach out.</div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
-<!-- ── 6. Design ── -->
-<div class="audit-section">
-  <div class="audit-sec-head" onclick="toggleSec('design')">
-    <span class="sec-badge b-design">Design</span>
-    <h2>9 checks</h2>
-    <span class="sec-score" id="score-design">8/8 assessed</span>
-    <span class="chev open" id="chev-design">&#9660;</span>
-  </div>
-  <div class="sec-prog-wrap">
-    <div class="sec-prog-bar" style="width:100%;background:#065f46"></div>
-  </div>
-  <div class="findings-list" id="body-design">
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Does the visual design match the positioning and price point of the business?</div>
-        <div class="finding-note">The dark charcoal background, bold white typography, and orange accent colour give the site a premium, industrial feel that suits a precision engineering business working with demanding clients. The design communicates seriousness and capability before a word is read.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is there a clear visual hierarchy on every page?</div>
-        <div class="finding-note">The hero heading is the dominant visual element — large, bold, white text on a dark background with clear contrast. The orange CTA buttons draw the eye naturally after the headline. Section structure throughout the site creates a clear reading order.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Are images authentic rather than stock-photo generic?</div>
-        <div class="finding-note">The photography throughout the site appears to be genuine shots of the Kenworth Engineering facility — actual machines on the shop floor, real components, and equipment from specific named manufacturers (Citizen Miyano, DMG-Mori, Fanuc Robodrill). The services page features individual named machines with accompanying photographs. This is authentic, specific imagery that builds credibility.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Does the design feel current — or does it look like it was built a decade ago?</div>
-        <div class="finding-note">The site's design is clean and contemporary — full-width layout, strong typography, minimal clutter. The dark industrial aesthetic is consistent with how modern manufacturing and engineering businesses present themselves online. It doesn't feel dated.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is whitespace used intentionally or is the page cluttered and overwhelming?</div>
-        <div class="finding-note">The hero section has generous spacing with the headline and CTAs given clear room to breathe. The layout doesn't feel crowded. Individual sections are clearly separated and there's no sense of too much competing for attention at once.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is typography readable — font size, line height, contrast, and line length?</div>
-        <div class="finding-note">The large bold white text in the hero is high contrast and highly readable against the dark background. Body text throughout the site uses a clean sans-serif at a readable size. The combination of dark backgrounds with white text and light backgrounds with dark text maintains consistent contrast throughout.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is colour used consistently and purposefully?</div>
-        <div class="finding-note">The dark charcoal and orange colour palette is applied consistently across the site — the logo, navigation CTA button, in-page CTA buttons, and accent elements all use the same orange. The colour scheme reads as intentional rather than random and reinforces the brand identity across every page.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-na">N/A</span></div>
-      <div class="finding-body">
-        <div class="finding-check">On mobile, does the layout actually work — or is it a squashed version of desktop?</div>
-        <div class="finding-note">The mobile layout couldn't be verified from this audit — only the desktop screenshot was captured. The site declares responsive design in its code, but the mobile experience should be manually tested by a real visitor on a phone, particularly the contact form, navigation, and hero section.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Are buttons and CTAs visually prominent enough to stand out from surrounding content?</div>
-        <div class="finding-note">The orange CTA buttons stand out clearly against both the dark hero background and the lighter section backgrounds throughout the site. The "Get a Quote" button in the navigation uses the same orange, making it consistently visible. There's no ambiguity about where to click to take the next step.</div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
-<!-- ── 7. Content & freshness ── -->
-<div class="audit-section">
-  <div class="audit-sec-head" onclick="toggleSec('content')">
-    <span class="sec-badge b-content">Content &amp; freshness</span>
-    <h2>6 checks</h2>
-    <span class="sec-score" id="score-content">1/4 assessed</span>
-    <span class="chev open" id="chev-content">&#9660;</span>
-  </div>
-  <div class="sec-prog-wrap">
-    <div class="sec-prog-bar" style="width:25%;background:#57534e"></div>
-  </div>
-  <div class="findings-list" id="body-content">
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-na">N/A</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is the copyright year in the footer current?</div>
-        <div class="finding-note">The footer content wasn't captured in this audit's page scrape. This should be checked manually — if the copyright year in your footer is anything other than 2026, update it.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is the blog or news section active — or is it a graveyard?</div>
-        <div class="finding-note">Your News & Insights section shows three posts. The most recent is dated April 2023 — three years ago. The other two are from November 2022. A blog that hasn't been updated in three years signals an inactive or disengaged business, even if that isn't true. For a visitor checking whether you're still operating actively, this is a red flag.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Either remove News & Insights from the main navigation (and archive the existing posts quietly), or commit to adding something new at least quarterly. An update about a new machine, a recent project, or an industry you've been working in takes an hour to write and signals an active, engaged business.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Does the site have a content hub that moves visitors from curious to convinced?</div>
-        <div class="finding-note">The News & Insights section exists but is effectively dormant. Beyond that, there are no other content assets — no guides, no material comparison tools, no case studies, no FAQs outside the services pages. A buyer who is in the research phase with no immediate project has nothing to engage with on your site, and no reason to stay or come back.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> A single useful resource — "How to specify parts for CNC machining" or "Choosing the right material for your application" — would give early-stage prospects a reason to spend time on your site and remember Kenworth when the next job comes up.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Are testimonials and case studies recent and clearly dated?</div>
-        <div class="finding-note">There are no testimonials or case studies on the site, so this check cannot be passed. When you add them, dating them clearly — or at least giving a sense of recency — is important. An undated testimonial looks like it could be from 10 years ago.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> When adding testimonials or case studies, include the year (e.g., "2024" or "2025") and the client's name and company. Recent, attributable proof is significantly more credible than undated anonymous quotes.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Are there discontinued services, old offers, or out-of-date pricing still on the site?</div>
-        <div class="finding-note">The services listed — CNC milling, turning, sliding head turning — appear to be current and consistent with what an active precision engineering business would offer. No discontinued services or outdated offers were identified.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-na">N/A</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Are team photos and bios current — and do they only include people still at the business?</div>
-        <div class="finding-note">Your site doesn't have a team page or individual staff profiles, so this check doesn't apply. See the Trust section for the separate finding about the absence of any human presence on the About page.</div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
-<!-- ── 8. Technical ── -->
-<div class="audit-section">
-  <div class="audit-sec-head" onclick="toggleSec('tech')">
-    <span class="sec-badge b-tech">Technical</span>
-    <h2>7 checks</h2>
-    <span class="sec-score" id="score-tech">2/6 assessed</span>
-    <span class="chev open" id="chev-tech">&#9660;</span>
-  </div>
-  <div class="sec-prog-wrap">
-    <div class="sec-prog-bar" style="width:33%;background:#c2410c"></div>
-  </div>
-  <div class="findings-list" id="body-tech">
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is the site on a CMS the owner can actually update without a developer?</div>
-        <div class="finding-note">Your site is built on WordPress, which is a CMS designed to be updated by the site owner — adding content, updating pages, and managing the blog can all be done without coding knowledge. The platform itself is fine for keeping the site maintained.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-na">N/A</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Does the site load quickly — particularly on mobile?</div>
-        <div class="finding-note">Site speed couldn't be tested in this audit. Your images are served through an image optimisation service (Smush CDN) which suggests some performance work has been done. To get an accurate picture, run your homepage through Google's PageSpeed Insights tool and look at the mobile score specifically.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is SSL active — is the site served over https?</div>
-        <div class="finding-note">Your site loads correctly over HTTPS with no security warnings — the SSL certificate is active and working as expected.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Are contact forms and booking tools actually working — tested recently?</div>
-        <div class="finding-note">Your contact page has a visible contact form, and a phone number is listed. However, the contact page shows two email addresses using a staging domain (info@kenworthengineering-co-uk.stackstaging.com and rfq@kenworthengineering-co-uk.stackstaging.com) rather than your live domain. If someone copies these email addresses directly from the page, their message may not reach you.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Test the contact form yourself by submitting it and confirming the message arrives in your inbox. Have whoever manages the site update the visible email addresses on the contact page to use your live domain. This is likely the same staging migration issue mentioned in fix #1.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is the site indexed correctly and showing up for branded searches?</div>
-        <div class="finding-note">Your site's page metadata contains a "noindex" instruction for search engines, and the homepage's internal metadata points to the staging domain (kenworthengineering-co-uk.stackstaging.com) rather than your live address. This strongly suggests a staging-to-live migration issue that was never fully resolved. If Google is following this instruction, your site may not be appearing in search results at all — including when someone searches directly for "Kenworth Engineering."</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Search for "Kenworth Engineering Grimsby" in Google and see what appears. If your site isn't on the first page, this is urgent. Ask your developer to check the robots meta tags in your WordPress settings, verify the site URL matches your live domain throughout, and confirm the site is set to allow search engines to index it.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Are there any broken links or 404 errors on key pages?</div>
-        <div class="finding-note">Multiple pages on your site contain links that point to the staging domain (kenworthengineering-co-uk.stackstaging.com) rather than your live domain. The services page links to staging domain URLs for blog articles and the quote form. The contact page references a third domain (kenworthengineering.tempurl.host) for the privacy policy. A visitor following these links would likely hit an error or be redirected unexpectedly.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Ask your developer to do a full find-and-replace of staging domain references throughout the WordPress database, replacing them with your live domain. This is a straightforward fix and should be prioritised alongside the noindex issue above.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Is there basic analytics installed and is someone actually checking it?</div>
-        <div class="finding-note">Your cookie consent banner includes options for Statistics and Marketing cookies, which suggests analytics tracking is configured on the site. However, it wasn't possible to confirm which analytics tool is installed or whether the data is actively being reviewed.</div>
-        <div class="finding-rec"><strong>Recommendation</strong> Confirm that Google Analytics 4 or an equivalent is installed and that you or someone at Kenworth has access to the dashboard. Without knowing where visitors come from and which pages they leave from, there's no basis for improving what's not working.</div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
-<div class="section-heading" style="margin-top:28px">What the site does well</div>
-
-<div class="positives-list">
-  <div class="positive-item">
-    <div class="positive-dot">&#10003;</div>
-    <div>The design is genuinely strong — dark charcoal with orange accents, clean layout, bold typography. It looks like the website of a serious precision engineering business and sets the right expectations before anyone reads a word.</div>
-  </div>
-  <div class="positive-item">
-    <div class="positive-dot">&#10003;</div>
-    <div>The photography is authentic: real machines, real components, real facility. The services page features photos of specific named machines (Citizen Miyano, DMG-Mori, Fanuc Robodrill) which signals to a technical buyer that the capability is real and current.</div>
-  </div>
-  <div class="positive-item">
-    <div class="positive-dot">&#10003;</div>
-    <div>The services page machine specifications are genuinely detailed and useful — dimensional capabilities, spindle speeds, bar feed setup, custom automation (the Hydrafeed Rota-Rack detail is the kind of specific information that wins trust with engineers doing due diligence).</div>
-  </div>
-  <div class="positive-item">
-    <div class="positive-dot">&#10003;</div>
-    <div>The quoting process is clearly signposted throughout — "Get Your Quote Today" in the nav, hero, and at the end of every section, with a 48-hour turnaround commitment. The path from landing to enquiring is frictionless.</div>
-  </div>
-  <div class="positive-item">
-    <div class="positive-dot">&#10003;</div>
-    <div>ISO 9001:2015 certification is displayed prominently and repeatedly. For a B2B buyer evaluating a new supplier, this is a meaningful quality signal that reduces perceived risk.</div>
   </div>
 </div>
 
 
 <div class="report-footer">
-  <div class="footer-brand">Prepared by <strong>Northern Sauce</strong> &nbsp;·&nbsp; northernsauce.uk</div>
-  <div class="footer-brand">Confidential — prepared for Kenworth Engineering</div>
+  <img src="https://northernsauce.uk/wp-content/uploads/2026/04/Ns-EmblemDark.png" alt="Northern Sauce" class="footer-logo">
+  <div class="footer-meta">Confidential — prepared for Kenworth Engineering</div>
 </div>
 
 

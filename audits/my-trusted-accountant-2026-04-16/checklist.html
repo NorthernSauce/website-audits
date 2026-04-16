@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website audit checklist</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #ffffff;
+    --bg-sec: #f7f6f3;
+    --bg-ter: #f1f0ec;
+    --border: rgba(55,53,47,0.12);
+    --border-med: rgba(55,53,47,0.22);
+    --text: #37352f;
+    --text-sec: #787774;
+    --text-ter: #9b9a97;
+    --radius: 8px;
+    --radius-lg: 10px;
+    --green: #1D9E75;
+    --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap');
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 24px 20px 48px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .stats {
+    display: flex;
+    gap: 8px;
+  }
+
+  .stat {
+    background: var(--bg-sec);
+    border-radius: var(--radius);
+    padding: 10px 14px;
+    min-width: 72px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    color: var(--text-ter);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
+  }
+
+  .stat-val {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .controls {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    font-size: 12px;
+    font-family: var(--font);
+    padding: 5px 12px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-med);
+    background: transparent;
+    color: var(--text-sec);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .filter-btn:hover { background: var(--bg-sec); color: var(--text); }
+  .filter-btn.active { background: var(--text); color: #fff; border-color: var(--text); }
+
+  .reset-btn {
+    font-size: 12px;
+    font-family: var(--font);
+    padding: 5px 12px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-ter);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .reset-btn:hover { color: var(--text-sec); border-color: var(--border-med); }
+
+  .section {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+
+  .sec-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.1s;
+  }
+
+  .sec-head:hover { background: var(--bg-sec); }
+
+  .sec-head h2 {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    flex: 1;
+  }
+
+  .badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+
+  .score-pill {
+    font-size: 12px;
+    color: var(--text-ter);
+    white-space: nowrap;
+    margin-left: auto;
+  }
+
+  .chev {
+    font-size: 10px;
+    color: var(--text-ter);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .chev.open { transform: rotate(180deg); }
+
+  .prog-wrap {
+    height: 3px;
+    background: var(--bg-ter);
+  }
+
+  .prog-bar {
+    height: 3px;
+    transition: width 0.3s;
+  }
+
+  .items-list { border-top: 1px solid var(--border); }
+
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+
+  .item:last-child { border-bottom: none; }
+  .item:hover { background: var(--bg-sec); }
+
+  .item.done { opacity: 0.48; }
+
+  .cb {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 1.5px solid var(--border-med);
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+
+  .item.done .cb {
+    background: var(--green);
+    border-color: var(--green);
+  }
+
+  .ck {
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    display: none;
+  }
+
+  .item.done .ck { display: block; }
+
+  .item-body { flex: 1; min-width: 0; }
+
+  .item-text {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.5;
+    margin-bottom: 3px;
+  }
+
+  .item.done .item-text {
+    text-decoration: line-through;
+    color: var(--text-ter);
+    font-weight: 400;
+  }
+
+  .item-why {
+    font-size: 12px;
+    color: var(--text-sec);
+    line-height: 1.55;
+  }
+
+  .item-tags {
+    display: flex;
+    gap: 5px;
+    margin-top: 7px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+
+  .impact-high { background: #fde8e8; color: #9b2020; }
+  .impact-med  { background: #fef3e2; color: #8a5000; }
+  .impact-low  { background: #e6f4ea; color: #2e6b3e; }
+
+  .b-strategy  { background: #ede9fe; color: #5b21b6; }
+  .b-messaging { background: #fde8e8; color: #9b2020; }
+  .b-copy      { background: #fef3e2; color: #8a5000; }
+  .b-trust     { background: #fce7f3; color: #9d174d; }
+  .b-journey   { background: #dbeafe; color: #1e40af; }
+  .b-design    { background: #d1fae5; color: #065f46; }
+  .b-content   { background: #f1f0ec; color: #57534e; }
+  .b-tech      { background: #ffedd5; color: #9a3412; }
+
+  .hidden { display: none; }
+
+  .empty-state {
+    padding: 24px 16px;
+    text-align: center;
+    color: var(--text-ter);
+    font-size: 13px;
+  }
+
+  @media (max-width: 540px) {
+    body { padding: 16px 14px 40px; }
+    .stats { gap: 6px; }
+    .stat { padding: 8px 10px; min-width: 60px; }
+    .stat-val { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">Done</div>
+      <div class="stat-val" id="s-done">0</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Left</div>
+      <div class="stat-val" id="s-left">0</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Score</div>
+      <div class="stat-val" id="s-pct">0%</div>
+    </div>
+  </div>
+  <div class="controls">
+    <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
+    <button class="filter-btn" onclick="setFilter('high',this)">High impact</button>
+    <button class="filter-btn" onclick="setFilter('todo',this)">Remaining</button>
+    <button class="reset-btn" onclick="resetAll()">Reset</button>
+  </div>
+</div>
+
+<div id="sections-root"></div>
+
+<script>
+const H='high', M='med', L='low';
+
+const data = [
+  {
+    id:'strategy', label:'Strategy', badge:'b-strategy', color:'#7c3aed',
+    items:[
+      {t:'Is the ideal client defined specifically enough?', w:'Not just "small businesses" but the situation, industry, and problem type. Vague ICP = vague copy = no one feels spoken to.', impact:H},
+      {t:'Is there one primary conversion goal the whole site is built around?', w:'A site trying to do five things converts like a site trying to do none. Book a call. Fill out a form. One job.', impact:H},
+      {t:'Does the site position the business as a specialist rather than a generalist?', w:'Generalists get compared on price. Specialists get hired on trust. The site should signal which one this is.', impact:H},
+      {t:'Is the offer clear — what you get, how it works, what it costs?', w:'Ambiguity about the offer is a conversion killer. Visitors shouldn\'t have to enquire just to understand what\'s being sold.', impact:H},
+      {t:'Is there a low-commitment next step for visitors who aren\'t ready to buy yet?', w:'A lead magnet, free resource, or newsletter keeps warm leads in the funnel instead of losing them forever.', impact:M},
+      {t:'Does the site reflect the current business — services, niche, positioning?', w:'Businesses evolve. Websites often don\'t. Old services and old offers still appearing is a trust problem.', impact:M},
+      {t:'Is there a clear answer to "why this business and not a competitor"?', w:'If you removed the name and logo, could this be any business in the same category? If yes, positioning isn\'t doing its job.', impact:H},
+    ]
+  },
+  {
+    id:'messaging', label:'Messaging', badge:'b-messaging', color:'#dc2626',
+    items:[
+      {t:'Does the hero headline name the ideal client\'s specific situation or problem?', w:'Not "Welcome to [Business Name]". The first line should make someone think "that\'s me".', impact:H},
+      {t:'Does the copy lead with the client, not the business?', w:'Count the times the copy says "we", "our", "us" vs "you", "your". If the business is the subject of most sentences, it\'s failing.', impact:H},
+      {t:'Does the copy name the specific problem the ideal client is experiencing?', w:'The more precisely it describes the pain — in the client\'s own words — the more the client trusts this business understands them.', impact:H},
+      {t:'Does the copy describe outcomes, not just services?', w:'"Brand strategy" is a service. "Knowing exactly what to say to the right people" is an outcome. Sell the destination.', impact:H},
+      {t:'Does the site create a sense that not acting has a cost?', w:'Without some version of urgency or consequence, visitors postpone indefinitely. The copy should make the status quo feel uncomfortable.', impact:M},
+      {t:'Is the tone of voice consistent across every page?', w:'Different pages written by different people at different times reads as incoherent. Visitors notice, even if they can\'t name it.', impact:M},
+      {t:'Does the copy use language the ideal client actually uses — not industry jargon?', w:'Test: would a client use these exact words when describing their problem to a friend? If not, rewrite.', impact:H},
+      {t:'Is there a clear "for people like you" signal early on the homepage?', w:'Industry, role, situation — something that lets the right visitor self-identify and the wrong visitor self-select out.', impact:H},
+    ]
+  },
+  {
+    id:'copy', label:'Copywriting', badge:'b-copy', color:'#d97706',
+    items:[
+      {t:'Does the homepage hero section pass the 5-second test?', w:'Within 5 seconds a visitor should know: what this business does, who it\'s for, and what to do next.', impact:H},
+      {t:'Is every headline doing a job — pulling the reader to the next line?', w:'A headline that just labels a section ("About Us", "Our Services") is wasted space. Every heading should earn the scroll.', impact:M},
+      {t:'Is the About page about the client, not just the business?', w:'The About page should connect the business\'s story to the client\'s problem — not read like a CV.', impact:M},
+      {t:'Are CTAs specific and outcome-focused rather than generic?', w:'"Get in touch" is weak. "Book your free strategy call" tells the visitor what happens next and why it\'s worth doing.', impact:H},
+      {t:'Is long copy broken up so it\'s genuinely easy to scan?', w:'Short paragraphs. Sentence fragments where they work. Subheadings every 3–4 paragraphs. Nobody reads walls of text.', impact:M},
+      {t:'Does the services page explain outcomes, process and who it\'s for — not just a list?', w:'A list of service names tells a visitor nothing they can\'t get from any competitor. Describe the journey and the result.', impact:H},
+      {t:'Are there weasel words or vague claims that could apply to anyone?', w:'"Passionate", "dedicated", "results-driven", "expert team" — if a claim is non-falsifiable, it\'s doing no work.', impact:M},
+      {t:'Is price or pricing structure addressed somewhere — even if just ballpark?', w:'Hiding price entirely forces an extra step before the visitor can decide if this is even relevant to them.', impact:M},
+      {t:'Does the copy handle the most common objections before the visitor raises them?', w:'"Is this right for my business size?", "Can I afford this?", "How long does it take?" — if these are common, answer them.', impact:M},
+    ]
+  },
+  {
+    id:'trust', label:'Trust & proof', badge:'b-trust', color:'#be185d',
+    items:[
+      {t:'Are testimonials specific, attributed, and ideally include a photo or logo?', w:'Anonymous five-star reviews with no context carry almost no weight. A named person, their role, a real result — that converts.', impact:H},
+      {t:'Do testimonials speak to the outcome, not just say "great to work with"?', w:'"Enquiries went up 40% in the first month" beats "Highly recommended!" every time.', impact:H},
+      {t:'Is there a case study or worked example showing real results?', w:'One detailed case study with context, the problem, the solution, and the outcome is worth ten generic testimonials.', impact:H},
+      {t:'Are logos of past clients shown where appropriate?', w:'If the business has worked with recognisable brands, displaying them builds instant credibility.', impact:M},
+      {t:'Does the About page make the business owner feel like a real human being?', w:'People buy from people. A human story, a real photo, a personality — these build trust faster than credentials.', impact:M},
+      {t:'Are any awards, press mentions, or third-party validations shown?', w:'External validation adds a layer of credibility that self-reported claims can\'t match.', impact:L},
+      {t:'Are trust signals placed near CTAs — not just on a dedicated reviews page?', w:'A testimonial sitting on a "Reviews" page nobody visits is wasted. Put proof next to the action you want taken.', impact:H},
+    ]
+  },
+  {
+    id:'journey', label:'User journey', badge:'b-journey', color:'#1d4ed8',
+    items:[
+      {t:'Is there one clear CTA visible above the fold on every page?', w:'Not five options. One next step. And it should be obvious, not buried.', impact:H},
+      {t:'Is the CTA consistent across the site — same wording, same destination?', w:'Switching between "Book a call", "Get a quote", and "Let\'s chat" creates uncertainty about what actually happens next.', impact:M},
+      {t:'Does the homepage tell a logical story — problem, solution, proof, action?', w:'Scroll the homepage top to bottom. Does it build a case that earns the click at the bottom?', impact:H},
+      {t:'Can a visitor get from the homepage to submitting an enquiry in 3 clicks or fewer?', w:'Count them. If you can\'t do it, a visitor definitely won\'t.', impact:H},
+      {t:'Is the contact or booking process genuinely simple and low friction?', w:'Long forms, no calendar integration, phone-only contact — any one of these will lose enquiries.', impact:H},
+      {t:'Is navigation simple and focused on guiding visitors toward a decision?', w:'The nav should guide visitors toward a decision, not give them a full index of the site\'s internal structure.', impact:M},
+      {t:'On mobile, is the journey as smooth as on desktop?', w:'Most visitors are on phones. Test the full journey — hero to CTA to contact form — on an actual mobile device.', impact:H},
+      {t:'After submitting an enquiry, what happens? Is there a clear next step?', w:'A blank "thanks" page with no indication of what happens next leaves the visitor in limbo. Set expectations immediately.', impact:M},
+    ]
+  },
+  {
+    id:'design', label:'Design', badge:'b-design', color:'#065f46',
+    items:[
+      {t:'Does the visual design match the positioning and price point of the business?', w:'A premium consultancy with a cheap-looking website has a credibility mismatch. Design communicates price before words do.', impact:H},
+      {t:'Is there a clear visual hierarchy on every page?', w:'When everything is the same size and weight, nothing is important. Hierarchy guides attention toward the CTA.', impact:H},
+      {t:'Are images authentic rather than stock-photo generic?', w:'Smiling strangers in suits and generic handshakes signal "we couldn\'t be bothered". Real photos build real trust.', impact:H},
+      {t:'Does the design feel current — or does it look like it was built a decade ago?', w:'Outdated design signals an outdated business. Visitors use it as a proxy to judge whether the business is active and competent.', impact:H},
+      {t:'Is whitespace used intentionally or is the page cluttered and overwhelming?', w:'Too much content fighting for attention = visitors read none of it. Breathing room directs focus.', impact:M},
+      {t:'Is typography readable — font size, line height, contrast, and line length?', w:'Small text, long line lengths, low contrast, and tight line spacing all make reading harder than it needs to be.', impact:M},
+      {t:'Is colour used consistently and purposefully?', w:'Colour should reinforce brand identity and guide attention, not just decorate. Random colour choices undermine professionalism.', impact:M},
+      {t:'On mobile, does the layout actually work — or is it a squashed version of desktop?', w:'Truly responsive design rethinks layout for small screens. A desktop layout that was squeezed is not the same thing.', impact:H},
+      {t:'Are buttons and CTAs visually prominent enough to stand out?', w:'A CTA that looks the same as everything around it will be missed. It needs to visually demand attention.', impact:M},
+    ]
+  },
+  {
+    id:'content', label:'Content & freshness', badge:'b-content', color:'#57534e',
+    items:[
+      {t:'Is the copyright year in the footer current?', w:'A small thing that signals neglect. Visitors notice, even if they don\'t consciously register why.', impact:L},
+      {t:'Is the blog or news section active — or is it a graveyard?', w:'A blog with the last post from two years ago signals the business has gone quiet. Better to remove it than leave it rotting.', impact:M},
+      {t:'Does the site have a content hub that moves visitors from curious to convinced?', w:'Articles, FAQs, case studies, explainer videos — content that educates and builds trust over time.', impact:M},
+      {t:'Are testimonials and case studies recent and clearly dated?', w:'An undated testimonial might be from a decade ago. Recent, dated proof is far more credible.', impact:M},
+      {t:'Are there discontinued services, old offers, or out-of-date pricing still on the site?', w:'These create confusion, wasted enquiries, and erode trust when a visitor chases something that no longer exists.', impact:M},
+      {t:'Are team photos and bios current — and only include people still there?', w:'Former staff members still on the team page, old photos, outdated bios — all signal the site isn\'t being maintained.', impact:M},
+    ]
+  },
+  {
+    id:'tech', label:'Technical', badge:'b-tech', color:'#c2410c',
+    items:[
+      {t:'Is the site on a CMS the owner can actually update without a developer?', w:'If adding a new service or updating a testimonial requires hiring someone, the site will go stale again within months.', impact:H},
+      {t:'Does the site load quickly — particularly on mobile?', w:'Use PageSpeed Insights. A slow site loses visitors before they\'ve read a single word. Slow also hurts search rankings.', impact:H},
+      {t:'Is SSL active — is the site served over https?', w:'A browser security warning kills trust immediately, before the visitor has even seen the content.', impact:H},
+      {t:'Are contact forms and booking tools actually working — tested recently?', w:'Broken forms are more common than you\'d think. Test them. Check where submissions go. Make sure nothing goes to spam.', impact:H},
+      {t:'Is the site indexed correctly and showing up for branded searches?', w:'Search the business name in Google. If the site isn\'t the first result, there\'s a foundational issue to fix.', impact:M},
+      {t:'Are there any broken links or 404 errors on key pages?', w:'A broken link in the middle of a visitor\'s journey to enquiry kills momentum. Crawl the site and fix them.', impact:M},
+      {t:'Is there basic analytics installed and is someone actually checking it?', w:'Without knowing where visitors come from and where they drop off, there\'s no basis for improving conversion.', impact:M},
+    ]
+  }
+];
+
+let checked = {}, filter = 'all', openSecs = {};
+data.forEach(s => { openSecs[s.id] = true; });
+
+function totalItems() { return data.reduce((a,s) => a + s.items.length, 0); }
+function doneCount() { return Object.values(checked).filter(Boolean).length; }
+
+function setFilter(f, btn) {
+  filter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function toggleItem(sid, idx) {
+  const k = `${sid}-${idx}`;
+  checked[k] = !checked[k];
+  render();
+}
+
+function toggleSec(sid) {
+  openSecs[sid] = !openSecs[sid];
+  render();
+}
+
+function resetAll() { checked = {}; render(); }
+
+function render() {
+  const total = totalItems();
+  const done = doneCount();
+  const pct = Math.round((done / total) * 100);
+  document.getElementById('s-done').textContent = done;
+  document.getElementById('s-left').textContent = total - done;
+  document.getElementById('s-pct').textContent = pct + '%';
+
+  const root = document.getElementById('sections-root');
+  root.innerHTML = '';
+
+  data.forEach(sec => {
+    let visibleItems = sec.items.map((item, i) => {
+      const k = `${sec.id}-${i}`;
+      const isDone = !!checked[k];
+      if (filter === 'high' && item.impact !== H) return null;
+      if (filter === 'todo' && isDone) return null;
+      return { item, i, isDone, k };
+    }).filter(Boolean);
+
+    if (visibleItems.length === 0) return;
+
+    const secDone = sec.items.filter((_, i) => checked[`${sec.id}-${i}`]).length;
+    const secTotal = sec.items.length;
+    const secPct = Math.round((secDone / secTotal) * 100);
+    const isOpen = openSecs[sec.id];
+
+    const div = document.createElement('div');
+    div.className = 'section';
+
+    let itemsHtml = visibleItems.map(({ item, i, isDone }) => {
+      const impCls = item.impact === H ? 'impact-high' : item.impact === M ? 'impact-med' : 'impact-low';
+      const impLabel = item.impact === H ? 'High impact' : item.impact === M ? 'Medium' : 'Lower priority';
+      return `<div class="item ${isDone ? 'done' : ''}" onclick="toggleItem('${sec.id}',${i})">
+        <div class="cb"><span class="ck">&#10003;</span></div>
+        <div class="item-body">
+          <div class="item-text">${item.t}</div>
+          <div class="item-why">${item.w}</div>
+          <div class="item-tags"><span class="tag ${impCls}">${impLabel}</span></div>
+        </div>
+      </div>`;
+    }).join('');
+
+    div.innerHTML = `
+      <div class="sec-head" onclick="toggleSec('${sec.id}')">
+        <span class="badge ${sec.badge}">${sec.label}</span>
+        <h2>${sec.items.length} checks</h2>
+        <span class="score-pill">${secDone}/${secTotal}</span>
+        <span class="chev ${isOpen ? 'open' : ''}">&#9660;</span>
+      </div>
+      <div class="prog-wrap"><div class="prog-bar" style="width:${secPct}%;background:${sec.color}"></div></div>
+      ${isOpen ? `<div class="items-list">${itemsHtml}</div>` : ''}
+    `;
+
+    root.appendChild(div);
+  });
+}
+
+render();
+</script>
+</body>
+</html>

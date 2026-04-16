@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Audit — Sinclair Accounting · Northern Sauce</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --yellow:       #fbfa00;
+  --black:        #0b0b0b;
+  --white:        #ffffff;
+  --grey:         #f4f4f4;
+  --grey-border:  #e0e0e0;
+  --grey-mid:     #999999;
+  --grey-text:    #555555;
+
+  --pass:         #16a34a;
+  --pass-bg:      #f0fdf4;
+  --pass-text:    #166534;
+  --partial:      #ca8a04;
+  --partial-bg:   #fefce8;
+  --partial-text: #854d0e;
+  --fail:         #dc2626;
+  --fail-bg:      #fef2f2;
+  --fail-text:    #991b1b;
+
+  --red-rag:      #dc2626;
+  --red-bg:       #fef2f2;
+  --amber-rag:    #d97706;
+  --amber-bg:     #fffbeb;
+  --green-rag:    #16a34a;
+  --green-bg:     #f0fdf4;
+
+  --font-head:    'Anton', sans-serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius:       6px;
+  --radius-lg:    8px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--black);
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+
+/* ══════════════════════════════════════
+   HEADER
+   ══════════════════════════════════════ */
+
+.report-header {
+  background: var(--white);
+  color: var(--black);
+  padding: 24px 32px 32px;
+  border-bottom: 3px solid var(--yellow);
+}
+
+.header-brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--grey-border);
+}
+
+.brand-logo {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+
+.brand-url {
+  font-size: 12px;
+  color: var(--grey-mid);
+}
+
+.header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.header-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+  margin-bottom: 8px;
+}
+
+.header-title {
+  font-family: var(--font-head);
+  font-size: 44px;
+  line-height: 1;
+  color: var(--black);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin-bottom: 10px;
+}
+
+.header-meta {
+  font-size: 13px;
+  color: var(--grey-mid);
+}
+
+.header-meta a {
+  color: var(--grey-mid);
+  text-decoration: none;
+}
+
+/* RAG pills */
+.rag-pill {
+  font-family: var(--font-head);
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border-radius: 100px;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.rag-red   { background: var(--red-bg);   color: var(--red-rag);   }
+.rag-amber { background: var(--amber-bg); color: var(--amber-rag); }
+.rag-green { background: var(--green-bg); color: var(--green-rag); }
+
+
+/* ══════════════════════════════════════
+   SCORES + VERDICT
+   ══════════════════════════════════════ */
+
+.scores-section {
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--grey-border);
+}
+
+.score-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.score-card {
+  flex: 1;
+  min-width: 110px;
+  border: 1.5px solid var(--black);
+  border-bottom: 3px solid var(--yellow);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  background: var(--white);
+}
+
+.score-num {
+  font-family: var(--font-head);
+  font-size: 38px;
+  line-height: 1;
+  color: var(--black);
+  margin-bottom: 4px;
+}
+
+.score-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--grey-mid);
+}
+
+.score-sub {
+  font-size: 11px;
+  color: var(--grey-mid);
+  margin-top: 2px;
+}
+
+/* Verdict block */
+.verdict-block {
+  background: var(--yellow);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+}
+
+.verdict-eyebrow {
+  font-family: var(--font-head);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.45);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.verdict-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black);
+  line-height: 1.55;
+}
+
+
+/* ══════════════════════════════════════
+   SECTION BLOCKS (shared)
+   ══════════════════════════════════════ */
+
+.content-section {
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--grey-border);
+}
+
+.content-section:last-child {
+  border-bottom: none;
+}
+
+/* Yellow label pill */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  background: var(--yellow);
+  color: var(--black);
+  font-family: var(--font-head);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 4px;
+  margin-bottom: 18px;
+}
+
+
+/* ══════════════════════════════════════
+   TOP 5 PRIORITY FIXES
+   ══════════════════════════════════════ */
+
+.fix-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fix-item {
+  border: 1.5px solid var(--black);
+  border-bottom: 3px solid var(--yellow);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.fix-num {
+  font-family: var(--font-head);
+  font-size: 32px;
+  line-height: 1;
+  color: var(--black);
+  flex-shrink: 0;
+  width: 28px;
+  text-align: center;
+  padding-top: 2px;
+}
+
+.fix-body { flex: 1; }
+
+.fix-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.fix-detail {
+  font-size: 13px;
+  color: var(--grey-text);
+  line-height: 1.55;
+}
+
+.fix-action {
+  font-size: 12px;
+  color: var(--grey-text);
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--grey-border);
+  line-height: 1.5;
+}
+
+.fix-action strong {
+  color: var(--black);
+  font-weight: 600;
+}
+
+
+/* ══════════════════════════════════════
+   SECTION FINDINGS (accordions)
+   ══════════════════════════════════════ */
+
+.audit-section {
+  border: 1.5px solid var(--black);
+  border-radius: var(--radius-lg);
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.audit-sec-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  cursor: pointer;
+  user-select: none;
+  background: var(--white);
+  border-bottom: 3px solid var(--yellow);
+  transition: background 0.1s;
+}
+
+.audit-sec-head:hover { background: var(--grey); }
+
+.sec-badge {
+  font-family: var(--font-head);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: var(--yellow);
+  color: var(--black);
+  flex-shrink: 0;
+}
+
+.sec-title {
+  font-family: var(--font-head);
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  flex: 1;
+  color: var(--black);
+}
+
+.sec-score {
+  font-size: 12px;
+  color: var(--grey-mid);
+  white-space: nowrap;
+}
+
+.chev {
+  font-size: 10px;
+  color: var(--grey-mid);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.chev.open { transform: rotate(180deg); }
+
+.sec-prog-wrap { height: 3px; background: var(--grey); }
+.sec-prog-bar  { height: 3px; background: var(--yellow); }
+
+
+/* ══════════════════════════════════════
+   FINDINGS
+   ══════════════════════════════════════ */
+
+.findings-list {
+  border-top: 1px solid var(--grey-border);
+}
+
+.finding {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--grey-border);
+}
+
+.finding:last-child { border-bottom: none; }
+
+.verdict-dot {
+  flex-shrink: 0;
+  margin-top: 3px;
+  width: 58px;
+  text-align: center;
+}
+
+.verdict-tag {
+  font-family: var(--font-head);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.v-pass    { background: var(--pass-bg);    color: var(--pass);    }
+.v-partial { background: var(--partial-bg); color: var(--partial); }
+.v-fail    { background: var(--fail-bg);    color: var(--fail);    }
+.v-na      { background: var(--grey);       color: var(--grey-mid);}
+
+.finding-body { flex: 1; }
+
+.finding-check {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.finding-note {
+  font-size: 12px;
+  color: var(--grey-text);
+  line-height: 1.55;
+}
+
+.finding-rec {
+  font-size: 12px;
+  color: var(--grey-text);
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: var(--grey);
+  border-radius: 5px;
+  border-left: 3px solid var(--black);
+  line-height: 1.5;
+}
+
+.finding-rec strong {
+  color: var(--black);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 3px;
+}
+
+
+/* ══════════════════════════════════════
+   POSITIVES
+   ══════════════════════════════════════ */
+
+.positives-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.positive-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  background: var(--black);
+  border-radius: var(--radius-lg);
+  font-size: 13px;
+  color: var(--white);
+  line-height: 1.5;
+}
+
+.positive-dot {
+  color: var(--yellow);
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 0;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+
+/* ══════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════ */
+
+.report-footer {
+  background: var(--white);
+  padding: 24px 32px;
+  border-top: 3px solid var(--yellow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-logo {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+.footer-meta {
+  font-size: 12px;
+  color: var(--grey-mid);
+}
+
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+
+@media (max-width: 600px) {
+  .report-header,
+  .scores-section,
+  .content-section { padding: 20px 16px; }
+  .header-title    { font-size: 30px; }
+  .score-card      { min-width: 80px; }
+  .fix-item        { flex-direction: column; gap: 8px; }
+  .fix-num         { width: auto; font-size: 24px; }
+}
+
+</style>
+</head>
+<body>
+
+
+<!-- ══════════════════════════════════════
+     REPORT HEADER
+     ══════════════════════════════════════ -->
+
+<div class="report-header">
+  <div class="header-brand">
+    <img src="https://northernsauce.uk/wp-content/uploads/2026/04/Ns-EmblemDark.png" alt="Northern Sauce" class="brand-logo">
+    <span class="brand-url">northernsauce.uk</span>
+  </div>
+  <div class="header-main">
+    <div>
+      <div class="header-eyebrow">Website Audit Report</div>
+      <h1 class="header-title">Sinclair Accounting</h1>
+      <div class="header-meta">
+        <a href="https://www.sinclairaccountingservices.co.uk" target="_blank">sinclairaccountingservices.co.uk</a>
+        &nbsp;·&nbsp; 16 April 2026
+      </div>
+    </div>
+    <div>
+      <span class="rag-pill rag-red">Red</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     SCORES + VERDICT
+     ══════════════════════════════════════ -->
+
+<div class="scores-section">
+  <div class="score-row">
+    <div class="score-card">
+      <div class="score-num">18</div>
+      <div class="score-label">Passed</div>
+      <div class="score-sub">out of 59 assessed</div>
+    </div>
+    <div class="score-card">
+      <div class="score-num">20</div>
+      <div class="score-label">Failed</div>
+      <div class="score-sub">need attention</div>
+    </div>
+    <div class="score-card">
+      <div class="score-num">21</div>
+      <div class="score-label">Partial</div>
+      <div class="score-sub">could be stronger</div>
+    </div>
+    <div class="score-card">
+      <div class="score-num">31%</div>
+      <div class="score-label">Score</div>
+      <div class="score-sub">overall</div>
+    </div>
+  </div>
+
+  <div class="verdict-block">
+    <span class="verdict-eyebrow">The verdict</span>
+    <div class="verdict-text">The site looks professional on the surface, but it tells visitors what you are rather than why they should care — and every "Learn More" button leads nowhere, leaving potential clients with nowhere to go.</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     TOP 5 PRIORITY FIXES
+     ══════════════════════════════════════ -->
+
+<div class="content-section">
+  <div class="section-label">Top 5 Priority Fixes</div>
+
+  <div class="fix-list">
+
+    <div class="fix-item">
+      <div class="fix-num">1</div>
+      <div class="fix-body">
+        <div class="fix-title">Fix or remove every "Learn More" button — they all go nowhere</div>
+        <div class="fix-detail">Every "Learn More" link on the page points back to the top of the same page. A visitor who clicks to find out more about your service levels or management accounts gets taken straight back to the headline — it's a dead end that wastes their time and signals the site is unfinished.</div>
+        <div class="fix-action"><strong>Action:</strong> Either link each "Learn More" to a specific section further down the page using anchor links (e.g. #management-accounts), or create dedicated service pages. If neither is possible right now, remove the buttons entirely — a missing link is better than a broken one.</div>
+      </div>
+    </div>
+
+    <div class="fix-item">
+      <div class="fix-num">2</div>
+      <div class="fix-body">
+        <div class="fix-title">Rewrite the hero to name a real problem, not just your job title</div>
+        <div class="fix-detail">"Accountants for small businesses" tells visitors what you are — it doesn't make anyone feel understood or compelled to read on. The clients who need you most are stressed about tax, unsure if they're being paid what they're owed, or losing sleep over whether their numbers add up. Lead with that, not your category.</div>
+        <div class="fix-action"><strong>Action:</strong> Replace the main headline with something that names the specific situation your best clients are in when they find you. For example: "Stop losing sleep over tax and start focusing on the business you're actually building" — then let the subheadline explain what you do and where you're based.</div>
+      </div>
+    </div>
+
+    <div class="fix-item">
+      <div class="fix-num">3</div>
+      <div class="fix-body">
+        <div class="fix-title">Add an About section — people hire people, not logos</div>
+        <div class="fix-detail">There's nothing on the site that tells visitors who Jack Sinclair actually is. Your MAAT qualification, why you started the business, what kind of clients you work best with — all of this is missing. For a sole trader firm, the person behind it is the biggest trust signal you have.</div>
+        <div class="fix-action"><strong>Action:</strong> Add an About section to the homepage (or a full About page) with a real photo of Jack, a short personal story, your MAAT qualification, and who you do your best work with. Keep it warm and human — not a CV. This alone will separate you from 80% of accountant websites.</div>
+      </div>
+    </div>
+
+    <div class="fix-item">
+      <div class="fix-num">4</div>
+      <div class="fix-body">
+        <div class="fix-title">Give your testimonials names and real results — anonymous quotes don't convert</div>
+        <div class="fix-detail">You have three testimonials on the site and they're better than average — one mentions appealing penalties, another mentions stress about tax. But none have a name, business, or photo attached. Anonymous quotes carry almost no weight because visitors can't verify them and they feel interchangeable with any other website.</div>
+        <div class="fix-action"><strong>Action:</strong> Go back to the three people who gave those testimonials and ask permission to use their first name, business name, and ideally a headshot or company logo. If they're happy, update each quote with full attribution. A named, specific testimonial is worth ten anonymous ones.</div>
+      </div>
+    </div>
+
+    <div class="fix-item">
+      <div class="fix-num">5</div>
+      <div class="fix-body">
+        <div class="fix-title">Add a booking tool — making people email or call to enquire loses leads</div>
+        <div class="fix-detail">You already offer a free 15-minute consultation, which is a great idea. But to book it, a visitor has to pick up the phone or send an email manually. That's a meaningful barrier — many people who are interested but not yet ready to speak to someone will leave rather than take that step.</div>
+        <div class="fix-action"><strong>Action:</strong> Add a free Calendly link (calendly.com) so visitors can book a consultation slot directly from the website. Link it from the "Book a free 15 minute consultation" CTA at the bottom of the page. This takes under an hour to set up and typically increases enquiry rates immediately.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     SECTION-BY-SECTION FINDINGS
+     ══════════════════════════════════════ -->
+
+<div class="content-section">
+  <div class="section-label">Section Findings</div>
+
+
+  <!-- ── 1. Strategy ── -->
+  <div class="audit-section">
+    <div class="audit-sec-head" onclick="toggleSec('strategy')">
+      <span class="sec-badge">Strategy</span>
+      <span class="sec-title">7 checks</span>
+      <span class="sec-score" id="score-strategy">1/7 passed</span>
+      <span class="chev open" id="chev-strategy">&#9660;</span>
+    </div>
+    <div class="sec-prog-wrap">
+      <div class="sec-prog-bar" style="width:14%"></div>
+    </div>
+    <div class="findings-list" id="body-strategy">
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the ideal client defined specifically enough?</div>
+          <div class="finding-note">The site positions itself as "Accountants for small businesses" — which narrows the category but doesn't go further. There's no indication of which industries you serve, what stage of business, or what kind of financial situation your best clients are typically in.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Add a line early on the homepage that speaks to a more specific client — for example, the type of business (trades, service businesses, freelancers) or the situation they're in when they find you. The more specific this is, the more the right visitor feels spoken to.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is there one primary conversion goal the whole site is built around?</div>
+          <div class="finding-note">The main CTA is "Get in touch today" and there's a "Book a free 15 minute consultation" at the bottom, which gives a reasonable primary goal. However, the multiple "Learn More" buttons scattered throughout the page all link to #page-0 (the top of the page) — they go nowhere and dilute the journey.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Fix or remove the broken "Learn More" buttons so the only real call to action is enquiry or booking. Every clickable element should move the visitor forward, not loop them back to the start.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the site position the business as a specialist rather than a generalist?</div>
+          <div class="finding-note">The three service tiers (Essential Support, Strategic Growth, Financial Partnership) suggest you work with businesses at any stage — from brand new to scaling. That flexibility is appealing but positions you as a generalist who'll work with anyone rather than the go-to accountant for a particular type of client.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Consider whether there's a specific type of business or stage you do your best work with, and lean into that in the messaging. Being the obvious choice for a narrower group is more commercially valuable than being an option for everyone.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the offer clear — what you get, how it works, what it costs?</div>
+          <div class="finding-note">The three service levels are named and briefly described but there's no detail on what's actually included in each, how the engagement starts, or what it costs. Every "Learn More" link goes back to the top of the page rather than to more detail. A visitor can't determine if this is right for them without having a conversation first.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Expand each service tier with 3–5 bullet points of what's included and give at least a "starting from" price indication. Even a rough price range removes a significant barrier to enquiry by letting visitors self-qualify.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is there a low-commitment next step for visitors who aren't ready to buy yet?</div>
+          <div class="finding-note">The free 15-minute consultation is a low-commitment offer, which is good. There's also a news section with articles. However, for visitors who aren't ready even for a call, there's no newsletter, lead magnet, or downloadable resource to capture their interest.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Consider a simple lead magnet — a one-page guide like "5 things every small business owner should know about tax" — that visitors can download in exchange for their email. This keeps warm leads in the funnel rather than losing them when they're not ready to book.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the site reflect the current business — services, niche, positioning?</div>
+          <div class="finding-note">The site presents a live, active accounting practice with relevant services (management accounts, tax planning) and current contact details. Nothing appears out of date or inconsistent with what a small business accountant would offer today.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is there a clear answer to "why this business and not a competitor"?</div>
+          <div class="finding-note">"Your Partner in Financial Growth" and "You can count on us" are the closest things to a differentiator on the site — but both of these could appear on any accountant's homepage in the country. There's nothing that explains why Sinclair Accounting specifically is the better choice.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Identify what genuinely makes you different — your response time, your approach, the type of client you focus on, your background, your pricing model — and lead with it. Even one specific, honest claim (e.g. "Every client gets a direct line to Jack, not a call centre") is worth more than any generic positioning statement.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ── 2. Messaging ── -->
+  <div class="audit-section">
+    <div class="audit-sec-head" onclick="toggleSec('messaging')">
+      <span class="sec-badge">Messaging</span>
+      <span class="sec-title">8 checks</span>
+      <span class="sec-score" id="score-messaging">1/8 passed</span>
+      <span class="chev open" id="chev-messaging">&#9660;</span>
+    </div>
+    <div class="sec-prog-wrap">
+      <div class="sec-prog-bar" style="width:13%"></div>
+    </div>
+    <div class="findings-list" id="body-messaging">
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the hero headline name the ideal client's specific situation or problem?</div>
+          <div class="finding-note">"Accountants for small businesses" is a category description, not a client-focused headline. It tells visitors what you are, not what you solve. The very best clients — the ones who are stressed, overwhelmed, or being let down by their current accountant — won't feel immediately recognised.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Rewrite the headline to name the feeling or situation your best clients are in. "Tired of guessing whether your tax is right?" or "Get your accounts sorted so you can focus on the business" — something that makes the right person think "that's me." Keep the "Accountants for small businesses" line as supporting copy.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the copy lead with the client, not the business?</div>
+          <div class="finding-note">The copy mixes client-focused language well in places — "letting you focus on what you do best," "you can count on us" — but the main body section opens with "At Sinclair Accounting, we help our clients grow," which puts the business name first. The balance tips toward the business in the longer sections.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Restructure key paragraphs so they start with "you" or "your" rather than "we" or "At Sinclair Accounting." Lead with the client's situation, then introduce how you help. A simple rewrite pass over the main body copy would make a noticeable difference.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the copy name the specific problem the ideal client is experiencing?</div>
+          <div class="finding-note">"Taking away the stress of taxes" and "maximising profits, managing cash flow, and helping you avoid common financial pitfalls" are reasonable pain points. They're not pin-sharp — "stress of taxes" is broad — but at least they gesture toward real problems rather than just listing services.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Get more specific about the problem. What exactly is the stress? Is it not knowing how much to put aside? Not trusting that the last accountant did it right? Being hit with unexpected tax bills? Name it precisely — the more exactly it matches what your best clients felt, the more they'll trust you understand them.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the copy describe outcomes, not just services?</div>
+          <div class="finding-note">There are outcome hints throughout — "financial growth," "reduce your tax burden," "make informed financial decisions" — but the copy also defaults to service names like "Management Accounts" and "Tax Planning" without always explaining what that means for the client's day-to-day life.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> For each service, add one line that translates it into a real-world outcome. Instead of "Tax Planning," try "Tax Planning — so you know what's coming before it arrives, and never pay more than you need to." Outcomes are what people buy; services are just the mechanism.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the site create a sense that not acting has a cost?</div>
+          <div class="finding-note">There's no urgency on the site and no suggestion that the status quo is costly. Nothing tells a visitor what they're risking by staying with their current setup or leaving their finances to chance. Without some sense of consequence, visitors can always put off getting in touch.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Add a line or short section that makes the cost of inaction feel real — not scare tactics, just honesty. Something like: "Most small business owners overpay tax because they don't have the right advice. A short conversation could change that." Real, specific, and true.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the tone of voice consistent across every page?</div>
+          <div class="finding-note">The tone across the homepage is consistent — professional but accessible, with no jarring shifts in register. It reads as though it was written with a single voice throughout, which helps the brand feel coherent.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the copy use language the ideal client actually uses?</div>
+          <div class="finding-note">"Management Accounts," "tax liability," "financial forecasts" — these are accountant terms, not necessarily what a small business owner would say to a friend. "Stress of taxes" and "plan your projects with confidence" are closer to real language. The mix is uneven.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Read each section out loud and ask: would a plumber, a freelancer, or a small retailer say this to describe their own situation? If not, rewrite it in plainer terms. "Tax liability" could become "what you owe HMRC." "Financial forecasts" could become "knowing what's coming so there are no nasty surprises."</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is there a clear "for people like you" signal early on the homepage?</div>
+          <div class="finding-note">"Small businesses" and the Chester-le-Street location give some signal. The three service tiers also imply you work with businesses at different growth stages. But "small businesses" is a broad net — it covers everyone from a one-person freelancer to a 50-person company. The right person doesn't immediately feel found.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Add a short qualifier early on — the type of business, the situation, the region — that makes the right person feel immediately recognised and the wrong person self-select out. Narrowing the signal actually increases conversions from the right clients.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ── 3. Copywriting ── -->
+  <div class="audit-section">
+    <div class="audit-sec-head" onclick="toggleSec('copy')">
+      <span class="sec-badge">Copywriting</span>
+      <span class="sec-title">9 checks</span>
+      <span class="sec-score" id="score-copy">2/9 passed</span>
+      <span class="chev open" id="chev-copy">&#9660;</span>
+    </div>
+    <div class="sec-prog-wrap">
+      <div class="sec-prog-bar" style="width:22%"></div>
+    </div>
+    <div class="findings-list" id="body-copy">
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the homepage hero section pass the 5-second test?</div>
+          <div class="finding-note">Within five seconds you can tell this is an accountant for small businesses, based in Chester-le-Street, with a CTA to get in touch. The headline is clear, the subheadline adds context, and the button is visible. That's sufficient to orient a new visitor.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is every headline doing a job — pulling the reader to the next line?</div>
+          <div class="finding-note">"Our Services," "Management Accounts," "Tax Planning," and "Ready to get started?" all label sections rather than earn the scroll. "Those who know us best..." is slightly warmer. None of the section headings create curiosity or give a reason to keep reading.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Rewrite section headings to create a pull. "Our Services" becomes "Three ways to support your business, wherever you're at." "Tax Planning" becomes "No more nasty surprises from HMRC." Headlines should make the reader want what comes next — not just signpost where they are on the page.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the About page about the client, not just the business?</div>
+          <div class="finding-note">There is no About page and no About section on the site. Visitors have no way to find out who Jack Sinclair is, what his background is, why he set up the business, or what kind of clients he works best with. This is a significant gap — especially for a sole trader firm where the person is the product.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Add an About section to the homepage (or a dedicated About page) with a genuine photo of Jack, a short personal story, your MAAT qualification, and a line or two about who you most enjoy working with. Connect your story to the client's problem — why did you start this business, and what difference does it make to the people you help?</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are CTAs specific and outcome-focused rather than generic?</div>
+          <div class="finding-note">"Get in touch today" is generic — it gives no indication of what happens next or why it's worth doing. The "Learn More" buttons throughout the page are worse: they all link back to the top of the page, making them effectively broken. "Book a free 15 minute consultation today" at the bottom is better but buried.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Replace "Get in touch today" with something that describes the next step and why it's worth taking — for example, "Book your free 15-minute chat" or "Find out if we're the right fit." Fix or remove all "Learn More" buttons. Bring the consultation CTA higher up the page where it will actually be seen.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is long copy broken up so it's genuinely easy to scan?</div>
+          <div class="finding-note">The page is divided into clear sections with headings and relatively short paragraphs. It doesn't present walls of text, and each section is visually distinct. Easy to skim without getting lost.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the services page explain outcomes, process and who it's for?</div>
+          <div class="finding-note">The three service tiers include some outcome language ("maximising profits," "manage cash flow," "reduce your tax liability") but lack detail on what's actually included in each, how the process works, and who each tier is specifically suited to. All "Learn More" links lead nowhere.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Expand each tier with a short "This is right for you if..." line and 3–5 bullets of what's included. For management accounts and tax planning, explain what the process looks like from the client's perspective — what do they need to provide, how often do you meet, what do they receive? This reduces friction at the enquiry stage.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are there weasel words or vague claims that could apply to anyone?</div>
+          <div class="finding-note">"Your Partner in Financial Growth," "You can count on us," and "helping you thrive" all appear on the homepage. These phrases are non-specific and interchangeable with any accounting firm's website. They occupy space without persuading anyone of anything.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Replace vague claims with specific, falsifiable ones. Instead of "Your Partner in Financial Growth," try "Chester-le-Street's small business accountant — available when you need us, not just at year-end." Specificity is credibility — generic claims are ignored.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is price or pricing structure addressed somewhere?</div>
+          <div class="finding-note">No pricing is mentioned anywhere on the site — not a starting price, not a price range, not even a "pricing varies based on your needs" acknowledgement. A visitor who cares about cost has to contact you just to find out if this is in their ballpark.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Add a pricing section or at least a "Pricing starts from £X/month" line for each service tier. This removes a barrier to enquiry and pre-qualifies visitors — the people who do get in touch will already know what to expect, which means fewer wasted calls on both sides.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the copy handle the most common objections before the visitor raises them?</div>
+          <div class="finding-note">Common objections for a small business accountant — "Am I too small for this?", "What if I'm already using someone else?", "How much does it cost?", "How quickly can you help me?" — are not addressed anywhere on the site. Visitors who have these questions have no answers to push them past the doubt.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Add a short FAQ section addressing 4–6 of the most common questions you get on discovery calls. These are often the same questions every visitor silently has — answering them on the page removes friction and builds trust before anyone picks up the phone.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ── 4. Trust & proof ── -->
+  <div class="audit-section">
+    <div class="audit-sec-head" onclick="toggleSec('trust')">
+      <span class="sec-badge">Trust &amp; Proof</span>
+      <span class="sec-title">7 checks</span>
+      <span class="sec-score" id="score-trust">1/7 passed</span>
+      <span class="chev open" id="chev-trust">&#9660;</span>
+    </div>
+    <div class="sec-prog-wrap">
+      <div class="sec-prog-bar" style="width:14%"></div>
+    </div>
+    <div class="findings-list" id="body-trust">
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are testimonials specific, attributed, and ideally include a photo or logo?</div>
+          <div class="finding-note">There are three testimonials on the homepage and they contain some specific detail — mention of tax compliance, penalties being appealed, and business growth. However, none are attributed to a named person, business, or role, and there are no photos or logos. Anonymous quotes with no attribution carry significantly less weight than named testimonials.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Contact each person who gave a testimonial and ask for permission to use their first name, business name, and optionally a headshot or company logo. Even first name + type of business (e.g. "Sarah, florist, Chester-le-Street") is a meaningful upgrade over anonymous. If they're happy, update the testimonials with that attribution.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Do testimonials speak to the outcome, not just say "great to work with"?</div>
+          <div class="finding-note">"Helped me appeal penalties," "no longer stress about whether I'm paying the right tax," and "my business has already experienced unbelievable growth" are outcome-focused, which is better than average. However, "unbelievable growth" is too vague to be meaningful — growth by how much, over what period? Specific numbers make these far more powerful.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Go back to the person who mentioned business growth and ask if they'd share a specific figure or timeframe — even "turnover doubled in 18 months" or "reduced my tax bill by £2,000" is transformative. Specific, verifiable results are the most persuasive proof you can show.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is there a case study or worked example showing real results?</div>
+          <div class="finding-note">No case study exists on the site. There's no example of a specific client situation, what you did, and what changed as a result. Case studies are the most convincing form of proof for service businesses because they show the full picture — not just that clients are happy, but exactly how you made a difference.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Write one case study from a real client (with their permission). Structure it as: who they were, what problem they had, what you did together, and what the outcome was. This doesn't need to be long — 300 words and a couple of specific numbers is enough. Add it as a section on the homepage or a dedicated page.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are logos of past clients shown where appropriate?</div>
+          <div class="finding-note">No client logos are displayed on the site. For an accountant working with local small businesses, even a small selection of recognisable local business names or logos would add meaningful credibility — especially to visitors who might recognise those names from their own area.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Ask a handful of current clients if you can display their business name or logo on your site. A small grid of 4–6 client logos — even local, non-famous businesses — signals that real companies trust you with their finances. Get permission in writing before displaying anything.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the About page make the business owner feel like a real human being?</div>
+          <div class="finding-note">There is no About section or About page on the site. Jack Sinclair is mentioned by name in the testimonials ("Jack is always on hand...") but there is no photo, no background, no story, and no explanation of why he started the business. For a sole trader practice, the founder's personality is one of the strongest trust signals available — and it's entirely missing.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Add an About section to the homepage with a real, professional photo of Jack, a short personal background (where you trained, why you set up independently, what kind of clients you enjoy working with), and your MAAT qualification. Keep it warm and first-person — this is not a CV, it's a conversation starter.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are any awards, press mentions, or third-party validations shown?</div>
+          <div class="finding-note">No professional accreditations, memberships, or third-party validations are displayed on the site. Jack's LinkedIn profile shows an MAAT qualification (Member of the Association of Accounting Technicians) — a meaningful credential that is entirely absent from the website.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Add your MAAT designation to the site — either as a logo, a badge, or simply stated in the About section: "Jack Sinclair MAAT." If you're a member of any professional bodies or have any published articles or mentions, include those too. Third-party validation is trust your own copy can't create.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are trust signals placed near CTAs — not just on a dedicated reviews page?</div>
+          <div class="finding-note">The three testimonials appear midway through the homepage, before the final CTA section. This positions social proof reasonably well in the flow — a visitor who reads to the bottom will encounter the testimonials before being asked to get in touch.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ── 5. User journey ── -->
+  <div class="audit-section">
+    <div class="audit-sec-head" onclick="toggleSec('journey')">
+      <span class="sec-badge">User Journey</span>
+      <span class="sec-title">8 checks</span>
+      <span class="sec-score" id="score-journey">3/8 passed</span>
+      <span class="chev open" id="chev-journey">&#9660;</span>
+    </div>
+    <div class="sec-prog-wrap">
+      <div class="sec-prog-bar" style="width:38%"></div>
+    </div>
+    <div class="findings-list" id="body-journey">
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is there one clear CTA visible above the fold on every page?</div>
+          <div class="finding-note">"Get in touch today" is clearly visible as a button in the hero section, above the fold. A visitor landing on the homepage can immediately see how to take action without scrolling.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the CTA consistent across the site — same wording, same destination?</div>
+          <div class="finding-note">The hero says "Get in touch today," the footer says "Book a free 15 minute consultation today," and throughout the page are multiple "Learn More" buttons that all link back to the top of the same page. The language and destination vary, and the broken "Learn More" buttons add confusion.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Pick one primary CTA phrase and use it consistently across the whole site — ideally the more specific "Book your free 15-minute chat" rather than the generic "Get in touch." Fix or remove all "Learn More" buttons so there's one clear path forward at every point on the page.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the homepage tell a logical story — problem, solution, proof, action?</div>
+          <div class="finding-note">The page moves from headline → service tiers → management accounts → tax planning → testimonials → news → contact. There's no clear problem statement at the top, and the jump from headline to services skips the step where the visitor is persuaded that they need what you offer. The structure is informational rather than persuasive.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Restructure the homepage flow: (1) Headline that names the client's problem, (2) Brief explanation of who you are and how you help, (3) Social proof (testimonials), (4) Services with outcomes, (5) CTA. This order builds a case before asking for action, which significantly improves conversion.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Can a visitor get from the homepage to submitting an enquiry in 3 clicks or fewer?</div>
+          <div class="finding-note">The phone number and email address are visible in the header, and the CTA button links directly to a contact section at the bottom of the page. A visitor can get in touch in a single action from anywhere on the homepage — well within the 3-click threshold.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the contact or booking process genuinely simple and low friction?</div>
+          <div class="finding-note">Contact details (phone and email) are clearly provided and positioned well. However, there's no booking form, online calendar, or contact form — to enquire, a visitor must manually pick up the phone or open their email client. Many people who are interested but not quite ready for a direct call will leave rather than take that step.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Add a Calendly or similar online booking link so visitors can schedule a consultation without needing to initiate contact. This is especially important for the "interested but cautious" visitor who would book a slot at 9pm on a Sunday but wouldn't call during business hours.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is navigation simple and focused on guiding visitors toward a decision?</div>
+          <div class="finding-note">The header is minimal — just the logo and contact details. For a single-page site this is appropriate and avoids over-complicating the experience with unnecessary navigation options. The simplicity is a strength here.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">On mobile, is the journey as smooth as on desktop?</div>
+          <div class="finding-note">The site appears to use a modern website builder that should handle mobile layout adequately. However, the broken "Learn More" buttons and lack of a booking tool would create the same friction on mobile as on desktop — arguably worse, since mobile users are less likely to call or open their email app spontaneously.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Test the full journey on a real mobile device: scroll from top to bottom, tap every CTA, and try to get in touch. Fix any issues found, and prioritise adding a booking tool that works cleanly on a phone screen.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">After submitting an enquiry, what happens? Is there a clear next step?</div>
+          <div class="finding-note">There's no contact form on the site, so there's no confirmation message or next-step explanation. For visitors who call or email, there's nothing on the site that tells them what to expect — how quickly you'll respond, what the first call looks like, or what happens next. This leaves enquirers in the dark.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Add a short "What happens next" section near the contact area: "Get in touch today — I'll reply within 24 hours to arrange a free 15-minute call, no commitment required." Setting expectations immediately after the CTA reduces anxiety and improves the likelihood of someone following through.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ── 6. Design ── -->
+  <div class="audit-section">
+    <div class="audit-sec-head" onclick="toggleSec('design')">
+      <span class="sec-badge">Design</span>
+      <span class="sec-title">9 checks</span>
+      <span class="sec-score" id="score-design">7/9 passed</span>
+      <span class="chev open" id="chev-design">&#9660;</span>
+    </div>
+    <div class="sec-prog-wrap">
+      <div class="sec-prog-bar" style="width:78%"></div>
+    </div>
+    <div class="findings-list" id="body-design">
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the visual design match the positioning and price point of the business?</div>
+          <div class="finding-note">The purple and white colour scheme is clean and professional, appropriate for a modern small business accountant. The design communicates a credible, active practice — not luxury, not budget — which fits the three-tier service structure.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is there a clear visual hierarchy on every page?</div>
+          <div class="finding-note">In the above-the-fold section, the headline is large and bold, the subheadline is smaller, and the CTA button contrasts clearly with the white background. The visual hierarchy guides the eye effectively from headline to supporting copy to action.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are images authentic rather than stock-photo generic?</div>
+          <div class="finding-note">The hero image is clearly a stock photo — two suited people shaking hands — which is one of the most overused images in professional services. It's generic, impersonal, and says nothing about Sinclair Accounting specifically. For a sole trader business, a real photo of Jack would be far more trustworthy.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Replace the stock handshake image with a genuine photo of Jack — ideally in a real work setting rather than a posed studio shot. A professional headshot or environmental portrait taken on a smartphone in good light is more trustworthy than the best stock photo library image. Real people convert better than stock people, every time.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the design feel current — or does it look like it was built a decade ago?</div>
+          <div class="finding-note">The site has a clean, modern aesthetic — minimal layout, consistent typography, and sensible use of space. It doesn't feel outdated and would not raise concerns about whether the business is still active.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is whitespace used intentionally or is the page cluttered?</div>
+          <div class="finding-note">The above-the-fold area has clear breathing room and the layout doesn't feel overwhelming. Sections appear to be visually distinct with adequate spacing.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is typography readable — font size, line height, contrast, and line length?</div>
+          <div class="finding-note">The typography is clear and legible with good contrast between text and background. The headline is bold and prominent, body text appears at a readable size, and there's no strain required to read the content.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is colour used consistently and purposefully?</div>
+          <div class="finding-note">Purple appears to be the consistent accent colour, used for the CTA button and carried through the brand logo. The colour palette appears controlled and intentional — not arbitrary or inconsistent across the visible sections.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">On mobile, does the layout actually work — or is it a squashed version of desktop?</div>
+          <div class="finding-note">The site is built on what appears to be a modern website builder platform, which typically handles mobile responsiveness adequately. However, this hasn't been verified by testing the full journey on a real mobile device — particularly the CTA buttons, contact area, and any image-heavy sections.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Test the site on an actual mobile phone (not just a desktop browser in responsive mode). Check that all text is readable without zooming, all buttons are large enough to tap, and the contact details are tappable links (tel: and mailto:). Fix anything that creates friction on a small screen.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are buttons and CTAs visually prominent enough to stand out from surrounding content?</div>
+          <div class="finding-note">The purple "Get in touch today" button stands out clearly from the white background in the hero section. The colour contrast and size make it easy to locate without searching for it.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ── 7. Content & freshness ── -->
+  <div class="audit-section">
+    <div class="audit-sec-head" onclick="toggleSec('content')">
+      <span class="sec-badge">Content &amp; Freshness</span>
+      <span class="sec-title">6 checks</span>
+      <span class="sec-score" id="score-content">1/4 assessed</span>
+      <span class="chev open" id="chev-content">&#9660;</span>
+    </div>
+    <div class="sec-prog-wrap">
+      <div class="sec-prog-bar" style="width:25%"></div>
+    </div>
+    <div class="findings-list" id="body-content">
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the copyright year in the footer current?</div>
+          <div class="finding-note">No copyright year is visible anywhere on the site — there appears to be no footer copyright notice at all. While a missing copyright notice is a small thing, it's an easy detail to overlook that signals the site may not be actively maintained.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Add a footer copyright line: "© 2026 Sinclair Accounting. All rights reserved." Some website builders can auto-update this each year — check your platform's settings. It's a small thing but shows the site is current.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-na">N/A</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the blog or news section active — or is it a graveyard?</div>
+          <div class="finding-note">There is a news section on the homepage with what appear to be article images, but no dates or titles are visible in the scraped content. Cannot verify whether the section is actively maintained or how recent the articles are.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the site have a content hub that moves visitors from curious to convinced?</div>
+          <div class="finding-note">The news section suggests some content exists, but there's no dedicated resource hub, FAQ section, or educational content visible. Visitors who aren't ready to book yet have nothing to read that would build trust and keep them engaged with the brand.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Turn the news section into a proper resource hub — even 4–6 articles answering common small business accounting questions would position you as knowledgeable and helpful before anyone picks up the phone. Topics like "When do I need to register for VAT?" or "Should I be a sole trader or limited company?" bring in the right Google traffic and build trust organically.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are testimonials and case studies recent and clearly dated?</div>
+          <div class="finding-note">None of the three testimonials on the homepage include dates. An undated testimonial could be from any point in time — it might be five years old or five months old. Without a date, visitors can't tell how recent the feedback is, which reduces its credibility.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Add a date or at least a year to each testimonial (e.g. "Jack Sinclair — March 2026"). When gathering future testimonials, always record the date. Recent, dated proof is significantly more convincing than undated quotes that could be from any era.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are there discontinued services, old offers, or out-of-date pricing still on the site?</div>
+          <div class="finding-note">No evidence of discontinued services or outdated offers on the site. The three service tiers are consistent with what a current small business accountant would offer, and there are no references to services that appear to no longer exist.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-na">N/A</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are team photos and bios current — and do they only include people still at the business?</div>
+          <div class="finding-note">Sinclair Accounting appears to be a sole trader business run by Jack Sinclair. There is no team page, which is appropriate for a single-person practice. This check is not applicable.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ── 8. Technical ── -->
+  <div class="audit-section">
+    <div class="audit-sec-head" onclick="toggleSec('tech')">
+      <span class="sec-badge">Technical</span>
+      <span class="sec-title">7 checks</span>
+      <span class="sec-score" id="score-tech">2/7 passed</span>
+      <span class="chev open" id="chev-tech">&#9660;</span>
+    </div>
+    <div class="sec-prog-wrap">
+      <div class="sec-prog-bar" style="width:29%"></div>
+    </div>
+    <div class="findings-list" id="body-tech">
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the site on a CMS the owner can actually update without a developer?</div>
+          <div class="finding-note">The site appears to use a proprietary website builder platform based on its asset URL structure. This may or may not be easily editable by the owner — it depends on the specific platform and plan. Without knowing the platform, this can't be fully confirmed.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Check that you can log into your website platform and make basic changes — update a testimonial, add a news article, change a phone number — without needing to contact a developer. If you can't, this is a priority to fix before the site goes stale again within months.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Does the site load quickly — particularly on mobile?</div>
+          <div class="finding-note">Load speed could not be fully verified from content analysis alone. The page includes multiple images that could affect performance on slower connections, particularly on mobile. A single-page design typically loads all content at once, which can add initial load time.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Run your site through Google PageSpeed Insights (search for it) — it's free and takes 30 seconds. Aim for a score above 70 on mobile. If your images are the issue, compress them using a free tool like Squoosh.app before re-uploading.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is SSL active — is the site served over https?</div>
+          <div class="finding-note">The site is served over HTTPS, confirmed. Visitors will not see a browser security warning when they land on the site.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are contact forms and booking tools actually working — tested recently?</div>
+          <div class="finding-note">There is no contact form on the site — only a phone number and email address for contact. Direct contact methods are visible and appear functional. However, the absence of a form or booking tool means there's no automated way for visitors to make an enquiry outside of business hours.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Add a simple contact form or Calendly booking link. Even a basic "Name, Email, Message" form gives visitors a low-friction way to get in touch without having to open their phone app. Once added, test it by submitting a dummy enquiry to confirm it arrives in your inbox.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-pass">Pass</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is the site indexed correctly and showing up for branded searches?</div>
+          <div class="finding-note">The site has a custom domain and appears properly established. Assuming standard indexing is in place for a live site on a professional website builder platform.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-fail">Fail</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Are there any broken links or 404 errors on key pages?</div>
+          <div class="finding-note">All "Learn More" links throughout the site point to #page-0, which scrolls back to the very top of the page rather than to relevant content. This makes them effectively broken — a visitor clicks expecting to find more information and is instead taken back to the start. Sub-pages (/about, /services, /contact) return 404 errors.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Remove all "Learn More" buttons until there is meaningful content to link them to. Alternatively, link each one to a relevant section anchor further down the same page (e.g. #services, #management-accounts). Do not leave links that go nowhere — they undermine trust and signal an unfinished site.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="verdict-dot"><span class="verdict-tag v-partial">Partial</span></div>
+        <div class="finding-body">
+          <div class="finding-check">Is there basic analytics installed and is someone actually checking it?</div>
+          <div class="finding-note">Whether Google Analytics or a similar tracking tool is installed cannot be confirmed from the site content. Many website builder platforms include basic traffic data in their dashboards, but this may not give enough insight into visitor behaviour, drop-off points, or which pages convert.</div>
+          <div class="finding-rec"><strong>Recommendation</strong> Confirm that some form of analytics is installed on your site — check your platform's built-in stats or verify that Google Analytics is set up. Knowing how many visitors you get, where they come from, and how long they stay is the minimum data needed to make informed decisions about improving the site.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /content-section findings -->
+
+
+<!-- ══════════════════════════════════════
+     POSITIVES
+     ══════════════════════════════════════ -->
+
+<div class="content-section">
+  <div class="section-label">What the site does well</div>
+
+  <div class="positives-list">
+    <div class="positive-item">
+      <div class="positive-dot">&#10003;</div>
+      <div>The design is clean, modern, and professional. The purple and white colour scheme works well, the typography is readable, and the overall visual impression is of a credible, active business — not something thrown together on a template.</div>
+    </div>
+    <div class="positive-item">
+      <div class="positive-dot">&#10003;</div>
+      <div>The three service tiers (Essential Support, Strategic Growth, Financial Partnership) are a smart structural choice. They communicate that you meet clients wherever they are in their business journey without making the offer feel overwhelming or one-size-fits-all.</div>
+    </div>
+    <div class="positive-item">
+      <div class="positive-dot">&#10003;</div>
+      <div>The free 15-minute consultation is a well-chosen entry point. It's low commitment, clearly framed, and reduces the barrier to a first conversation. Adding a direct booking link would make it significantly more effective.</div>
+    </div>
+    <div class="positive-item">
+      <div class="positive-dot">&#10003;</div>
+      <div>The testimonials — though anonymous — contain genuinely specific detail: penalties appealed, tax stress resolved, business growth achieved. This is more substantive than the average "great service, highly recommended" that most sites carry. Getting those quotes attributed would make them far more powerful.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════ -->
+
+<div class="report-footer">
+  <img src="https://northernsauce.uk/wp-content/uploads/2026/04/Ns-EmblemDark.png" alt="Northern Sauce" class="footer-logo">
+  <div class="footer-meta">Confidential — prepared for Sinclair Accounting</div>
+</div>
+
+
+<script>
+function toggleSec(id) {
+  const body = document.getElementById('body-' + id);
+  const chev = document.getElementById('chev-' + id);
+  const isOpen = !body.style.display || body.style.display !== 'none';
+  body.style.display = isOpen ? 'none' : 'block';
+  chev.classList.toggle('open', !isOpen);
+}
+</script>
+
+</body>
+</html>

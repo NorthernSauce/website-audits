@@ -36,9 +36,9 @@
       "type": "quick"
     },
     {
-      "title": "Replace agency-written content with one real article and one real case study",
-      "detail": "Click into any blog post or case study and you'll see it was published under Visuable's name — the web agency that built the site — complete with their agency bio and promotional copy. It's not on the homepage, but any prospect who reads a post will see it, and it signals the content was never really from you.",
-      "action": "Write one article as Dr. Othman — a real GP tax mistake you've seen repeatedly — and rewrite the £30,000 case study in the first person with Visuable's authorship removed.",
+      "title": "Replace placeholder content with one real article and one real case study",
+      "detail": "The blog has three posts, one of which is dated March 2019 — a Squarespace template date that was never updated — and all three have URL slugs like /blog-post-title-one-fsjre that signal the content was set up at launch and never touched. A prospect who clicks through will notice both.",
+      "action": "Publish one article written by Dr. Othman on a real GP tax issue (and fix the URL slug when you do), and update the case study URLs from /case-study-2 to something descriptive.",
       "type": "project"
     }
   ],
@@ -207,8 +207,8 @@
         {
           "v": "partial",
           "check": "Case study with real results",
-          "note": "The 'Saving Over £30,000' case study has a credible result and relevant detail, but every case study on the site is authored by Visuable — the web agency that built the site. A visitor who clicks through will see the agency's promotional bio as the author.",
-          "rec": "Rewrite the case studies in the first person under the DrAccountant name and remove Visuable's authorship credit."
+          "note": "The 'Saving Over £30,000' case study has a credible result and relevant detail. However the case study URLs are template defaults — /case-studies/case-study-2 and /case-studies/case-study-3 — which signals they were set up at launch and never properly configured.",
+          "rec": "Update the URL slugs to match the case study titles and verify the content reflects how the business actually works today."
         },
         {
           "v": "fail",
@@ -315,8 +315,8 @@
         {
           "v": "fail",
           "check": "Content hub exists with real, recent articles",
-          "note": "The Resources page has three posts: two dated December 2024, one showing an 11 March 2019 date that appears to be a Squarespace template placeholder. All three are authored by Visuable — the web agency — not by the business.",
-          "rec": "Replace all three with genuine articles written by Dr. Othman or Lucas; even one real post changes the credibility of the page entirely."
+          "note": "The Resources page has three posts: two dated December 2024, and one showing a March 2019 date that's a Squarespace template placeholder that was never updated. All three use default URL slugs like /blog-post-title-one-fsjre, signalling the blog was set up at launch and left.",
+          "rec": "Publish at least one genuine article from Dr. Othman or Lucas with a properly written URL slug — even one real post immediately changes the credibility of the page."
         },
         {
           "v": "fail",
@@ -345,7 +345,7 @@
         {
           "v": "fail",
           "check": "Content supports the sales process",
-          "note": "Agency-written placeholder content cannot pre-educate a prospect or shorten a sales conversation. A doctor who has read a genuine article by Dr. Othman before a call arrives already trusting the expertise — that conversion advantage is currently zero.",
+          "note": "The three blog posts cover broad, surface-level topics that don't demonstrate the specific expertise a doctor is looking for — none address the questions that come up before a first call, like pension annual allowance charges or how to structure private practice income.",
           "rec": "N/A — see 'Content hub exists' above; fixing that fixes this."
         }
       ]

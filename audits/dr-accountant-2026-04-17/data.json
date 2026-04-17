@@ -1,0 +1,386 @@
+{
+  "business": "DrAccountant",
+  "url": "draccountant.org",
+  "date": "17 April 2026",
+  "rag": "red",
+  "passed": 13,
+  "failed": 20,
+  "partial": 18,
+  "na": 0,
+  "score": 25,
+  "verdict": "A doctor landing here would sense this is the right specialist, but leave without enquiring — because there's no pricing, no real content to build trust, and the copy keeps talking about the business instead of the doctor's situation.",
+  "scope_note": "This audit looks at strategy, messaging, and content — the things that determine whether a visitor becomes an enquiry. Design is a whole separate conversation, and one that's much more meaningful once we understand your clients, your goals, and what you're trying to achieve. That's a call worth having.",
+  "fixes": [
+    {
+      "title": "Remove the misleading logo strip",
+      "detail": "The NHS, GMC, and RCGP logos signal client relationships — but these are regulatory bodies every UK doctor belongs to, not organisations you've worked with. A doctor who recognises this will immediately question everything else on the page.",
+      "action": "Remove those logos entirely, or replace them with logos of real clients who've given permission to be named.",
+      "type": "quick"
+    },
+    {
+      "title": "Add a Calendly booking link",
+      "detail": "Your contact form requires a multi-step exchange before anything is confirmed — someone fills it in, then waits to hear back, then arranges a time. That's three points of drop-off before a call ever happens.",
+      "action": "Add a direct Calendly link alongside the form so a doctor can book a slot in 30 seconds without waiting for a reply.",
+      "type": "quick"
+    },
+    {
+      "title": "Add pricing context",
+      "detail": "There is no mention of cost anywhere on the site — not a 'from' figure, not a pricing model, nothing. For a busy doctor who's already wary of accountancy fees, silence on price reads as 'probably expensive' and they move on.",
+      "action": "Add a short paragraph explaining how you price — whether that's a monthly retainer, an annual fee, or a 'typically starts at' figure — so the right people self-qualify instead of bouncing.",
+      "type": "quick"
+    },
+    {
+      "title": "Rewrite the copy so the doctor is the subject, not the business",
+      "detail": "Almost every major section opens with 'we', 'our', or 'at DrAccountant' — the business is the hero of its own website. A doctor reading this feels like a prospect being sold to, not someone who's found the right partner.",
+      "action": "Go section by section and flip the first sentence of each so it starts with 'you' — 'You get an accountant who actually knows what an NHS pension looks like from the inside' lands harder than 'We specialise in NHS pension advice'.",
+      "type": "quick"
+    },
+    {
+      "title": "Replace agency-written content with one real article and one real case study",
+      "detail": "Every blog post and every case study on the site is published under Visuable's name — the web agency that built the site. A prospect who clicks through will see 'Written by Visuable' and an agency bio, which signals this content was never really from you.",
+      "action": "Write one article as Dr. Othman — pick a real GP tax mistake you've seen repeatedly — and rewrite the £30,000 case study in the first person, removing Visuable's authorship.",
+      "type": "project"
+    }
+  ],
+  "sections": [
+    {
+      "id": "strategy",
+      "findings": [
+        {
+          "v": "pass",
+          "check": "Specialist, not generalist",
+          "note": "The site is unambiguously positioned for healthcare professionals only, and the GP-founded angle is prominent. This survives the name-removal test — strip the logo and it still couldn't belong to a general accountancy firm."
+        },
+        {
+          "v": "pass",
+          "check": "Clear differentiator",
+          "note": "Founded by a practising GP who personally navigated NHS pension and tax complexity is a differentiator that can't be faked or easily copied. It's specific, credible, and immediately meaningful to a doctor."
+        },
+        {
+          "v": "partial",
+          "check": "Customer is the hero, not the business",
+          "note": "The homepage opens with a doctor-focused metaphor, which is a good start, but quickly shifts to 'we specialize', 'we offer', 'we understand' — the business becomes the main character within two paragraphs.",
+          "rec": "Rewrite each homepage section so the first sentence is about the doctor's situation, not the business's capabilities."
+        },
+        {
+          "v": "partial",
+          "check": "Clear villain identified",
+          "note": "NHS pension complexity and juggling multiple income streams are referenced, but they're listed as features of the service rather than named as the root cause of real stress a doctor feels. The villain is implied but never given a face.",
+          "rec": "Pick one villain — 'the NHS pension is the most complex financial decision a doctor makes, and most get it wrong' — and name it explicitly above the fold."
+        },
+        {
+          "v": "partial",
+          "check": "Reflects current business",
+          "note": "Blog posts and case studies are dated Dec 2024 (one shows a 2019 placeholder date) and are all authored by the web agency that built the site. The content doesn't reflect the business as it exists today.",
+          "rec": "Replace agency-authored content with at least one article and one case study written by the founders."
+        },
+        {
+          "v": "fail",
+          "check": "Offer clarity",
+          "note": "The services page names Tax Planning and Bookkeeping & Payroll but gives no detail on what's included, how the engagement works, or what it costs. A doctor can't understand what they'd actually be buying without making contact first.",
+          "rec": "Add a brief scope note under each service explaining what's included and how delivery works, plus a pricing anchor."
+        },
+        {
+          "v": "fail",
+          "check": "Direct CTA + transitional CTA both present",
+          "note": "Every single CTA on the site is 'Book your Free Consultation' — there is no lower-commitment option for a doctor who's interested but not ready to book. Visitors who aren't ready to commit have nowhere to go.",
+          "rec": "Add one transitional option — a downloadable guide on NHS pension decisions, or a newsletter signup — so there's a path for warm visitors who aren't ready to book yet."
+        }
+      ]
+    },
+    {
+      "id": "messaging",
+      "findings": [
+        {
+          "v": "pass",
+          "check": "Guide empathy expressed",
+          "note": "The About page origin story is genuine — Dr. Othman took a sabbatical to learn finance after experiencing the exact stress the target client feels. That's real empathy, not a marketing claim."
+        },
+        {
+          "v": "pass",
+          "check": "Guide authority demonstrated",
+          "note": "Dr. Othman holds MSc, PhD, and MRCGP credentials alongside firsthand GP experience; Lucas holds MAAT with 15 years in healthcare accounting. Both are visible and credible."
+        },
+        {
+          "v": "partial",
+          "check": "Hero headline names the client's specific situation or problem",
+          "note": "The headline 'Caring for your Accounts, Like you care for Patients' is memorable and passes the 5-second comprehension test — you know what they do in seconds. But it names the category, not the problem; a GP reading it knows this is an accountant for doctors, but doesn't feel found.",
+          "rec": "Test a version that names the stress: 'Your NHS pension is one of the most complex financial decisions you'll make — and most doctors get it wrong without specialist help.'"
+        },
+        {
+          "v": "partial",
+          "check": "Internal problem acknowledged",
+          "note": "The emotional layer — the stress of financial complexity while running a demanding medical career — surfaces on the About page but not prominently on the homepage where it would do the most work.",
+          "rec": "Move one sentence about the emotional reality of being a doctor managing finances into the hero section of the homepage."
+        },
+        {
+          "v": "partial",
+          "check": "Clear plan visible",
+          "note": "The 'How it works' section has three steps, but step 2 is 'Let Us Work Our Magic' — this tells a cautious doctor nothing about what actually happens with their money and their data.",
+          "rec": "Replace the vague middle step with something concrete: 'We review your income streams, pension position, and tax exposure, then build a plan tailored to your career stage.'"
+        },
+        {
+          "v": "partial",
+          "check": "Success picture painted",
+          "note": "Peace of mind, clarity, and confidence appear throughout, but they stay abstract. The transformed life after working with DrAccountant is never made concrete enough to feel real.",
+          "rec": "Add one specific outcome sentence — 'Know exactly what your NHS pension will pay out before you make a single career decision that affects it.'"
+        },
+        {
+          "v": "fail",
+          "check": "Philosophical stakes implied",
+          "note": "There's no sense of the bigger 'why it matters' — no acknowledgement that financial mistakes cost doctors years of security, or that getting this right enables the career and life they've worked for.",
+          "rec": "Add one sentence about what's really at stake: getting NHS pension decisions wrong isn't a financial inconvenience, it's a retirement problem that takes decades to play out."
+        },
+        {
+          "v": "fail",
+          "check": "Cost of inaction present",
+          "note": "Nothing on the site suggests what happens to a doctor who doesn't sort this out — no mention of overpaying tax, pension penalties, missed allowances, or HMRC exposure. Without stakes, there's no urgency.",
+          "rec": "Add one line to the hero section about what's silently at risk: 'Most doctors overpay tax by thousands every year simply because their accountant doesn't know how NHS income works.'"
+        }
+      ]
+    },
+    {
+      "id": "copy",
+      "findings": [
+        {
+          "v": "pass",
+          "check": "5-second hero test",
+          "note": "Within 5 seconds it's clear: specialist accountancy for doctors, run by a GP and an accountant, book a free consultation. The medical metaphor headline and tagline work together for fast comprehension — though note this is a different test from whether the headline resonates as a problem statement (it doesn't — see Messaging)."
+        },
+        {
+          "v": "partial",
+          "check": "Services explain outcomes, not just names",
+          "note": "Tax Planning gets partway there — 'minimizes tax liabilities' is a result, but it stops short of the emotional end. 'Knowing exactly what you'll owe before HMRC asks' is more visceral for a doctor who's been caught out before.",
+          "rec": "Add one outcome sentence per service that describes what life looks like after the problem is solved, not just what the service does."
+        },
+        {
+          "v": "partial",
+          "check": "Long copy genuinely scannable",
+          "note": "The Squarespace layout creates visual spacing, but the 'Why us' section has six blocks of paragraph text in succession — a doctor scanning on their phone will give up before reaching the end.",
+          "rec": "Reduce each 'Why us' block to two lines max, or convert the section to a simple icon-plus-one-line format."
+        },
+        {
+          "v": "fail",
+          "check": "Copy leads with client, not business",
+          "note": "A quick count of the homepage shows 'we', 'our', and 'at DrAccountant' opening most major sections. The services page opens: 'Our healthcare accountants are experts in medical accounting services' — the business is the subject almost everywhere.",
+          "rec": "Audit every section heading and opening line: if it starts with 'we' or 'our', rewrite it so the doctor is the subject."
+        },
+        {
+          "v": "fail",
+          "check": "Headlines earn the scroll",
+          "note": "Section headings across the site — 'Tailored Accountancy Solutions', 'Why us', 'How it works', 'Get in touch' — are labels, not hooks. None of them give a reason to read what follows.",
+          "rec": "Rewrite at least the three most-read section headings so they pull the visitor forward: 'Why most doctors overpay — and how to stop' beats 'Why us' every time."
+        },
+        {
+          "v": "fail",
+          "check": "No weasel words or filler",
+          "note": "'Tailored' appears at least eight times across the site; 'comprehensive', 'seamless', 'personalized', and 'dedicated' are scattered throughout. These are non-falsifiable claims that could appear on any accountancy website in the country.",
+          "rec": "Do a find-and-replace on 'tailored', 'comprehensive', and 'personalized' — every instance should be replaced with a specific claim or deleted entirely."
+        },
+        {
+          "v": "fail",
+          "check": "Pricing addressed somewhere",
+          "note": "There is no mention of cost, fees, or pricing structure anywhere on the site — not a 'from' figure, not a pricing philosophy, nothing. For a doctor weighing up whether to enquire, this is the single biggest friction point.",
+          "rec": "Add a pricing section or a short paragraph on the services page explaining how you charge — monthly retainer, annual fee, or a starting-from figure — so the right people self-qualify."
+        }
+      ]
+    },
+    {
+      "id": "trust",
+      "findings": [
+        {
+          "v": "pass",
+          "check": "About page makes the owner human and connects to the client's problem",
+          "note": "Real photos of both founders, a genuine origin story (Dr. Othman took a sabbatical to learn finance after experiencing the exact stress the target client feels), and clear credentials. The story earns trust before a service is mentioned."
+        },
+        {
+          "v": "pass",
+          "check": "Credentials and accreditations visible",
+          "note": "Dr. Othman's MSc, PhD, and MRCGP are prominent; Lucas's MAAT and 15 years of experience are clearly stated. These are external, verifiable markers of competence."
+        },
+        {
+          "v": "partial",
+          "check": "Testimonials specific, attributed, outcome-focused",
+          "note": "Three testimonials are named with role and location — Dr. Emily Carter (Sessional GP, Manchester), Dr. James Robinson (GP Partner, London), Dr. Adam Wilson (Plastic Surgeon, Leeds) — which is better than most. However there are no photos, no dates, and the language reads slightly constructed.",
+          "rec": "Add a photo and approximate date to each testimonial, and tighten the language to sound like something a doctor actually said rather than a polished summary."
+        },
+        {
+          "v": "partial",
+          "check": "Case study with real results",
+          "note": "The 'Saving Over £30,000' case study has a credible result and relevant detail, but every case study on the site is authored by Visuable — the web agency that built the site. A visitor who clicks through will see the agency's promotional bio as the author.",
+          "rec": "Rewrite the case studies in the first person under the DrAccountant name and remove Visuable's authorship credit."
+        },
+        {
+          "v": "fail",
+          "check": "Social proof is genuine",
+          "note": "The logo strip shows NHS, RCGP, GMC, UCL, and Greater Manchester Urgent Primary Care Alliance — all regulatory bodies or university affiliations, not clients. A doctor who recognises these logos will know they don't represent client relationships, which damages trust rather than building it.",
+          "rec": "Remove these logos immediately — if you want a logo strip, use it for genuine software partners (BrightPay and FreshBooks are already there) or real clients who've given permission."
+        },
+        {
+          "v": "fail",
+          "check": "Trust signals sit near CTAs",
+          "note": "The contact page is a plain form with no testimonial, no credential mention, and no reassurance about what happens next. A doctor who clicks 'Get in Touch' arrives at a cold form with nothing to reinforce the decision they're about to make.",
+          "rec": "Add one short testimonial or a founder headshot with a brief trust line directly above the contact form."
+        }
+      ]
+    },
+    {
+      "id": "buyer",
+      "findings": [
+        {
+          "v": "pass",
+          "check": "Reviews and third-party validation",
+          "note": "dosfinds.co.uk lists 16 reviews at 5.0 stars, and a LinkedIn profile is active. Strong third-party proof exists — though it's not surfaced on the website itself, which limits its impact on a visitor who never goes looking."
+        },
+        {
+          "v": "partial",
+          "check": "Problems and challenges acknowledged",
+          "note": "NHS pension complexity, multiple income streams, and tax stress are referenced across the site. But there's no honest discussion of who this isn't right for, what can go wrong, or service limitations — only the positive picture is presented.",
+          "rec": "Add a short 'who this is for' and 'who this isn't for' note to the services page so visitors can self-qualify."
+        },
+        {
+          "v": "partial",
+          "check": "'Is this right for me?' answered",
+          "note": "The site mentions doctors, consultants, dentists, and allied health professionals as the target audience, which gives some range. But there's no trigger: what situation means you need DrAccountant now rather than later?",
+          "rec": "Add a brief qualifier — 'If you're managing NHS and private income, approaching a pension decision, or have never had an accountant who understood medical finance, this is for you.'"
+        },
+        {
+          "v": "fail",
+          "check": "Cost/pricing addressed",
+          "note": "See Copywriting — no pricing context anywhere on the site. Noted here as the primary buyer question for any service business.",
+          "rec": "N/A — see Copywriting section."
+        },
+        {
+          "v": "fail",
+          "check": "Comparisons addressed",
+          "note": "The site doesn't address why DrAccountant over a generalist, over a larger firm, or over self-managing. A doctor who is already with an accountant and wondering whether to switch has no help making that comparison.",
+          "rec": "Add a short comparison section or FAQ entry: 'What makes you different from my current accountant?'"
+        },
+        {
+          "v": "fail",
+          "check": "How-to/educational content",
+          "note": "The three blog posts are all authored by Visuable (the web agency) and include a post dated 2019 that appears to be a Squarespace template placeholder. There is no genuine educational content from the business.",
+          "rec": "Replace the agency content with one article written by Dr. Othman on a real, common issue — NHS pension annual allowance charges, for example — to demonstrate expertise before a call."
+        }
+      ]
+    },
+    {
+      "id": "journey",
+      "findings": [
+        {
+          "v": "pass",
+          "check": "One clear CTA above the fold on every page",
+          "note": "'Book your Free Consultation Today' is the single, consistent call to action across every page. There's no choice paralysis — one obvious next step everywhere."
+        },
+        {
+          "v": "pass",
+          "check": "3-click path to enquiry",
+          "note": "Homepage to contact form is one click. The CTA button is in the nav and repeated throughout every page."
+        },
+        {
+          "v": "partial",
+          "check": "Homepage tells a logical story",
+          "note": "The flow is roughly: headline → who we are → services → testimonials → case studies → why us → how it works → CTA. It's broadly logical, but 'who we are' appears before any problem or tension is established, and 'why us' arrives very late after case studies.",
+          "rec": "Move the 'why us' points earlier and lead with the client's situation before introducing the business."
+        },
+        {
+          "v": "partial",
+          "check": "Contact/booking genuinely low-friction",
+          "note": "A contact form with first name, last name, email, subject, and message plus reCAPTCHA is present, but there's no direct booking tool and no phone number visible. A doctor who wants to act now has to wait for a response before anything is confirmed.",
+          "rec": "Add a Calendly link alongside the form — see Fixes — so instant booking is possible."
+        },
+        {
+          "v": "partial",
+          "check": "Navigation serves new visitors, not existing clients",
+          "note": "The nav includes a redundant 'Home' link (the logo already does this) and lists Resources before Contact, which de-prioritises the most important conversion action. No client login in the nav, which is good.",
+          "rec": "Remove the Home link and move Contact before Resources in the nav order."
+        },
+        {
+          "v": "fail",
+          "check": "Clear next step after enquiry",
+          "note": "The contact page gives no indication of what happens after you submit — no response time commitment, no description of what the first conversation looks like, no reassurance that you won't be ambushed by a sales call.",
+          "rec": "Add three lines below the form: when you'll hear back, what the first call covers, and that there's no obligation."
+        }
+      ]
+    },
+    {
+      "id": "hub",
+      "findings": [
+        {
+          "v": "partial",
+          "check": "Content is easy to find and navigate",
+          "note": "Resources is in the main nav and is one click away. However with only three posts and no categories or search, there's very little to navigate.",
+          "rec": "Once real content exists, add category tags so visitors can find relevant posts quickly."
+        },
+        {
+          "v": "fail",
+          "check": "Content hub exists with real, recent articles",
+          "note": "The Resources page has three posts: two dated December 2024, one showing an 11 March 2019 date that appears to be a Squarespace template placeholder. All three are authored by Visuable — the web agency — not by the business.",
+          "rec": "Replace all three with genuine articles written by Dr. Othman or Lucas; even one real post changes the credibility of the page entirely."
+        },
+        {
+          "v": "fail",
+          "check": "Content covers the Big 5 topics",
+          "note": "The three posts cover GP financial efficiency, burnout, and tax simplification at a surface level. No pricing discussion, no comparisons, no 'problems we've seen', no reviews or best-of content — the topics buyers actually search for are missing.",
+          "rec": "Plan five posts: 'How much does a specialist medical accountant cost?', 'NHS pension annual allowance — what most doctors get wrong', 'Do I need a specialist or will any accountant do?', a client story, and a how-to guide."
+        },
+        {
+          "v": "fail",
+          "check": "FAQs answer real buyer questions",
+          "note": "There are no FAQs anywhere on the site. The questions a doctor would ask before enquiring — how much does it cost, what's included, how is this different from my current accountant — go completely unanswered.",
+          "rec": "Add a simple FAQ section to the services or contact page covering cost, process, and who this is for."
+        },
+        {
+          "v": "fail",
+          "check": "Video content present",
+          "note": "There is no video anywhere on the site. A short 'meet the founders' video from Dr. Othman would do more trust-building work than any written content — the GP angle is the business's strongest asset and video is the fastest way to make it real.",
+          "rec": "Record a 90-second video of Dr. Othman explaining why he co-founded DrAccountant and embed it on the homepage or About page."
+        },
+        {
+          "v": "fail",
+          "check": "'Start here' or assignment selling path exists",
+          "note": "There is no guided content path, no 'before we talk' page, and no recommended reading sequence. A doctor who wants to understand what they're signing up for before booking a call has nowhere to start.",
+          "rec": "Create a simple 'Before your consultation' page that links to two or three pieces of content a prospect should read first — it pre-educates leads and shortens the first call significantly."
+        },
+        {
+          "v": "fail",
+          "check": "Content supports the sales process",
+          "note": "Agency-written placeholder content cannot pre-educate a prospect or shorten a sales conversation. A doctor who has read a genuine article by Dr. Othman before a call arrives already trusting the expertise — that conversion advantage is currently zero.",
+          "rec": "N/A — see 'Content hub exists' above; fixing that fixes this."
+        }
+      ]
+    },
+    {
+      "id": "tech",
+      "findings": [
+        {
+          "v": "pass",
+          "check": "SSL active",
+          "note": "The site is served over HTTPS and returned a 200 status. No browser warnings."
+        },
+        {
+          "v": "pass",
+          "check": "Owner-editable CMS",
+          "note": "Built on Squarespace — fully editable by the business without developer involvement. Adding a testimonial, a blog post, or updating a service description requires no technical help."
+        },
+        {
+          "v": "pass",
+          "check": "Indexed for branded search",
+          "note": "A search for 'DrAccountant draccountant.org' returns the site as the first result. Branded search is working."
+        },
+        {
+          "v": "partial",
+          "check": "Contact forms and booking tools working",
+          "note": "The contact form is present and the CTA buttons all link correctly to /contact. However there is no booking tool — a doctor who wants to lock in a time has to wait for a manual response, which adds unnecessary friction.",
+          "rec": "Add a Calendly or equivalent booking link so visitors can self-schedule — see Fixes."
+        }
+      ]
+    }
+  ],
+  "positives": [
+    "GP-founded positioning is a genuine differentiator — it survives the name-removal test and is immediately meaningful to a doctor evaluating accountants.",
+    "Dr. Othman's origin story on the About page is real and compelling — it answers 'why should I trust this person?' before a word of sales copy appears.",
+    "16 reviews at 5.0 stars on dosfinds.co.uk — strong independent social proof that exists, even if it's not yet surfaced on the site.",
+    "Real founder photos throughout the site — no stock handshakes, which immediately sets a warmer and more trustworthy tone."
+  ]
+}

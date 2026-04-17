@@ -95,7 +95,7 @@
     <span class="chev" id="chev-s1">▼</span>
   </div>
   <div class="sec-prog-wrap"><div class="sec-prog-bar b-strategy" style="width:29%"></div></div>
-  <div class="findings-list" id="body-s1">
+  <div class="findings-list" id="body-s1" style="display:none">
   <div class="sec-desc">Is the site built around a clear story and a defined audience? The goal is for the right person to land on this site and immediately feel like they've found the right place — not a generic business that serves everyone.</div>
     <div class="finding">
       <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
@@ -162,7 +162,7 @@
     <span class="chev" id="chev-s2">▼</span>
   </div>
   <div class="sec-prog-wrap"><div class="sec-prog-bar b-messaging" style="width:25%"></div></div>
-  <div class="findings-list" id="body-s2">
+  <div class="findings-list" id="body-s2" style="display:none">
   <div class="sec-desc">Does the site speak to the right person about the right problem? Good messaging makes the ideal client feel understood before they're sold to. If the copy could belong to any business in the same category, it's not doing its job.</div>
     <div class="finding">
       <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
@@ -237,7 +237,7 @@
     <span class="chev" id="chev-s3">▼</span>
   </div>
   <div class="sec-prog-wrap"><div class="sec-prog-bar b-copy" style="width:14%"></div></div>
-  <div class="findings-list" id="body-s3">
+  <div class="findings-list" id="body-s3" style="display:none">
   <div class="sec-desc">Is the writing actually moving a visitor toward making contact? Every line should earn its place. If it doesn't bring the reader closer to getting in touch, it shouldn't be there.</div>
     <div class="finding">
       <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
@@ -305,7 +305,7 @@
     <span class="chev" id="chev-s4">▼</span>
   </div>
   <div class="sec-prog-wrap"><div class="sec-prog-bar b-trust" style="width:40%"></div></div>
-  <div class="findings-list" id="body-s4">
+  <div class="findings-list" id="body-s4" style="display:none">
   <div class="sec-desc">Is there enough evidence that this business can actually deliver? Claims without proof are ignored. This section checks whether the site gives visitors real reasons to believe — not just things the business says about itself.</div>
     <div class="finding">
       <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
@@ -356,7 +356,7 @@
     <span class="chev" id="chev-s5">▼</span>
   </div>
   <div class="sec-prog-wrap"><div class="sec-prog-bar b-buyer" style="width:0%"></div></div>
-  <div class="findings-list" id="body-s5">
+  <div class="findings-list" id="body-s5" style="display:none">
   <div class="sec-desc">Does the site answer the questions a buyer is actually asking — or only the ones the business wants to answer? If a question goes unanswered here, the visitor will go looking for a competitor who does answer it.</div>
     <div class="finding">
       <div class="verdict-dot"><span class="verdict-tag v-fail">FAIL</span></div>
@@ -417,7 +417,7 @@
     <span class="chev" id="chev-s6">▼</span>
   </div>
   <div class="sec-prog-wrap"><div class="sec-prog-bar b-journey" style="width:33%"></div></div>
-  <div class="findings-list" id="body-s6">
+  <div class="findings-list" id="body-s6" style="display:none">
   <div class="sec-desc">Can a visitor get from landing on the site to making contact without friction? This checks whether the path to an enquiry is clear, short, and easy — and what happens once someone decides they want to get in touch.</div>
     <div class="finding">
       <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
@@ -476,7 +476,7 @@
     <span class="chev" id="chev-s7">▼</span>
   </div>
   <div class="sec-prog-wrap"><div class="sec-prog-bar b-hub" style="width:0%"></div></div>
-  <div class="findings-list" id="body-s7">
+  <div class="findings-list" id="body-s7" style="display:none">
   <div class="sec-desc">Does the site have content that educates, builds trust, and does the selling before anyone picks up the phone? The best websites work as 24/7 sales tools — answering objections and building confidence while the business owner gets on with their day.</div>
     <div class="finding">
       <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
@@ -545,7 +545,7 @@
     <span class="chev" id="chev-s8">▼</span>
   </div>
   <div class="sec-prog-wrap"><div class="sec-prog-bar b-tech" style="width:40%"></div></div>
-  <div class="findings-list" id="body-s8">
+  <div class="findings-list" id="body-s8" style="display:none">
   <div class="sec-desc">Are the basics in place and actually working? A site that's hard to find, has a broken contact form, or can't be updated without a developer will leak enquiries before a word is read.</div>
     <div class="finding">
       <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
@@ -604,7 +604,7 @@
 function toggleSec(id) {
   const body = document.getElementById('body-'+id);
   const chev = document.getElementById('chev-'+id);
-  const isOpen = !body.style.display || body.style.display !== 'none';
+  const isOpen = body.style.display !== 'none';
   body.style.display = isOpen ? 'none' : 'block';
   chev.classList.toggle('open', !isOpen);
 }

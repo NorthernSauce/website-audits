@@ -98,7 +98,7 @@ def render_section(sec, idx):
     <span class="chev" id="chev-s{n}">▼</span>
   </div>
   <div class="sec-prog-wrap"><div class="sec-prog-bar {badge}" style="width:{pct}%"></div></div>
-  <div class="findings-list" id="body-s{n}">{desc_html}
+  <div class="findings-list" id="body-s{n}" style="display:none">{desc_html}
 {findings_html}
   </div>
 </div>"""
@@ -204,7 +204,7 @@ def generate(data, output_path):
 function toggleSec(id) {{
   const body = document.getElementById('body-'+id);
   const chev = document.getElementById('chev-'+id);
-  const isOpen = !body.style.display || body.style.display !== 'none';
+  const isOpen = body.style.display !== 'none';
   body.style.display = isOpen ? 'none' : 'block';
   chev.classList.toggle('open', !isOpen);
 }}

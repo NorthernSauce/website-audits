@@ -89,14 +89,81 @@
 
 <div class="audit-section">
   <div class="audit-sec-head" onclick="toggleSec('s1')">
-    <span class="sec-badge b-strategy">Strategy</span>
-    <h2>Strategy</h2>
+    <span class="sec-badge b-journey">Why aren't visitors getting in touch?</span>
+    <h2>Why aren't visitors getting in touch?</h2>
     <span class="sec-score">2 / 7 &nbsp;·&nbsp; 29%</span>
     <span class="chev" id="chev-s1">▼</span>
   </div>
-  <div class="sec-prog-wrap"><div class="sec-prog-bar b-strategy" style="width:29%"></div></div>
+  <div class="sec-prog-wrap"><div class="sec-prog-bar b-journey" style="width:29%"></div></div>
   <div class="findings-list" id="body-s1" style="display:none">
-  <div class="sec-desc">Is the site built around a clear story and a defined audience? The goal is for the right person to land on this site and immediately feel like they've found the right place — not a generic business that serves everyone.</div>
+  <div class="sec-desc">This checks every point of friction between a visitor who's interested and one who's actually made contact. One unclear button, one extra step, one 'we'll get back to you' without a timeframe — and they're gone.</div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-fail">FAIL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Main call to action and a lower-commitment option both present</div>
+        <div class="finding-note">Every CTA on the site pushes straight to booking a consultation, with nothing for a doctor who's interested but not ready to commit yet. Most visitors won't book on a first visit — without a lower-stakes option like a guide or newsletter, those warm leads leave with no way to bring them back.</div>
+      <div class="finding-rec"><strong>Fix:</strong> Add one transitional option — a downloadable resource on NHS pension decisions, or a newsletter signup — so there's a path for warm visitors who aren't ready to book yet.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">One clear next step on every page</div>
+        <div class="finding-note">'Book your Free Consultation Today' is the single, consistent call to action across every page — one obvious next step everywhere. Giving visitors multiple CTAs at once splits their attention and reduces the chance they act on any of them, so this is exactly right.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">3-click path to enquiry</div>
+        <div class="finding-note">Homepage to contact form is a single click, with the CTA button in the nav and repeated throughout every page. Every extra step between interest and action loses a percentage of visitors — this removes almost all of that friction.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Homepage tells a logical story</div>
+        <div class="finding-note">The homepage introduces the business before establishing any problem or tension — 'who we are' comes before a visitor has been given a reason to care. A visitor who doesn't feel the problem first won't feel the value of the solution, so leading with the business rather than the client's situation costs you the emotional connection that drives action.</div>
+      <div class="finding-rec"><strong>Fix:</strong> Move the 'why us' points earlier and lead with the client's situation before introducing the business.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Contact/booking genuinely low-friction</div>
+        <div class="finding-note">The contact form requires five fields, a reCAPTCHA, and then a wait for a manual reply before anything is confirmed. That gap between clicking 'get in touch' and having a call actually booked is where most enquiries fall apart — a direct booking link removes it entirely.</div>
+      <div class="finding-rec"><strong>Fix:</strong> Add a Calendly link alongside the form — see Fixes — so instant booking is possible.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Navigation serves new visitors, not existing clients</div>
+        <div class="finding-note">The nav has a redundant Home link (the logo already does this) and lists Resources before Contact — which buries the most important action behind content most first-time visitors won't want first. Nav order signals priority; anything that pushes Contact further right reduces the chance it gets clicked.</div>
+      <div class="finding-rec"><strong>Fix:</strong> Remove the Home link and move Contact before Resources in the nav order.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-fail">FAIL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Clear next step after enquiry</div>
+        <div class="finding-note">The contact page gives no indication of what happens after you submit — how quickly you'll hear back, what the first call looks like, or that there's no obligation attached. Uncertainty at the exact moment of action is one of the most common reasons people don't follow through, even after they've decided they want to.</div>
+      <div class="finding-rec"><strong>Fix:</strong> Add three lines below the form: when you'll hear back, what the first call covers, and that there's no obligation.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="audit-section">
+  <div class="audit-sec-head" onclick="toggleSec('s2')">
+    <span class="sec-badge b-strategy">Why would anyone pick you over everyone else?</span>
+    <h2>Why would anyone pick you over everyone else?</h2>
+    <span class="sec-score">2 / 5 &nbsp;·&nbsp; 40%</span>
+    <span class="chev" id="chev-s2">▼</span>
+  </div>
+  <div class="sec-prog-wrap"><div class="sec-prog-bar b-strategy" style="width:40%"></div></div>
+  <div class="findings-list" id="body-s2" style="display:none">
+  <div class="sec-desc">If a visitor could read your site and three competitors' sites without seeing any names, could they tell which is yours? This checks whether your site gives someone a real reason to choose you — not just 'we're passionate and dedicated', but something specific and honest that only you could say.</div>
     <div class="finding">
       <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
       <div class="finding-body">
@@ -122,14 +189,6 @@
     <div class="finding">
       <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
       <div class="finding-body">
-        <div class="finding-check">The core problem is named clearly</div>
-        <div class="finding-note">NHS pension complexity and multiple income streams are mentioned, but as features of the service rather than the real source of stress a doctor carries. Without naming the core problem clearly there's no tension — and without tension there's no reason for a visitor to feel they need to do something about it.</div>
-      <div class="finding-rec"><strong>Fix:</strong> Name the core problem directly — 'the NHS pension is the most complex financial decision a doctor makes, and most get it wrong' — and put it front and centre above the fold.</div>
-      </div>
-    </div>
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
-      <div class="finding-body">
         <div class="finding-check">Reflects current business</div>
         <div class="finding-note">Blog posts are dated December 2024 — with one showing a 2019 placeholder date that was never updated — and the content reads like it was written at launch and never revisited. A doctor who notices this will wonder whether the business is still actively engaged with its clients, or just coasting.</div>
       <div class="finding-rec"><strong>Fix:</strong> Replace agency-authored content with at least one article and one case study written by the founders.</div>
@@ -143,39 +202,32 @@
       <div class="finding-rec"><strong>Fix:</strong> Add a brief scope note under each service explaining what's included and how delivery works, plus a pricing anchor.</div>
       </div>
     </div>
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">FAIL</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Main call to action and a lower-commitment option both present</div>
-        <div class="finding-note">Every CTA on the site pushes straight to booking a consultation, with nothing for a doctor who's interested but not ready to commit yet. Most visitors won't book on a first visit — without a lower-stakes option like a guide or newsletter, those warm leads leave with no way to bring them back.</div>
-      <div class="finding-rec"><strong>Fix:</strong> Add one transitional option — a downloadable resource on NHS pension decisions, or a newsletter signup — so there's a path for warm visitors who aren't ready to book yet.</div>
-      </div>
-    </div>
   </div>
 </div>
 
 <div class="audit-section">
-  <div class="audit-sec-head" onclick="toggleSec('s2')">
-    <span class="sec-badge b-messaging">Messaging</span>
-    <h2>Messaging</h2>
-    <span class="sec-score">2 / 8 &nbsp;·&nbsp; 25%</span>
-    <span class="chev" id="chev-s2">▼</span>
+  <div class="audit-sec-head" onclick="toggleSec('s3')">
+    <span class="sec-badge b-messaging">Does your site speak to the right person?</span>
+    <h2>Does your site speak to the right person?</h2>
+    <span class="sec-score">1 / 8 &nbsp;·&nbsp; 12%</span>
+    <span class="chev" id="chev-s3">▼</span>
   </div>
-  <div class="sec-prog-wrap"><div class="sec-prog-bar b-messaging" style="width:25%"></div></div>
-  <div class="findings-list" id="body-s2" style="display:none">
-  <div class="sec-desc">Does the site speak to the right person about the right problem? Good messaging makes the ideal client feel understood before they're sold to. If the copy could belong to any business in the same category, it's not doing its job.</div>
+  <div class="sec-prog-wrap"><div class="sec-prog-bar b-messaging" style="width:12%"></div></div>
+  <div class="findings-list" id="body-s3" style="display:none">
+  <div class="sec-desc">People don't buy services. They buy solutions to problems they feel. This checks whether your site opens in the client's world — names the problem they actually lose sleep over, speaks to the frustration underneath it, and shows them what life looks like once it's solved.</div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">The core problem is named clearly</div>
+        <div class="finding-note">NHS pension complexity and multiple income streams are mentioned, but as features of the service rather than the real source of stress a doctor carries. Without naming the core problem clearly there's no tension — and without tension there's no reason for a visitor to feel they need to do something about it.</div>
+      <div class="finding-rec"><strong>Fix:</strong> Name the core problem directly — 'the NHS pension is the most complex financial decision a doctor makes, and most get it wrong' — and put it front and centre above the fold.</div>
+      </div>
+    </div>
     <div class="finding">
       <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
       <div class="finding-body">
         <div class="finding-check">Genuine understanding of the client's situation shown</div>
         <div class="finding-note">The About page origin story is genuine — Dr. Othman took a sabbatical to learn finance after experiencing the exact stress the target client feels. That's real empathy, not a marketing claim.</div>
-      </div>
-    </div>
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Credibility and expertise clearly evidenced</div>
-        <div class="finding-note">Dr. Othman holds MSc, PhD, and MRCGP credentials alongside firsthand GP experience; Lucas holds MAAT with 15 years in healthcare accounting. Both are visible and credible.</div>
       </div>
     </div>
     <div class="finding">
@@ -230,15 +282,15 @@
 </div>
 
 <div class="audit-section">
-  <div class="audit-sec-head" onclick="toggleSec('s3')">
-    <span class="sec-badge b-copy">Copywriting</span>
-    <h2>Copywriting</h2>
-    <span class="sec-score">1 / 7 &nbsp;·&nbsp; 14%</span>
-    <span class="chev" id="chev-s3">▼</span>
+  <div class="audit-sec-head" onclick="toggleSec('s4')">
+    <span class="sec-badge b-copy">Would your ideal client keep reading — or click away?</span>
+    <h2>Would your ideal client keep reading — or click away?</h2>
+    <span class="sec-score">1 / 6 &nbsp;·&nbsp; 17%</span>
+    <span class="chev" id="chev-s4">▼</span>
   </div>
-  <div class="sec-prog-wrap"><div class="sec-prog-bar b-copy" style="width:14%"></div></div>
-  <div class="findings-list" id="body-s3" style="display:none">
-  <div class="sec-desc">Is the writing actually moving a visitor toward making contact? Every line should earn its place. If it doesn't bring the reader closer to getting in touch, it shouldn't be there.</div>
+  <div class="sec-prog-wrap"><div class="sec-prog-bar b-copy" style="width:17%"></div></div>
+  <div class="findings-list" id="body-s4" style="display:none">
+  <div class="sec-desc">Every line on your site is either moving a visitor toward picking up the phone or giving them a reason to leave. This checks whether your words are actually doing that job — or just filling space.</div>
     <div class="finding">
       <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
       <div class="finding-body">
@@ -286,27 +338,26 @@
       <div class="finding-rec"><strong>Fix:</strong> Do a find-and-replace on 'tailored', 'comprehensive', and 'personalized' — every instance should be replaced with a specific claim or deleted entirely.</div>
       </div>
     </div>
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">FAIL</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Pricing addressed somewhere</div>
-        <div class="finding-note">There is no mention of cost, fees, or pricing structure anywhere — not a 'from' figure, not even an explanation of how you charge. A doctor who can't get a rough sense of the investment will either assume the worst and leave, or contact you just to ask the price — which is the most avoidable friction in the whole enquiry process.</div>
-      <div class="finding-rec"><strong>Fix:</strong> Add a pricing section or a short paragraph on the services page explaining how you charge — monthly retainer, annual fee, or a starting-from figure — so the right people self-qualify.</div>
-      </div>
-    </div>
   </div>
 </div>
 
 <div class="audit-section">
-  <div class="audit-sec-head" onclick="toggleSec('s4')">
-    <span class="sec-badge b-trust">Trust & Proof</span>
-    <h2>Trust & Proof</h2>
-    <span class="sec-score">2 / 5 &nbsp;·&nbsp; 40%</span>
-    <span class="chev" id="chev-s4">▼</span>
+  <div class="audit-sec-head" onclick="toggleSec('s5')">
+    <span class="sec-badge b-trust">Do people trust you enough to call?</span>
+    <h2>Do people trust you enough to call?</h2>
+    <span class="sec-score">3 / 6 &nbsp;·&nbsp; 50%</span>
+    <span class="chev" id="chev-s5">▼</span>
   </div>
-  <div class="sec-prog-wrap"><div class="sec-prog-bar b-trust" style="width:40%"></div></div>
-  <div class="findings-list" id="body-s4" style="display:none">
-  <div class="sec-desc">Is there enough evidence that this business can actually deliver? Claims without proof are ignored. This section checks whether the site gives visitors real reasons to believe — not just things the business says about itself.</div>
+  <div class="sec-prog-wrap"><div class="sec-prog-bar b-trust" style="width:50%"></div></div>
+  <div class="findings-list" id="body-s5" style="display:none">
+  <div class="sec-desc">A visitor who's almost ready to get in touch will do one last check: is there proof this person is the real deal? This checks whether your site gives them enough evidence — from enough sources — that the answer is an easy yes.</div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Credibility and expertise clearly evidenced</div>
+        <div class="finding-note">Dr. Othman holds MSc, PhD, and MRCGP credentials alongside firsthand GP experience; Lucas holds MAAT with 15 years in healthcare accounting. Both are visible and credible.</div>
+      </div>
+    </div>
     <div class="finding">
       <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
       <div class="finding-body">
@@ -349,15 +400,23 @@
 </div>
 
 <div class="audit-section">
-  <div class="audit-sec-head" onclick="toggleSec('s5')">
-    <span class="sec-badge b-buyer">Buyer Questions</span>
-    <h2>Buyer Questions</h2>
-    <span class="sec-score">0 / 6 &nbsp;·&nbsp; 0%</span>
-    <span class="chev" id="chev-s5">▼</span>
+  <div class="audit-sec-head" onclick="toggleSec('s6')">
+    <span class="sec-badge b-hub">Are visitors arriving at a first call already convinced?</span>
+    <h2>Are visitors arriving at a first call already convinced?</h2>
+    <span class="sec-score">0 / 14 &nbsp;·&nbsp; 0%</span>
+    <span class="chev" id="chev-s6">▼</span>
   </div>
-  <div class="sec-prog-wrap"><div class="sec-prog-bar b-buyer" style="width:0%"></div></div>
-  <div class="findings-list" id="body-s5" style="display:none">
-  <div class="sec-desc">Does the site answer the questions a buyer is actually asking — or only the ones the business wants to answer? If a question goes unanswered here, the visitor will go looking for a competitor who does answer it.</div>
+  <div class="sec-prog-wrap"><div class="sec-prog-bar b-hub" style="width:0%"></div></div>
+  <div class="findings-list" id="body-s6" style="display:none">
+  <div class="sec-desc">The best enquiries come from people who've already read your content, seen your prices, and decided you're the one. This checks whether your site is doing that pre-selling work — or leaving it all to a first phone call.</div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-fail">FAIL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Pricing addressed somewhere</div>
+        <div class="finding-note">There is no mention of cost, fees, or pricing structure anywhere — not a 'from' figure, not even an explanation of how you charge. A doctor who can't get a rough sense of the investment will either assume the worst and leave, or contact you just to ask the price — which is the most avoidable friction in the whole enquiry process.</div>
+      <div class="finding-rec"><strong>Fix:</strong> Add a pricing section or a short paragraph on the services page explaining how you charge — monthly retainer, annual fee, or a starting-from figure — so the right people self-qualify.</div>
+      </div>
+    </div>
     <div class="finding">
       <div class="verdict-dot"><span class="verdict-tag v-fail">FAIL</span></div>
       <div class="finding-body">
@@ -406,78 +465,6 @@
       <div class="finding-rec"><strong>Fix:</strong> Replace the agency content with one article written by Dr. Othman on a real, common issue — NHS pension annual allowance charges, for example — to demonstrate expertise before a call.</div>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="audit-section">
-  <div class="audit-sec-head" onclick="toggleSec('s6')">
-    <span class="sec-badge b-journey">User Journey</span>
-    <h2>User Journey</h2>
-    <span class="sec-score">2 / 6 &nbsp;·&nbsp; 33%</span>
-    <span class="chev" id="chev-s6">▼</span>
-  </div>
-  <div class="sec-prog-wrap"><div class="sec-prog-bar b-journey" style="width:33%"></div></div>
-  <div class="findings-list" id="body-s6" style="display:none">
-  <div class="sec-desc">Can a visitor get from landing on the site to making contact without friction? This checks whether the path to an enquiry is clear, short, and easy — and what happens once someone decides they want to get in touch.</div>
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
-      <div class="finding-body">
-        <div class="finding-check">One clear next step on every page</div>
-        <div class="finding-note">'Book your Free Consultation Today' is the single, consistent call to action across every page — one obvious next step everywhere. Giving visitors multiple CTAs at once splits their attention and reduces the chance they act on any of them, so this is exactly right.</div>
-      </div>
-    </div>
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
-      <div class="finding-body">
-        <div class="finding-check">3-click path to enquiry</div>
-        <div class="finding-note">Homepage to contact form is a single click, with the CTA button in the nav and repeated throughout every page. Every extra step between interest and action loses a percentage of visitors — this removes almost all of that friction.</div>
-      </div>
-    </div>
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Homepage tells a logical story</div>
-        <div class="finding-note">The homepage introduces the business before establishing any problem or tension — 'who we are' comes before a visitor has been given a reason to care. A visitor who doesn't feel the problem first won't feel the value of the solution, so leading with the business rather than the client's situation costs you the emotional connection that drives action.</div>
-      <div class="finding-rec"><strong>Fix:</strong> Move the 'why us' points earlier and lead with the client's situation before introducing the business.</div>
-      </div>
-    </div>
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Contact/booking genuinely low-friction</div>
-        <div class="finding-note">The contact form requires five fields, a reCAPTCHA, and then a wait for a manual reply before anything is confirmed. That gap between clicking 'get in touch' and having a call actually booked is where most enquiries fall apart — a direct booking link removes it entirely.</div>
-      <div class="finding-rec"><strong>Fix:</strong> Add a Calendly link alongside the form — see Fixes — so instant booking is possible.</div>
-      </div>
-    </div>
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Navigation serves new visitors, not existing clients</div>
-        <div class="finding-note">The nav has a redundant Home link (the logo already does this) and lists Resources before Contact — which buries the most important action behind content most first-time visitors won't want first. Nav order signals priority; anything that pushes Contact further right reduces the chance it gets clicked.</div>
-      <div class="finding-rec"><strong>Fix:</strong> Remove the Home link and move Contact before Resources in the nav order.</div>
-      </div>
-    </div>
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">FAIL</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Clear next step after enquiry</div>
-        <div class="finding-note">The contact page gives no indication of what happens after you submit — how quickly you'll hear back, what the first call looks like, or that there's no obligation attached. Uncertainty at the exact moment of action is one of the most common reasons people don't follow through, even after they've decided they want to.</div>
-      <div class="finding-rec"><strong>Fix:</strong> Add three lines below the form: when you'll hear back, what the first call covers, and that there's no obligation.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="audit-section">
-  <div class="audit-sec-head" onclick="toggleSec('s7')">
-    <span class="sec-badge b-hub">Learning Hub</span>
-    <h2>Learning Hub</h2>
-    <span class="sec-score">0 / 7 &nbsp;·&nbsp; 0%</span>
-    <span class="chev" id="chev-s7">▼</span>
-  </div>
-  <div class="sec-prog-wrap"><div class="sec-prog-bar b-hub" style="width:0%"></div></div>
-  <div class="findings-list" id="body-s7" style="display:none">
-  <div class="sec-desc">Does the site have content that educates, builds trust, and does the selling before anyone picks up the phone? The best websites work as 24/7 sales tools — answering objections and building confidence while the business owner gets on with their day.</div>
     <div class="finding">
       <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
       <div class="finding-body">
@@ -532,57 +519,6 @@
         <div class="finding-check">Content helps visitors feel ready before they make contact</div>
         <div class="finding-note">The three blog posts cover generic topics that don't tackle the specific questions that come up before a first call, like NHS pension annual allowance or how to structure private practice income. When content does this job well, first calls are faster and clients arrive more qualified; right now the site sends none of that groundwork.</div>
       <div class="finding-rec"><strong>Fix:</strong> N/A — see 'Content hub exists' above; fixing that fixes this.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="audit-section">
-  <div class="audit-sec-head" onclick="toggleSec('s8')">
-    <span class="sec-badge b-tech">Technical</span>
-    <h2>Technical</h2>
-    <span class="sec-score">2 / 5 &nbsp;·&nbsp; 40%</span>
-    <span class="chev" id="chev-s8">▼</span>
-  </div>
-  <div class="sec-prog-wrap"><div class="sec-prog-bar b-tech" style="width:40%"></div></div>
-  <div class="findings-list" id="body-s8" style="display:none">
-  <div class="sec-desc">Are the basics in place and actually working? A site that's hard to find, has a broken contact form, or can't be updated without a developer will leak enquiries before a word is read.</div>
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Site connection is secure</div>
-        <div class="finding-note">The site loads securely and a padlock appears in the browser — no warnings or errors for visitors. This matters because a security warning before a word is read is enough to make many visitors leave immediately, so getting this right is non-negotiable.</div>
-      </div>
-    </div>
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Easy to update without a developer</div>
-        <div class="finding-note">Built on Squarespace, which means the founders can update any page, add a blog post, or change a testimonial without calling a developer. Sites that depend on external help to make any change go stale quickly — and a stale site costs enquiries.</div>
-      </div>
-    </div>
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">FAIL</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Easy to find when someone searches for you by name</div>
-        <div class="finding-note">Searching for 'DrAccountant' returns no results for this site — unrelated pages appear instead. Anyone who's been referred or heard the name and tries to look it up won't find it, which means word-of-mouth referrals fall through the gap before they've even seen the site.</div>
-      <div class="finding-rec"><strong>Fix:</strong> Check that the site title and meta description include 'DrAccountant' clearly, and set up a Google Business profile — both help Google connect a name search to the right website.</div>
-      </div>
-    </div>
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Contact forms and booking tools working</div>
-        <div class="finding-note">The contact form is present and all CTA buttons link correctly to the contact page. However there is no booking tool — a doctor who wants to lock in a time has to wait for a manual response, which adds an entirely avoidable step between deciding to act and actually acting.</div>
-      <div class="finding-rec"><strong>Fix:</strong> Add a Calendly or equivalent booking link so visitors can self-schedule — see Fixes.</div>
-      </div>
-    </div>
-    <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-fail">FAIL</span></div>
-      <div class="finding-body">
-        <div class="finding-check">Web addresses are clear and descriptive</div>
-        <div class="finding-note">Blog posts and case studies use Squarespace's auto-generated web addresses — /blog-post-title-one-fsjre and /case-study-2 — which were never updated when the content was published. These rank for nothing in search results and signal to anyone who notices that the site was built and left.</div>
-      <div class="finding-rec"><strong>Fix:</strong> Update each post and case study URL to match its title — Squarespace lets you edit the web address in page settings without a developer.</div>
       </div>
     </div>
   </div>

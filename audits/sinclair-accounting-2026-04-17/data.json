@@ -30,46 +30,22 @@
       "type": "quick"
     },
     {
-      "title": "There's nothing online to confirm Jack is real and trustworthy beyond the site itself",
-      "detail": "A business owner who's interested will Google Jack before they call. Right now there's nothing from anyone other than Jack saying he's worth hiring \u2014 no Google reviews, no independent listings, nothing. The three testimonials on the site have no names or photos, which makes them nearly impossible for a stranger to take seriously.",
+      "title": "There's nothing online to confirm you're real and trustworthy beyond the site itself",
+      "detail": "Anyone who's interested will Google you before they call. Right now there's nothing from anyone other than you saying you're worth hiring \u2014 no Google reviews, no independent listings, nothing. The three testimonials on the site have no names or photos, which makes them nearly impossible for a stranger to take seriously.",
       "action": "Set up a Google Business Profile and ask your two or three best clients to leave a review \u2014 even five real Google reviews transforms how you appear to someone comparing accountants in Chester-le-Street.",
       "type": "quick"
     },
     {
       "title": "Visitors don't know who they'd actually be working with",
-      "detail": "There's no section introducing Jack \u2014 no photo on the homepage, no story, and the AAT qualification that appears in the browser tab description isn't visible anywhere on the page itself. For a service this personal \u2014 someone with full access to your finances \u2014 people need to feel they know something about who they're calling before they'll pick up the phone.",
+      "detail": "There's no section introducing you \u2014 no photo on the homepage, no story, and the AAT qualification that appears in the browser tab description isn't visible anywhere on the page itself. For a service this personal \u2014 someone with full access to your finances \u2014 people need to feel they know something about who they're calling before they'll pick up the phone.",
       "action": "Add a short section with a real photo, two or three sentences about your background and why you work with small businesses, and your AAT qualification clearly visible \u2014 a photo next to a short paragraph is enough.",
       "type": "quick"
     }
   ],
   "sections": [
     {
-      "id": "strategy",
+      "id": "getting_in_touch",
       "findings": [
-        {
-          "v": "partial",
-          "check": "The site puts the client first, not the business",
-          "note": "There is some client-focused language \u2014 'letting you focus on what you do best', 'you're running a small business and need practical help' \u2014 but most major sections open with 'At Sinclair Accounting, we...' which puts the business at the centre. A visitor landing here doesn't immediately feel 'this site gets me'; they feel 'this site is about them.'",
-          "rec": "Rewrite section openers so they start with the client's situation \u2014 'You're running a business and tax is the last thing you want to think about' opens in their world, not yours."
-        },
-        {
-          "v": "partial",
-          "check": "The core problem the client faces is named clearly",
-          "note": "The site mentions 'stress of taxes' and 'simplifying financial information' \u2014 the problem is present but surface-level. The specific, felt fear that actually drives a small business owner to find an accountant \u2014 an unexpected tax bill, cash flow drying up, getting it wrong and facing penalties \u2014 isn't named anywhere.",
-          "rec": "Name one concrete problem in the opening section \u2014 'Not knowing what you owe until HMRC tells you' is something your ideal client actually worries about."
-        },
-        {
-          "v": "partial",
-          "check": "Specialist, not generalist",
-          "note": "'Accountants for small businesses' describes almost every accountant in the country. The tax planning section mentions 'service businesses' which hints at a niche, but it's buried and inconsistent \u2014 there's no clear signal of who you're best at helping.",
-          "rec": "Decide on the type of small business you most want to work with and say so upfront \u2014 'service businesses in the North East' is a far stronger position than 'small businesses'."
-        },
-        {
-          "v": "fail",
-          "check": "Offer clarity",
-          "note": "The three service tiers are named but never explained in enough detail for a visitor to understand what they'd actually get \u2014 and all the 'Learn More' links skip straight to the booking form rather than providing any further information. A visitor can't work out whether this is the right fit without picking up the phone.",
-          "rec": "Add at least two or three sentences per service tier explaining what's included and who it's designed for, so visitors can self-qualify before making contact."
-        },
         {
           "v": "fail",
           "check": "Main call to action AND a lower-commitment option both present",
@@ -77,200 +53,11 @@
           "rec": "Add one lower-commitment option \u2014 a free guide, a short email series, or a 'subscribe for tax tips' \u2014 so the people who aren't ready to call yet have a reason to stay in touch."
         },
         {
-          "v": "partial",
-          "check": "Reflects current business",
-          "note": "The service content appears current, but the 'hear the latest news' section contains no articles \u2014 just a heading and two images. An empty content section signals the site was set up at launch and hasn't been touched since.",
-          "rec": "Either publish one real article or remove the news section \u2014 an empty section is worse than no section at all."
-        },
-        {
-          "v": "fail",
-          "check": "Clear differentiator",
-          "note": "Remove the name and logo \u2014 this site could belong to any small business accountant in the UK. 'Your Partner in Financial Growth', 'stress-free accounts', 'tailored levels of service' are phrases every accountant uses, and none of them give a visitor a reason to choose Jack over anyone else.",
-          "rec": "Identify one thing only you can say \u2014 your background, a specific client result, the type of business you understand deeply \u2014 and make it the central message."
-        }
-      ]
-    },
-    {
-      "id": "messaging",
-      "findings": [
-        {
-          "v": "fail",
-          "check": "Opening headline connects to the client's desire or situation",
-          "note": "'Accountants for small businesses' is a category label, and 'Your Partner in Financial Growth' describes the business relationship rather than what a client actually wants. Neither makes the right person think 'that's exactly me' or pulls them toward the outcome they're after \u2014 more money in their pocket, less time worrying about tax, a business they feel in control of.",
-          "rec": "Rewrite the headline to speak to the desire your ideal client has \u2014 something like 'Run your business. We'll make sure HMRC isn't a problem.' gives them a reason to keep reading."
-        },
-        {
-          "v": "fail",
-          "check": "The emotional frustration behind the practical problem is addressed",
-          "note": "The site mentions 'stress of taxes' but never goes deeper into what that stress feels like \u2014 the anxiety every time an unexpected bill arrives, the feeling of being out of control of your own money, the worry that you might be getting it wrong. Without naming the feeling, the site stays on the surface of why someone actually picks up the phone.",
-          "rec": "Add one sentence that shows you understand the feeling underneath the problem \u2014 'Most of our clients came to us after a tax bill they weren't expecting' does more work than any list of services."
-        },
-        {
-          "v": "fail",
-          "check": "The bigger picture \u2014 what's really at stake \u2014 comes through",
-          "note": "There's no sense of what having the right accountant actually makes possible for a small business owner beyond 'financial growth' \u2014 a vague phrase that slides off the page. What does a financially sorted business actually give you? The confidence to hire? The freedom to take on more work? A business you could eventually sell?",
-          "rec": "Add one line about what this really makes possible \u2014 not 'growth' but the specific thing your best clients tell you their life looks like now."
-        },
-        {
-          "v": "fail",
-          "check": "The site shows it understands the client's situation before it sells anything",
-          "note": "The site moves straight into listing services without first showing it understands what a small business owner is dealing with day to day. Visitors feel sold to rather than understood, and people don't buy from businesses that pitch before they connect.",
-          "rec": "Open with one or two sentences that describe the client's world before you mention a single service \u2014 show you get their situation before you offer to fix it."
-        },
-        {
-          "v": "fail",
-          "check": "Credibility and expertise are clearly evidenced",
-          "note": "Your AAT qualification is mentioned in the browser tab description but doesn't appear anywhere on the page a visitor can actually read. There's no mention of qualifications, how long you've been doing this, or any named result \u2014 just claims without proof.",
-          "rec": "Add your AAT qualification and a brief note on your experience somewhere visible on the page \u2014 credentials you've earned should be working for you, not hidden in a meta tag."
-        },
-        {
           "v": "fail",
           "check": "What happens next is explained clearly",
           "note": "There's no explanation of the process \u2014 what happens after someone gets in touch, what the first conversation looks like, how quickly they'd hear back. A visitor who doesn't know what they're committing to when they click 'Book a call' is less likely to do it.",
           "rec": "Add three simple steps \u2014 'Book a free 15-min call \u2192 We review your situation \u2192 You get a clear plan, in plain English' \u2014 it removes the uncertainty that stops people from making contact."
         },
-        {
-          "v": "partial",
-          "check": "What life looks like after working with this business is described",
-          "note": "'Letting you focus on what you do best' and 'unbelievable growth' in the testimonials hint at the outcome, but they're vague enough that a visitor can't picture what their business actually looks like once they're working with you.",
-          "rec": "Get specific: 'Close your laptop on Friday knowing exactly what you owe, what's coming in, and what you can pay yourself' gives your ideal client something real to want."
-        },
-        {
-          "v": "fail",
-          "check": "There's a reason to act now, not later",
-          "note": "Nothing on the site makes the status quo feel uncomfortable \u2014 no sense of what's being lost every month without proper financial management, no urgency, no reason today is better than next month. A visitor on the fence will bookmark the page and never come back.",
-          "rec": "Add one honest line that makes waiting feel costly \u2014 'Every month without a clear view of your finances is a month you might be overpaying tax or missing a growth opportunity' is specific and true."
-        }
-      ]
-    },
-    {
-      "id": "copy",
-      "findings": [
-        {
-          "v": "pass",
-          "check": "Clear within 5 seconds what you do and who for",
-          "note": "Within five seconds, a visitor can see this is an accountancy firm for small businesses in Chester-le-Street \u2014 the headline, location, and call to action are all visible immediately without scrolling."
-        },
-        {
-          "v": "fail",
-          "check": "Headings pull the reader forward, not just label sections",
-          "note": "Every section heading is a label \u2014 'Our Services', 'Management Accounts', 'Tax Planning', 'Those who know us best'. None of them give a reason to read what follows or connect to a problem the visitor is trying to solve.",
-          "rec": "Rewrite headings as outcomes or questions \u2014 'Stop paying more tax than you need to' does more work than 'Tax Planning' and gives a reader a reason to keep going."
-        },
-        {
-          "v": "partial",
-          "check": "Copy is written about the client, not the business",
-          "note": "The Level 1 service description opens in the client's world ('You're running a small business and need practical, hands-on help') which is strong \u2014 but most other sections open with 'At Sinclair Accounting, we...' and the ratio tips business-first overall.",
-          "rec": "Carry the Level 1 tone throughout \u2014 every section that opens with 'we' or 'at Sinclair' should be rewritten to open with the client's situation instead."
-        },
-        {
-          "v": "partial",
-          "check": "Services describe what the client gets, not just what the service is called",
-          "note": "The service level descriptions have some useful client language, but 'Essential Support', 'Strategic Growth', and 'Financial Partnership' are labels that don't tell a visitor what they actually receive \u2014 and the Management Accounts and Tax Planning sections describe features rather than the outcome for the client.",
-          "rec": "End each service description with the thing the client ends up with \u2014 'so you always know what you can afford to pay yourself and what's coming next month' turns a feature into a benefit."
-        },
-        {
-          "v": "fail",
-          "check": "No empty claims that any competitor could also make",
-          "note": "'Tailored levels of service', 'hands-on help', 'Your Partner in Financial Growth', 'stress-free' \u2014 these are the exact phrases every accountancy firm uses, and because they're unproven they register as noise.",
-          "rec": "Replace at least one generic claim with something specific you can back up \u2014 instead of 'hands-on help', say what that looks like in practice: 'We pick up the phone same day when something urgent comes up.'"
-        },
-        {
-          "v": "na",
-          "note": "See Buyer Questions \u2014 pricing is covered there.",
-          "check": "Pricing addressed somewhere"
-        },
-        {
-          "v": "partial",
-          "check": "Long copy genuinely scannable",
-          "note": "The page is broadly broken into visual sections which helps, but the Management Accounts paragraph is a dense block of text that a visitor reading on their phone at speed will skip entirely.",
-          "rec": "Break the Management Accounts and Tax Planning descriptions into shorter paragraphs or add a subheading \u2014 it should be readable in 20 seconds of scanning."
-        }
-      ]
-    },
-    {
-      "id": "trust",
-      "findings": [
-        {
-          "v": "partial",
-          "check": "Testimonials are specific, named, and show a real result",
-          "note": "All three testimonials describe real, specific outcomes \u2014 compliance relief, business growth, a penalty appeal \u2014 which gives them more weight than generic praise. None have a name, company, or photo attached though, which means a stranger has no way to verify they're real.",
-          "rec": "Even just adding a first name and business type to each testimonial \u2014 'Sarah, freelance designer' \u2014 dramatically increases how much trust they carry."
-        },
-        {
-          "v": "fail",
-          "check": "At least one case study with a real, measurable outcome",
-          "note": "There are no case studies anywhere on the site. The testimonials hint at good outcomes but don't explain the situation or what was done to achieve them \u2014 and that's the detail that turns a visitor into someone who believes you can solve their specific problem.",
-          "rec": "Write one short case study \u2014 the client's situation, what you did, and what changed \u2014 a single well-told story does more trust-building work than ten anonymous quotes."
-        },
-        {
-          "v": "na",
-          "note": "No logo strips or badge sections present on the site.",
-          "check": "Logo strips and badges show genuine proof"
-        },
-        {
-          "v": "fail",
-          "check": "The About page makes the owner human AND connects to why they do this work",
-          "note": "There's no About section and no introduction to Jack anywhere on the homepage. For a service as personal as accounting \u2014 someone with access to your entire financial picture \u2014 visitors need to feel they know something about who they'd be working with before they'll pick up the phone.",
-          "rec": "Add a short section with a real photo of Jack, two or three sentences about his background, and a line on why he works with small businesses \u2014 it doesn't need to be long, it just needs to be real."
-        },
-        {
-          "v": "fail",
-          "check": "Qualifications and credentials are visible",
-          "note": "The AAT qualification appears in the browser tab description but isn't visible on the page itself \u2014 a visitor reading the site won't see it. There's no other mention of qualifications, training, or professional standing anywhere.",
-          "rec": "Add 'AAT-qualified' and any other relevant credentials in a visible spot on the page \u2014 credentials you've earned should be doing trust-building work, not sitting in a meta tag no one reads."
-        },
-        {
-          "v": "fail",
-          "check": "Proof sits near the point where a decision is made",
-          "note": "The three testimonials appear near the bottom of the page, well below where most visitors will have already decided whether to get in touch. Trust signals do their best work right next to the moment of decision.",
-          "rec": "Move at least one testimonial up near the opening section or alongside the main call to action \u2014 so the best evidence that you're worth hiring appears before people have clicked away."
-        }
-      ]
-    },
-    {
-      "id": "buyer",
-      "findings": [
-        {
-          "v": "fail",
-          "check": "Cost and pricing addressed",
-          "note": "There's no mention of cost anywhere on the site \u2014 not a starting figure, not a pricing model, not even an indication of how you charge. A small business owner who is already cautious about accountancy fees will look for a price first, and when they can't find one, they leave rather than call to ask.",
-          "rec": "Add one sentence explaining how you price \u2014 even 'monthly retainers for small businesses typically start at \u00a3X' gives the right people a reason to stay and the wrong people a reason to move on."
-        },
-        {
-          "v": "fail",
-          "check": "Honest about challenges and limitations",
-          "note": "The site only presents positives \u2014 there's no acknowledgment of who this isn't right for, what might be complicated, or any limitations. Businesses that only publish good news signal they're hiding something, which erodes trust.",
-          "rec": "Add a short line on who you work best with and who you don't \u2014 being honest about your ideal fit signals confidence, not weakness."
-        },
-        {
-          "v": "fail",
-          "check": "Why this business over the alternatives",
-          "note": "The site doesn't address why a small business owner should choose Sinclair Accounting over a bigger firm, a cheaper online service, or doing it themselves with software. These are exactly the comparisons your ideal client is making \u2014 and right now a competitor is answering those questions while you aren't.",
-          "rec": "Add a short paragraph on what you offer that a larger firm or online service doesn't \u2014 personal availability, specific expertise, a single point of contact who actually knows your business."
-        },
-        {
-          "v": "fail",
-          "check": "Reviews and independent proof from outside the site",
-          "note": "There are no independent reviews or ratings for Sinclair Accounting Services anywhere online \u2014 no Google Business Profile, no Trustpilot, no third-party listings. A prospect researching Jack before calling will find nothing from anyone other than Jack.",
-          "rec": "Set up a Google Business Profile and ask your best clients to leave a review \u2014 even five Google reviews transforms how you appear to someone searching for a local accountant."
-        },
-        {
-          "v": "na",
-          "note": "See Learning Hub \u2014 educational content is covered there.",
-          "check": "Useful content that teaches something without immediately selling"
-        },
-        {
-          "v": "fail",
-          "check": "A visitor can work out whether this is right for them without contacting",
-          "note": "There's no clear description of who you help, what working together involves, or what it costs \u2014 a visitor can't self-qualify without picking up the phone. Most won't bother; they'll go to a site that tells them what they need to know.",
-          "rec": "Add a short 'Is this right for me?' section answering the three questions every potential client has: who do you work with, what's included, and what does it cost."
-        }
-      ]
-    },
-    {
-      "id": "journey",
-      "findings": [
         {
           "v": "partial",
           "check": "One clear next step on every page",
@@ -309,12 +96,220 @@
       ]
     },
     {
-      "id": "hub",
+      "id": "stand_out",
+      "findings": [
+        {
+          "v": "partial",
+          "check": "Specialist, not generalist",
+          "note": "'Accountants for small businesses' describes almost every accountant in the country. The tax planning section mentions 'service businesses' which hints at a niche, but it's buried and inconsistent \u2014 there's no clear signal of who you're best at helping.",
+          "rec": "Decide on the type of small business you most want to work with and say so upfront \u2014 'service businesses in the North East' is a far stronger position than 'small businesses'."
+        },
+        {
+          "v": "fail",
+          "check": "Offer clarity",
+          "note": "The three service tiers are named but never explained in enough detail for a visitor to understand what they'd actually get \u2014 and all the 'Learn More' links skip straight to the booking form rather than providing any further information. A visitor can't work out whether this is the right fit without picking up the phone.",
+          "rec": "Add at least two or three sentences per service tier explaining what's included and who it's designed for, so visitors can self-qualify before making contact."
+        },
+        {
+          "v": "partial",
+          "check": "Reflects current business",
+          "note": "The service content appears current, but the 'hear the latest news' section contains no articles \u2014 just a heading and two images. An empty content section signals the site was set up at launch and hasn't been touched since.",
+          "rec": "Either publish one real article or remove the news section \u2014 an empty section is worse than no section at all."
+        },
+        {
+          "v": "fail",
+          "check": "Clear differentiator",
+          "note": "Remove the name and logo \u2014 this site could belong to any small business accountant in the UK. 'Your Partner in Financial Growth', 'stress-free accounts', 'tailored levels of service' are phrases every accountant uses, and none of them give a visitor a reason to choose you over anyone else.",
+          "rec": "Identify one thing only you can say \u2014 your background, a specific client result, the type of business you understand deeply \u2014 and make it the central message."
+        },
+        {
+          "v": "fail",
+          "check": "Honest about challenges and limitations",
+          "note": "The site only presents positives \u2014 there's no acknowledgment of who this isn't right for, what might be complicated, or any limitations. Businesses that only publish good news signal they're hiding something, which erodes trust.",
+          "rec": "Add a short line on who you work best with and who you don't \u2014 being honest about your ideal fit signals confidence, not weakness."
+        },
+        {
+          "v": "fail",
+          "check": "Why this business over the alternatives",
+          "note": "The site doesn't address why a small business owner should choose Sinclair Accounting over a bigger firm, a cheaper online service, or doing it themselves with software. These are exactly the comparisons your ideal client is making \u2014 and right now a competitor is answering those questions while you aren't.",
+          "rec": "Add a short paragraph on what you offer that a larger firm or online service doesn't \u2014 personal availability, specific expertise, a single point of contact who actually knows your business."
+        }
+      ]
+    },
+    {
+      "id": "right_person",
+      "findings": [
+        {
+          "v": "partial",
+          "check": "The site puts the client first, not the business",
+          "note": "There is some client-focused language \u2014 'letting you focus on what you do best', 'you're running a small business and need practical help' \u2014 but most major sections open with 'At Sinclair Accounting, we...' which puts the business at the centre. A visitor landing here doesn't immediately feel 'this site gets me'; they feel 'this site is about them.'",
+          "rec": "Rewrite section openers so they start with the client's situation \u2014 'You're running a business and tax is the last thing you want to think about' opens in their world, not yours."
+        },
+        {
+          "v": "partial",
+          "check": "The core problem the client faces is named clearly",
+          "note": "The site mentions 'stress of taxes' and 'simplifying financial information' \u2014 the problem is present but surface-level. The specific, felt fear that actually drives a small business owner to find an accountant \u2014 an unexpected tax bill, cash flow drying up, getting it wrong and facing penalties \u2014 isn't named anywhere.",
+          "rec": "Name one concrete problem in the opening section \u2014 'Not knowing what you owe until HMRC tells you' is something your ideal client actually worries about."
+        },
+        {
+          "v": "fail",
+          "check": "Opening headline connects to the client's desire or situation",
+          "note": "'Accountants for small businesses' is a category label, and 'Your Partner in Financial Growth' describes the business relationship rather than what a client actually wants. Neither makes the right person think 'that's exactly me' or pulls them toward the outcome they're after \u2014 more money in their pocket, less time worrying about tax, a business they feel in control of.",
+          "rec": "Rewrite the headline to speak to the desire your ideal client has \u2014 something like 'Run your business. We'll make sure HMRC isn't a problem.' gives them a reason to keep reading."
+        },
+        {
+          "v": "fail",
+          "check": "The emotional frustration behind the practical problem is addressed",
+          "note": "The site mentions 'stress of taxes' but never goes deeper into what that stress feels like \u2014 the anxiety every time an unexpected bill arrives, the feeling of being out of control of your own money, the worry that you might be getting it wrong. Without naming the feeling, the site stays on the surface of why someone actually picks up the phone.",
+          "rec": "Add one sentence that shows you understand the feeling underneath the problem \u2014 'Most of our clients came to us after a tax bill they weren't expecting' does more work than any list of services."
+        },
+        {
+          "v": "fail",
+          "check": "The bigger picture \u2014 what's really at stake \u2014 comes through",
+          "note": "There's no sense of what having the right accountant actually makes possible for a small business owner beyond 'financial growth' \u2014 a vague phrase that slides off the page. What does a financially sorted business actually give you? The confidence to hire? The freedom to take on more work? A business you could eventually sell?",
+          "rec": "Add one line about what this really makes possible \u2014 not 'growth' but the specific thing your best clients tell you their life looks like now."
+        },
+        {
+          "v": "fail",
+          "check": "The site shows it understands the client's situation before it sells anything",
+          "note": "The site moves straight into listing services without first showing it understands what a small business owner is dealing with day to day. Visitors feel sold to rather than understood, and people don't buy from businesses that pitch before they connect.",
+          "rec": "Open with one or two sentences that describe the client's world before you mention a single service \u2014 show you get their situation before you offer to fix it."
+        },
+        {
+          "v": "partial",
+          "check": "What life looks like after working with this business is described",
+          "note": "'Letting you focus on what you do best' and 'unbelievable growth' in the testimonials hint at the outcome, but they're vague enough that a visitor can't picture what their business actually looks like once they're working with you.",
+          "rec": "Get specific: 'Close your laptop on Friday knowing exactly what you owe, what's coming in, and what you can pay yourself' gives your ideal client something real to want."
+        },
+        {
+          "v": "fail",
+          "check": "There's a reason to act now, not later",
+          "note": "Nothing on the site makes the status quo feel uncomfortable \u2014 no sense of what's being lost every month without proper financial management, no urgency, no reason today is better than next month. A visitor on the fence will bookmark the page and never come back.",
+          "rec": "Add one honest line that makes waiting feel costly \u2014 'Every month without a clear view of your finances is a month you might be overpaying tax or missing a growth opportunity' is specific and true."
+        }
+      ]
+    },
+    {
+      "id": "copy_works",
+      "findings": [
+        {
+          "v": "pass",
+          "check": "Clear within 5 seconds what you do and who for",
+          "note": "Within five seconds, a visitor can see this is an accountancy firm for small businesses in Chester-le-Street \u2014 the headline, location, and call to action are all visible immediately without scrolling."
+        },
+        {
+          "v": "fail",
+          "check": "Headings pull the reader forward, not just label sections",
+          "note": "Every section heading is a label \u2014 'Our Services', 'Management Accounts', 'Tax Planning', 'Those who know us best'. None of them give a reason to read what follows or connect to a problem the visitor is trying to solve.",
+          "rec": "Rewrite headings as outcomes or questions \u2014 'Stop paying more tax than you need to' does more work than 'Tax Planning' and gives a reader a reason to keep going."
+        },
+        {
+          "v": "partial",
+          "check": "Copy is written about the client, not the business",
+          "note": "The Level 1 service description opens in the client's world ('You're running a small business and need practical, hands-on help') which is strong \u2014 but most other sections open with 'At Sinclair Accounting, we...' and the ratio tips business-first overall.",
+          "rec": "Carry the Level 1 tone throughout \u2014 every section that opens with 'we' or 'at Sinclair' should be rewritten to open with the client's situation instead."
+        },
+        {
+          "v": "partial",
+          "check": "Services describe what the client gets, not just what the service is called",
+          "note": "The service level descriptions have some useful client language, but 'Essential Support', 'Strategic Growth', and 'Financial Partnership' are labels that don't tell a visitor what they actually receive \u2014 and the Management Accounts and Tax Planning sections describe features rather than the outcome for the client.",
+          "rec": "End each service description with the thing the client ends up with \u2014 'so you always know what you can afford to pay yourself and what's coming next month' turns a feature into a benefit."
+        },
+        {
+          "v": "fail",
+          "check": "No empty claims that any competitor could also make",
+          "note": "'Tailored levels of service', 'hands-on help', 'Your Partner in Financial Growth', 'stress-free' \u2014 these are the exact phrases every accountancy firm uses, and because they're unproven they register as noise.",
+          "rec": "Replace at least one generic claim with something specific you can back up \u2014 instead of 'hands-on help', say what that looks like in practice: 'We pick up the phone same day when something urgent comes up.'"
+        },
+        {
+          "v": "partial",
+          "check": "Long copy genuinely scannable",
+          "note": "The page is broadly broken into visual sections which helps, but the Management Accounts paragraph is a dense block of text that a visitor reading on their phone at speed will skip entirely.",
+          "rec": "Break the Management Accounts and Tax Planning descriptions into shorter paragraphs or add a subheading \u2014 it should be readable in 20 seconds of scanning."
+        }
+      ]
+    },
+    {
+      "id": "trust",
       "findings": [
         {
           "v": "fail",
+          "check": "Credibility and expertise are clearly evidenced",
+          "note": "Your AAT qualification is mentioned in the browser tab description but doesn't appear anywhere on the page a visitor can actually read. There's no mention of qualifications, how long you've been doing this, or any named result \u2014 just claims without proof.",
+          "rec": "Add your AAT qualification and a brief note on your experience somewhere visible on the page \u2014 credentials you've earned should be working for you, not hidden in a meta tag."
+        },
+        {
+          "v": "partial",
+          "check": "Testimonials are specific, named, and show a real result",
+          "note": "All three testimonials describe real, specific outcomes \u2014 compliance relief, business growth, a penalty appeal \u2014 which gives them more weight than generic praise. None have a name, company, or photo attached though, which means a stranger has no way to verify they're real.",
+          "rec": "Even just adding a first name and business type to each testimonial \u2014 'Sarah, freelance designer' \u2014 dramatically increases how much trust they carry."
+        },
+        {
+          "v": "fail",
+          "check": "At least one case study with a real, measurable outcome",
+          "note": "There are no case studies anywhere on the site. The testimonials hint at good outcomes but don't explain the situation or what was done to achieve them \u2014 and that's the detail that turns a visitor into someone who believes you can solve their specific problem.",
+          "rec": "Write one short case study \u2014 the client's situation, what you did, and what changed \u2014 a single well-told story does more trust-building work than ten anonymous quotes."
+        },
+        {
+          "v": "na",
+          "note": "No logo strips or badge sections present on the site.",
+          "check": "Logo strips and badges show genuine proof"
+        },
+        {
+          "v": "fail",
+          "check": "The About page makes the owner human AND connects to why they do this work",
+          "note": "There's no About section and no introduction to you anywhere on the homepage. For a service as personal as accounting \u2014 someone with access to your entire financial picture \u2014 visitors need to feel they know something about who they'd be working with before they'll pick up the phone.",
+          "rec": "Add a short section with a real photo, two or three sentences about your background, and a line on why you work with small businesses \u2014 it doesn't need to be long, it just needs to be real."
+        },
+        {
+          "v": "fail",
+          "check": "Qualifications and credentials are visible",
+          "note": "The AAT qualification appears in the browser tab description but isn't visible on the page itself \u2014 a visitor reading the site won't see it. There's no other mention of qualifications, training, or professional standing anywhere.",
+          "rec": "Add 'AAT-qualified' and any other relevant credentials in a visible spot on the page \u2014 credentials you've earned should be doing trust-building work, not sitting in a meta tag no one reads."
+        },
+        {
+          "v": "fail",
+          "check": "Proof sits near the point where a decision is made",
+          "note": "The three testimonials appear near the bottom of the page, well below where most visitors will have already decided whether to get in touch. Trust signals do their best work right next to the moment of decision.",
+          "rec": "Move at least one testimonial up near the opening section or alongside the main call to action \u2014 so the best evidence that you're worth hiring appears before people have clicked away."
+        },
+        {
+          "v": "fail",
+          "check": "Reviews and independent proof from outside the site",
+          "note": "There are no independent reviews or ratings for Sinclair Accounting Services anywhere online \u2014 no Google Business Profile, no Trustpilot, no third-party listings. Anyone researching you before calling will find nothing from anyone other than you.",
+          "rec": "Set up a Google Business Profile and ask your best clients to leave a review \u2014 even five Google reviews transforms how you appear to someone searching for a local accountant."
+        }
+      ]
+    },
+    {
+      "id": "pre_sold",
+      "findings": [
+        {
+          "v": "na",
+          "note": "See Buyer Questions \u2014 pricing is covered there.",
+          "check": "Pricing addressed somewhere"
+        },
+        {
+          "v": "fail",
+          "check": "Cost and pricing addressed",
+          "note": "There's no mention of cost anywhere on the site \u2014 not a starting figure, not a pricing model, not even an indication of how you charge. A small business owner who is already cautious about accountancy fees will look for a price first, and when they can't find one, they leave rather than call to ask.",
+          "rec": "Add one sentence explaining how you price \u2014 even 'monthly retainers for small businesses typically start at \u00a3X' gives the right people a reason to stay and the wrong people a reason to move on."
+        },
+        {
+          "v": "na",
+          "note": "See Learning Hub \u2014 educational content is covered there.",
+          "check": "Useful content that teaches something without immediately selling"
+        },
+        {
+          "v": "fail",
+          "check": "A visitor can work out whether this is right for them without contacting",
+          "note": "There's no clear description of who you help, what working together involves, or what it costs \u2014 a visitor can't self-qualify without picking up the phone. Most won't bother; they'll go to a site that tells them what they need to know.",
+          "rec": "Add a short 'Is this right for me?' section answering the three questions every potential client has: who do you work with, what's included, and what does it cost."
+        },
+        {
+          "v": "fail",
           "check": "Content section exists with real, recent articles",
-          "note": "The 'hear the latest news' section contains no articles \u2014 just a heading and two images. There's nothing a visitor could read to learn something useful or build trust in Jack's expertise before making contact.",
+          "note": "The 'hear the latest news' section contains no articles \u2014 just a heading and two images. There's nothing a visitor could read to learn something useful or build trust in your expertise before making contact.",
           "rec": "Publish one real article on a topic your ideal clients search for \u2014 'How much tax should I put aside as a sole trader?' \u2014 or remove the section entirely; an empty content section is worse than no content section."
         },
         {
@@ -336,7 +331,7 @@
         {
           "v": "fail",
           "check": "Video content present",
-          "note": "There's no video on the site. A short 60-second video of Jack explaining who he helps and why he started this business would build more trust in one viewing than the entire rest of the page \u2014 people hire people, and video is the fastest way to give a stranger a sense of who you are.",
+          "note": "There's no video on the site. A short 60-second video of you explaining who you help and why you started this business would build more trust in one viewing than the entire rest of the page \u2014 people hire people, and video is the fastest way to give a stranger a sense of who you are.",
           "rec": "Record a 60-second video introducing yourself and who you help \u2014 it doesn't need to be professionally produced; a phone video shot in good light is enough to start."
         },
         {

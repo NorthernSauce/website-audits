@@ -38,7 +38,52 @@
   ],
   "sections": [
     {
-      "id": "strategy",
+      "id": "getting_in_touch",
+      "findings": [
+        {
+          "v": "fail",
+          "check": "Main call to action and a lower-commitment option both present",
+          "note": "Every CTA on the site pushes straight to booking a consultation, with nothing for a doctor who's interested but not ready to commit yet. Most visitors won't book on a first visit \u2014 without a lower-stakes option like a guide or newsletter, those warm leads leave with no way to bring them back.",
+          "rec": "Add one transitional option \u2014 a downloadable resource on NHS pension decisions, or a newsletter signup \u2014 so there's a path for warm visitors who aren't ready to book yet."
+        },
+        {
+          "v": "pass",
+          "check": "One clear next step on every page",
+          "note": "'Book your Free Consultation Today' is the single, consistent call to action across every page \u2014 one obvious next step everywhere. Giving visitors multiple CTAs at once splits their attention and reduces the chance they act on any of them, so this is exactly right."
+        },
+        {
+          "v": "pass",
+          "check": "3-click path to enquiry",
+          "note": "Homepage to contact form is a single click, with the CTA button in the nav and repeated throughout every page. Every extra step between interest and action loses a percentage of visitors \u2014 this removes almost all of that friction."
+        },
+        {
+          "v": "partial",
+          "check": "Homepage tells a logical story",
+          "note": "The homepage introduces the business before establishing any problem or tension \u2014 'who we are' comes before a visitor has been given a reason to care. A visitor who doesn't feel the problem first won't feel the value of the solution, so leading with the business rather than the client's situation costs you the emotional connection that drives action.",
+          "rec": "Move the 'why us' points earlier and lead with the client's situation before introducing the business."
+        },
+        {
+          "v": "partial",
+          "check": "Contact/booking genuinely low-friction",
+          "note": "The contact form requires five fields, a reCAPTCHA, and then a wait for a manual reply before anything is confirmed. That gap between clicking 'get in touch' and having a call actually booked is where most enquiries fall apart \u2014 a direct booking link removes it entirely.",
+          "rec": "Add a Calendly link alongside the form \u2014 see Fixes \u2014 so instant booking is possible."
+        },
+        {
+          "v": "partial",
+          "check": "Navigation serves new visitors, not existing clients",
+          "note": "The nav has a redundant Home link (the logo already does this) and lists Resources before Contact \u2014 which buries the most important action behind content most first-time visitors won't want first. Nav order signals priority; anything that pushes Contact further right reduces the chance it gets clicked.",
+          "rec": "Remove the Home link and move Contact before Resources in the nav order."
+        },
+        {
+          "v": "fail",
+          "check": "Clear next step after enquiry",
+          "note": "The contact page gives no indication of what happens after you submit \u2014 how quickly you'll hear back, what the first call looks like, or that there's no obligation attached. Uncertainty at the exact moment of action is one of the most common reasons people don't follow through, even after they've decided they want to.",
+          "rec": "Add three lines below the form: when you'll hear back, what the first call covers, and that there's no obligation."
+        }
+      ]
+    },
+    {
+      "id": "stand_out",
       "findings": [
         {
           "v": "pass",
@@ -58,12 +103,6 @@
         },
         {
           "v": "partial",
-          "check": "The core problem is named clearly",
-          "note": "NHS pension complexity and multiple income streams are mentioned, but as features of the service rather than the real source of stress a doctor carries. Without naming the core problem clearly there's no tension \u2014 and without tension there's no reason for a visitor to feel they need to do something about it.",
-          "rec": "Name the core problem directly \u2014 'the NHS pension is the most complex financial decision a doctor makes, and most get it wrong' \u2014 and put it front and centre above the fold."
-        },
-        {
-          "v": "partial",
           "check": "Reflects current business",
           "note": "Blog posts are dated December 2024 \u2014 with one showing a 2019 placeholder date that was never updated \u2014 and the content reads like it was written at launch and never revisited. A doctor who notices this will wonder whether the business is still actively engaged with its clients, or just coasting.",
           "rec": "Replace agency-authored content with at least one article and one case study written by the founders."
@@ -73,27 +112,22 @@
           "check": "Offer clarity",
           "note": "The services page names Tax Planning and Bookkeeping & Payroll but gives no detail on what's included, how the engagement works, or what it costs. If a doctor has to contact you just to understand what they'd be buying, most won't bother \u2014 they'll go to a competitor who answers that question upfront.",
           "rec": "Add a brief scope note under each service explaining what's included and how delivery works, plus a pricing anchor."
-        },
-        {
-          "v": "fail",
-          "check": "Main call to action and a lower-commitment option both present",
-          "note": "Every CTA on the site pushes straight to booking a consultation, with nothing for a doctor who's interested but not ready to commit yet. Most visitors won't book on a first visit \u2014 without a lower-stakes option like a guide or newsletter, those warm leads leave with no way to bring them back.",
-          "rec": "Add one transitional option \u2014 a downloadable resource on NHS pension decisions, or a newsletter signup \u2014 so there's a path for warm visitors who aren't ready to book yet."
         }
       ]
     },
     {
-      "id": "messaging",
+      "id": "right_person",
       "findings": [
+        {
+          "v": "partial",
+          "check": "The core problem is named clearly",
+          "note": "NHS pension complexity and multiple income streams are mentioned, but as features of the service rather than the real source of stress a doctor carries. Without naming the core problem clearly there's no tension \u2014 and without tension there's no reason for a visitor to feel they need to do something about it.",
+          "rec": "Name the core problem directly \u2014 'the NHS pension is the most complex financial decision a doctor makes, and most get it wrong' \u2014 and put it front and centre above the fold."
+        },
         {
           "v": "pass",
           "check": "Genuine understanding of the client's situation shown",
           "note": "The About page origin story is genuine \u2014 Dr. Othman took a sabbatical to learn finance after experiencing the exact stress the target client feels. That's real empathy, not a marketing claim."
-        },
-        {
-          "v": "pass",
-          "check": "Credibility and expertise clearly evidenced",
-          "note": "Dr. Othman holds MSc, PhD, and MRCGP credentials alongside firsthand GP experience; Lucas holds MAAT with 15 years in healthcare accounting. Both are visible and credible."
         },
         {
           "v": "partial",
@@ -134,7 +168,7 @@
       ]
     },
     {
-      "id": "copy",
+      "id": "copy_works",
       "findings": [
         {
           "v": "pass",
@@ -170,18 +204,17 @@
           "check": "No weasel words or filler",
           "note": "'Tailored' appears repeatedly throughout the site \u2014 in headlines, service descriptions, and the 'why us' section \u2014 alongside 'comprehensive', 'seamless', and 'dedicated'. Every accountancy website in the country uses these words, which means they give a visitor no reason to choose this one over any other.",
           "rec": "Do a find-and-replace on 'tailored', 'comprehensive', and 'personalized' \u2014 every instance should be replaced with a specific claim or deleted entirely."
-        },
-        {
-          "v": "fail",
-          "check": "Pricing addressed somewhere",
-          "note": "There is no mention of cost, fees, or pricing structure anywhere \u2014 not a 'from' figure, not even an explanation of how you charge. A doctor who can't get a rough sense of the investment will either assume the worst and leave, or contact you just to ask the price \u2014 which is the most avoidable friction in the whole enquiry process.",
-          "rec": "Add a pricing section or a short paragraph on the services page explaining how you charge \u2014 monthly retainer, annual fee, or a starting-from figure \u2014 so the right people self-qualify."
         }
       ]
     },
     {
       "id": "trust",
       "findings": [
+        {
+          "v": "pass",
+          "check": "Credibility and expertise clearly evidenced",
+          "note": "Dr. Othman holds MSc, PhD, and MRCGP credentials alongside firsthand GP experience; Lucas holds MAAT with 15 years in healthcare accounting. Both are visible and credible."
+        },
         {
           "v": "pass",
           "check": "About page makes the owner human and connects to the client's problem",
@@ -213,8 +246,14 @@
       ]
     },
     {
-      "id": "buyer",
+      "id": "pre_sold",
       "findings": [
+        {
+          "v": "fail",
+          "check": "Pricing addressed somewhere",
+          "note": "There is no mention of cost, fees, or pricing structure anywhere \u2014 not a 'from' figure, not even an explanation of how you charge. A doctor who can't get a rough sense of the investment will either assume the worst and leave, or contact you just to ask the price \u2014 which is the most avoidable friction in the whole enquiry process.",
+          "rec": "Add a pricing section or a short paragraph on the services page explaining how you charge \u2014 monthly retainer, annual fee, or a starting-from figure \u2014 so the right people self-qualify."
+        },
         {
           "v": "fail",
           "check": "Reviews and third-party validation",
@@ -250,51 +289,7 @@
           "check": "How-to/educational content",
           "note": "The three blog posts cover surface-level topics and one still shows a 2019 placeholder date that was never updated \u2014 none demonstrate the specialist expertise a doctor is actually looking for. A business that teaches what it knows builds trust before any sales conversation starts; a blog that looks untouched does the opposite.",
           "rec": "Replace the agency content with one article written by Dr. Othman on a real, common issue \u2014 NHS pension annual allowance charges, for example \u2014 to demonstrate expertise before a call."
-        }
-      ]
-    },
-    {
-      "id": "journey",
-      "findings": [
-        {
-          "v": "pass",
-          "check": "One clear next step on every page",
-          "note": "'Book your Free Consultation Today' is the single, consistent call to action across every page \u2014 one obvious next step everywhere. Giving visitors multiple CTAs at once splits their attention and reduces the chance they act on any of them, so this is exactly right."
         },
-        {
-          "v": "pass",
-          "check": "3-click path to enquiry",
-          "note": "Homepage to contact form is a single click, with the CTA button in the nav and repeated throughout every page. Every extra step between interest and action loses a percentage of visitors \u2014 this removes almost all of that friction."
-        },
-        {
-          "v": "partial",
-          "check": "Homepage tells a logical story",
-          "note": "The homepage introduces the business before establishing any problem or tension \u2014 'who we are' comes before a visitor has been given a reason to care. A visitor who doesn't feel the problem first won't feel the value of the solution, so leading with the business rather than the client's situation costs you the emotional connection that drives action.",
-          "rec": "Move the 'why us' points earlier and lead with the client's situation before introducing the business."
-        },
-        {
-          "v": "partial",
-          "check": "Contact/booking genuinely low-friction",
-          "note": "The contact form requires five fields, a reCAPTCHA, and then a wait for a manual reply before anything is confirmed. That gap between clicking 'get in touch' and having a call actually booked is where most enquiries fall apart \u2014 a direct booking link removes it entirely.",
-          "rec": "Add a Calendly link alongside the form \u2014 see Fixes \u2014 so instant booking is possible."
-        },
-        {
-          "v": "partial",
-          "check": "Navigation serves new visitors, not existing clients",
-          "note": "The nav has a redundant Home link (the logo already does this) and lists Resources before Contact \u2014 which buries the most important action behind content most first-time visitors won't want first. Nav order signals priority; anything that pushes Contact further right reduces the chance it gets clicked.",
-          "rec": "Remove the Home link and move Contact before Resources in the nav order."
-        },
-        {
-          "v": "fail",
-          "check": "Clear next step after enquiry",
-          "note": "The contact page gives no indication of what happens after you submit \u2014 how quickly you'll hear back, what the first call looks like, or that there's no obligation attached. Uncertainty at the exact moment of action is one of the most common reasons people don't follow through, even after they've decided they want to.",
-          "rec": "Add three lines below the form: when you'll hear back, what the first call covers, and that there's no obligation."
-        }
-      ]
-    },
-    {
-      "id": "hub",
-      "findings": [
         {
           "v": "partial",
           "check": "Content is easy to find and navigate",
@@ -336,39 +331,6 @@
           "check": "Content helps visitors feel ready before they make contact",
           "note": "The three blog posts cover generic topics that don't tackle the specific questions that come up before a first call, like NHS pension annual allowance or how to structure private practice income. When content does this job well, first calls are faster and clients arrive more qualified; right now the site sends none of that groundwork.",
           "rec": "N/A \u2014 see 'Content hub exists' above; fixing that fixes this."
-        }
-      ]
-    },
-    {
-      "id": "tech",
-      "findings": [
-        {
-          "v": "pass",
-          "check": "Site connection is secure",
-          "note": "The site loads securely and a padlock appears in the browser \u2014 no warnings or errors for visitors. This matters because a security warning before a word is read is enough to make many visitors leave immediately, so getting this right is non-negotiable."
-        },
-        {
-          "v": "pass",
-          "check": "Easy to update without a developer",
-          "note": "Built on Squarespace, which means the founders can update any page, add a blog post, or change a testimonial without calling a developer. Sites that depend on external help to make any change go stale quickly \u2014 and a stale site costs enquiries."
-        },
-        {
-          "v": "fail",
-          "check": "Easy to find when someone searches for you by name",
-          "note": "Searching for 'DrAccountant' returns no results for this site \u2014 unrelated pages appear instead. Anyone who's been referred or heard the name and tries to look it up won't find it, which means word-of-mouth referrals fall through the gap before they've even seen the site.",
-          "rec": "Check that the site title and meta description include 'DrAccountant' clearly, and set up a Google Business profile \u2014 both help Google connect a name search to the right website."
-        },
-        {
-          "v": "partial",
-          "check": "Contact forms and booking tools working",
-          "note": "The contact form is present and all CTA buttons link correctly to the contact page. However there is no booking tool \u2014 a doctor who wants to lock in a time has to wait for a manual response, which adds an entirely avoidable step between deciding to act and actually acting.",
-          "rec": "Add a Calendly or equivalent booking link so visitors can self-schedule \u2014 see Fixes."
-        },
-        {
-          "v": "fail",
-          "check": "Web addresses are clear and descriptive",
-          "note": "Blog posts and case studies use Squarespace's auto-generated web addresses \u2014 /blog-post-title-one-fsjre and /case-study-2 \u2014 which were never updated when the content was published. These rank for nothing in search results and signal to anyone who notices that the site was built and left.",
-          "rec": "Update each post and case study URL to match its title \u2014 Squarespace lets you edit the web address in page settings without a developer."
         }
       ]
     }

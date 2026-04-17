@@ -3,11 +3,11 @@
   "url": "draccountant.org",
   "date": "17 April 2026",
   "rag": "red",
-  "passed": 13,
-  "failed": 21,
+  "passed": 12,
+  "failed": 22,
   "partial": 18,
   "na": 0,
-  "score": 25,
+  "score": 23,
   "verdict": "A doctor landing here would sense this is the right specialist, but leave without enquiring — because there's no pricing, no real content to build trust, and the copy keeps talking about the business instead of the doctor's situation.",
   "scope_note": "This audit looks at strategy, messaging, and content — the things that determine whether a visitor becomes an enquiry. Design is a whole separate conversation, and one that's much more meaningful once we understand your clients, your goals, and what you're trying to achieve. That's a call worth having.",
   "fixes": [
@@ -228,9 +228,10 @@
       "id": "buyer",
       "findings": [
         {
-          "v": "pass",
+          "v": "fail",
           "check": "Reviews and third-party validation",
-          "note": "dosfinds.co.uk lists 16 reviews at 5.0 stars, and a LinkedIn profile is active. Strong third-party proof exists — though it's not surfaced on the website itself, which limits its impact on a visitor who never goes looking."
+          "note": "There is no Google Business profile, no Trustpilot, and no review presence on any platform a doctor would actually consult when choosing an accountant. The only third-party listing found is an obscure accountancy directory that prospective clients are extremely unlikely to find or trust.",
+          "rec": "Set up a Google Business profile and start collecting reviews there — it's free, it shows up in search results, and it's the first place a doctor will look."
         },
         {
           "v": "partial",
@@ -386,7 +387,6 @@
   "positives": [
     "GP-founded positioning is a genuine differentiator — it survives the name-removal test and is immediately meaningful to a doctor evaluating accountants.",
     "Dr. Othman's origin story on the About page is real and compelling — it answers 'why should I trust this person?' before a word of sales copy appears.",
-    "16 reviews at 5.0 stars on dosfinds.co.uk — strong independent social proof that exists, even if it's not yet surfaced on the site.",
     "Real founder photos throughout the site — no stock handshakes, which immediately sets a warmer and more trustworthy tone."
   ]
 }

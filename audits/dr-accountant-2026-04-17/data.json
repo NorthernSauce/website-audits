@@ -59,31 +59,31 @@
         {
           "v": "partial",
           "check": "Customer is the hero, not the business",
-          "note": "The homepage opens with a doctor-focused metaphor, which is a good start, but quickly shifts to 'we specialize', 'we offer', 'we understand' — the business becomes the main character within two paragraphs.",
+          "note": "The homepage opens with a doctor-focused metaphor, which is a good start, but shifts to 'we specialize', 'we offer', 'we understand' within two paragraphs — the business becomes the main character. When visitors read about you instead of recognising their own situation, they disengage; people only stay engaged with content that feels like it's about them.",
           "rec": "Rewrite each homepage section so the first sentence is about the doctor's situation, not the business's capabilities."
         },
         {
           "v": "partial",
           "check": "Clear villain identified",
-          "note": "NHS pension complexity and juggling multiple income streams are referenced, but they're listed as features of the service rather than named as the root cause of real stress a doctor feels. The villain is implied but never given a face.",
+          "note": "NHS pension complexity and multiple income streams are mentioned, but as features of the service rather than the real source of stress a doctor carries. Without naming the villain clearly there's no tension — and without tension there's no reason for a visitor to feel they need to do something about it.",
           "rec": "Pick one villain — 'the NHS pension is the most complex financial decision a doctor makes, and most get it wrong' — and name it explicitly above the fold."
         },
         {
           "v": "partial",
           "check": "Reflects current business",
-          "note": "Blog posts and case studies are dated Dec 2024 (one shows a 2019 placeholder date) and are all authored by the web agency that built the site. The content doesn't reflect the business as it exists today.",
+          "note": "Blog posts are dated December 2024 — with one showing a 2019 placeholder date that was never updated — and the content reads like it was written at launch and never revisited. A doctor who notices this will wonder whether the business is still actively engaged with its clients, or just coasting.",
           "rec": "Replace agency-authored content with at least one article and one case study written by the founders."
         },
         {
           "v": "fail",
           "check": "Offer clarity",
-          "note": "The services page names Tax Planning and Bookkeeping & Payroll but gives no detail on what's included, how the engagement works, or what it costs. A doctor can't understand what they'd actually be buying without making contact first.",
+          "note": "The services page names Tax Planning and Bookkeeping & Payroll but gives no detail on what's included, how the engagement works, or what it costs. If a doctor has to contact you just to understand what they'd be buying, most won't bother — they'll go to a competitor who answers that question upfront.",
           "rec": "Add a brief scope note under each service explaining what's included and how delivery works, plus a pricing anchor."
         },
         {
           "v": "fail",
           "check": "Direct CTA + transitional CTA both present",
-          "note": "Every single CTA on the site is 'Book your Free Consultation' — there is no lower-commitment option for a doctor who's interested but not ready to book. Visitors who aren't ready to commit have nowhere to go.",
+          "note": "Every CTA on the site pushes straight to booking a consultation, with nothing for a doctor who's interested but not ready to commit yet. Most visitors won't book on a first visit — without a lower-stakes option like a guide or newsletter, those warm leads leave with no way to bring them back.",
           "rec": "Add one transitional option — a downloadable guide on NHS pension decisions, or a newsletter signup — so there's a path for warm visitors who aren't ready to book yet."
         }
       ]
@@ -104,37 +104,37 @@
         {
           "v": "partial",
           "check": "Hero headline names the client's specific situation or problem",
-          "note": "The headline 'Caring for your Accounts, Like you care for Patients' is memorable and passes the 5-second comprehension test — you know what they do in seconds. But it names the category, not the problem; a GP reading it knows this is an accountant for doctors, but doesn't feel found.",
+          "note": "The headline 'Caring for your Accounts, Like you care for Patients' is clever and memorable — you know what they do within seconds. But it names the category rather than the problem; a GP reads it and knows this is an accountant for doctors, but doesn't get the 'that's exactly me' recognition that makes someone stop and read on.",
           "rec": "Test a version that names the stress: 'Your NHS pension is one of the most complex financial decisions you'll make — and most doctors get it wrong without specialist help.'"
         },
         {
           "v": "partial",
           "check": "Internal problem acknowledged",
-          "note": "The emotional layer — the stress of financial complexity while running a demanding medical career — surfaces on the About page but not prominently on the homepage where it would do the most work.",
+          "note": "The real emotional driver — the stress of managing finances while running an already demanding medical career — is buried on the About page rather than leading the homepage. People act on emotional problems, not logical ones; moving this to where the decision is actually made changes the entire conversion dynamic.",
           "rec": "Move one sentence about the emotional reality of being a doctor managing finances into the hero section of the homepage."
         },
         {
           "v": "partial",
           "check": "Clear plan visible",
-          "note": "The 'How it works' section has three steps, but step 2 is 'Let Us Work Our Magic' — this tells a cautious doctor nothing about what actually happens with their money and their data.",
+          "note": "The 'How it works' section has three steps, but step 2 is 'Let Us Work Our Magic' — which tells a cautious doctor nothing about what actually happens to their money, their data, or their time. A vague process feels like a risk; a clear one feels like a decision you can make confidently.",
           "rec": "Replace the vague middle step with something concrete: 'We review your income streams, pension position, and tax exposure, then build a plan tailored to your career stage.'"
         },
         {
           "v": "partial",
           "check": "Success picture painted",
-          "note": "Peace of mind, clarity, and confidence appear throughout, but they stay abstract. The transformed life after working with DrAccountant is never made concrete enough to feel real.",
+          "note": "Peace of mind, clarity, and confidence appear throughout, but they're abstract — every accountancy firm says something similar. Specific outcomes ('know exactly what your NHS pension will pay out before you make a career decision that affects it') create genuine desire in a way that vague promises never can.",
           "rec": "Add one specific outcome sentence — 'Know exactly what your NHS pension will pay out before you make a single career decision that affects it.'"
         },
         {
           "v": "fail",
           "check": "Philosophical stakes implied",
-          "note": "There's no sense of the bigger 'why it matters' — no acknowledgement that financial mistakes cost doctors years of security, or that getting this right enables the career and life they've worked for.",
+          "note": "There's no sense of the bigger picture — no acknowledgement that financial mistakes cost doctors years of retirement security, or that getting this right is what enables the career and life they've worked two decades to build. Without that framing, hiring an accountant feels like a chore; with it, it feels like one of the most important decisions they'll make.",
           "rec": "Add one sentence about what's really at stake: getting NHS pension decisions wrong isn't a financial inconvenience, it's a retirement problem that takes decades to play out."
         },
         {
           "v": "fail",
           "check": "Cost of inaction present",
-          "note": "Nothing on the site suggests what happens to a doctor who doesn't sort this out — no mention of overpaying tax, pension penalties, missed allowances, or HMRC exposure. Without stakes, there's no urgency.",
+          "note": "Nothing on the site suggests what a doctor is silently losing by not having this sorted — no mention of overpaying tax, pension penalties, or missed allowances that can't be recovered after the fact. Without a reason to act now rather than later, most visitors will bookmark the site and never come back.",
           "rec": "Add one line to the hero section about what's silently at risk: 'Most doctors overpay tax by thousands every year simply because their accountant doesn't know how NHS income works.'"
         }
       ]
@@ -145,42 +145,42 @@
         {
           "v": "pass",
           "check": "5-second hero test",
-          "note": "Within 5 seconds it's clear: specialist accountancy for doctors, run by a GP and an accountant, book a free consultation. The medical metaphor headline and tagline work together for fast comprehension — though note this is a different test from whether the headline resonates as a problem statement (it doesn't — see Messaging)."
+          "note": "Within 5 seconds it's clear: specialist accountancy for doctors, run by a GP and an accountant, book a free consultation. The headline and tagline work together for fast comprehension — though whether it makes the right doctor feel found is a separate question, covered in Messaging."
         },
         {
           "v": "partial",
           "check": "Services explain outcomes, not just names",
-          "note": "Tax Planning gets partway there — 'minimizes tax liabilities' is a result, but it stops short of the emotional end. 'Knowing exactly what you'll owe before HMRC asks' is more visceral for a doctor who's been caught out before.",
+          "note": "Tax Planning gets partway there — 'minimizes tax liabilities' is a result — but it stops short of something a busy doctor can actually feel. People buy outcomes, not service names; 'knowing exactly what you'll owe before HMRC asks' lands differently than 'we minimise your tax liabilities.'",
           "rec": "Add one outcome sentence per service that describes what life looks like after the problem is solved, not just what the service does."
         },
         {
           "v": "partial",
           "check": "Long copy genuinely scannable",
-          "note": "The Squarespace layout creates visual spacing, but the 'Why us' section has six blocks of paragraph text in succession — a doctor scanning on their phone will give up before reaching the end.",
+          "note": "The Squarespace layout helps with spacing, but the 'Why us' section has six blocks of paragraph text in a row — a doctor scanning on their phone between patients will give up before reaching the end. Content that doesn't get read doesn't do any work.",
           "rec": "Reduce each 'Why us' block to two lines max, or convert the section to a simple icon-plus-one-line format."
         },
         {
           "v": "fail",
           "check": "Copy leads with client, not business",
-          "note": "A quick count of the homepage shows 'we', 'our', and 'at DrAccountant' opening most major sections. The services page opens: 'Our healthcare accountants are experts in medical accounting services' — the business is the subject almost everywhere.",
+          "note": "A count of the homepage shows 'we', 'our', and 'at DrAccountant' opening most major sections — the services page alone opens with 'Our healthcare accountants are experts.' When the business is the subject of almost every sentence, a visitor reads it as a sales pitch rather than a service built around them.",
           "rec": "Audit every section heading and opening line: if it starts with 'we' or 'our', rewrite it so the doctor is the subject."
         },
         {
           "v": "fail",
           "check": "Headlines earn the scroll",
-          "note": "Section headings across the site — 'Tailored Accountancy Solutions', 'Why us', 'How it works', 'Get in touch' — are labels, not hooks. None of them give a reason to read what follows.",
+          "note": "Section headings across the site — 'Tailored Accountancy Solutions', 'Why us', 'How it works' — describe what's coming rather than giving a reason to read it. A heading that hints at something useful pulls the reader forward; a label just marks territory.",
           "rec": "Rewrite at least the three most-read section headings so they pull the visitor forward: 'Why most doctors overpay — and how to stop' beats 'Why us' every time."
         },
         {
           "v": "fail",
           "check": "No weasel words or filler",
-          "note": "'Tailored' appears at least eight times across the site; 'comprehensive', 'seamless', 'personalized', and 'dedicated' are scattered throughout. These are non-falsifiable claims that could appear on any accountancy website in the country.",
+          "note": "'Tailored' appears at least eight times across the site; 'comprehensive', 'seamless', and 'dedicated' fill the rest. Every accountancy website in the country uses these words — which means they give a visitor no reason to choose this one over any other.",
           "rec": "Do a find-and-replace on 'tailored', 'comprehensive', and 'personalized' — every instance should be replaced with a specific claim or deleted entirely."
         },
         {
           "v": "fail",
           "check": "Pricing addressed somewhere",
-          "note": "There is no mention of cost, fees, or pricing structure anywhere on the site — not a 'from' figure, not a pricing philosophy, nothing. For a doctor weighing up whether to enquire, this is the single biggest friction point.",
+          "note": "There is no mention of cost, fees, or pricing structure anywhere — not a 'from' figure, not even an explanation of how you charge. A doctor who can't get a rough sense of the investment will either assume the worst and leave, or contact you just to ask the price — which is the most avoidable friction in the whole enquiry process.",
           "rec": "Add a pricing section or a short paragraph on the services page explaining how you charge — monthly retainer, annual fee, or a starting-from figure — so the right people self-qualify."
         }
       ]
@@ -201,25 +201,25 @@
         {
           "v": "partial",
           "check": "Testimonials specific, attributed, outcome-focused",
-          "note": "Three testimonials are named with role and location — Dr. Emily Carter (Sessional GP, Manchester), Dr. James Robinson (GP Partner, London), Dr. Adam Wilson (Plastic Surgeon, Leeds) — which is better than most. However there are no photos, no dates, and the language reads slightly constructed.",
+          "note": "Three testimonials are named with role and location — Dr. Emily Carter (Sessional GP, Manchester), Dr. James Robinson (GP Partner, London), Dr. Adam Wilson (Plastic Surgeon, Leeds) — which is better than most. Without photos or dates though, a sceptical reader has no way to verify these are real people, which quietly reduces their impact.",
           "rec": "Add a photo and approximate date to each testimonial, and tighten the language to sound like something a doctor actually said rather than a polished summary."
         },
         {
           "v": "partial",
           "check": "Case study with real results",
-          "note": "The 'Saving Over £30,000' case study has a credible result and relevant detail. However the case study URLs are template defaults — /case-studies/case-study-2 and /case-studies/case-study-3 — which signals they were set up at launch and never properly configured.",
+          "note": "The 'Saving Over £30,000' case study has a credible result and relevant detail, which is genuinely useful for a doctor evaluating whether to get in touch. The web addresses are still Squarespace defaults — /case-study-2, /case-study-3 — which signals to anyone who notices that the site was set up and left, and subtly undermines the credibility of everything else on the page.",
           "rec": "Update the web addresss to match the case study titles and verify the content reflects how the business actually works today."
         },
         {
           "v": "fail",
           "check": "Social proof is genuine",
-          "note": "The logo strip shows NHS, RCGP, GMC, UCL, and Greater Manchester Urgent Primary Care Alliance — all regulatory bodies or university affiliations, not clients. A doctor who recognises these logos will know they don't represent client relationships, which damages trust rather than building it.",
+          "note": "The logo strip shows NHS, RCGP, GMC, UCL, and Greater Manchester Urgent Primary Care Alliance — these are regulatory bodies every UK doctor already belongs to, not clients. A doctor who recognises them will realise this is false signalling, which doesn't just fail to build trust — it actively destroys it.",
           "rec": "Remove these logos immediately — if you want a logo strip, use it for genuine software partners (BrightPay and FreshBooks are already there) or real clients who've given permission."
         },
         {
           "v": "fail",
           "check": "Trust signals sit near CTAs",
-          "note": "The contact page is a plain form with no testimonial, no credential mention, and no reassurance about what happens next. A doctor who clicks 'Get in Touch' arrives at a cold form with nothing to reinforce the decision they're about to make.",
+          "note": "The contact page is a plain form with no testimonial, credential, or reassurance about what happens next. The moment someone decides to get in touch is exactly when doubt is loudest — that's when trust signals do their most important work, and right now there are none at that critical point.",
           "rec": "Add one short testimonial or a founder headshot with a brief trust line directly above the contact form."
         }
       ]
@@ -230,37 +230,37 @@
         {
           "v": "fail",
           "check": "Reviews and third-party validation",
-          "note": "There is no Google Business profile, no Trustpilot, and no review presence on any platform a doctor would actually consult when choosing an accountant. The only third-party listing found is an obscure accountancy directory that prospective clients are extremely unlikely to find or trust.",
+          "note": "There is no Google Business profile, no Trustpilot, and no review presence on any platform a doctor would check when choosing a specialist. Without third-party proof, everything on the site is self-reported — and most buyers discount self-reported claims heavily when they can't find independent confirmation anywhere.",
           "rec": "Set up a Google Business profile and start collecting reviews there — it's free, it shows up in search results, and it's the first place a doctor will look."
         },
         {
           "v": "partial",
           "check": "Problems and challenges acknowledged",
-          "note": "NHS pension complexity, multiple income streams, and tax stress are referenced across the site. But there's no honest discussion of who this isn't right for, what can go wrong, or service limitations — only the positive picture is presented.",
+          "note": "NHS pension complexity and multiple income streams are mentioned, but only as context for what DrAccountant solves — there's no honest discussion of limitations, who isn't a good fit, or what can go wrong. Businesses that only present the positive picture tend to feel like they're hiding something; honesty about limitations actually builds more trust, not less.",
           "rec": "Add a short 'who this is for' and 'who this isn't for' note to the services page so visitors can self-qualify."
         },
         {
           "v": "partial",
           "check": "'Is this right for me?' answered",
-          "note": "The site mentions doctors, consultants, dentists, and allied health professionals as the target audience, which gives some range. But there's no trigger: what situation means you need DrAccountant now rather than later?",
+          "note": "The site lists doctors, consultants, dentists, and allied health professionals as the audience, which helps a visitor know they're in the right place. But there's no trigger — nothing that says 'if this is your situation, now is the moment to act' — which means interested visitors can leave feeling informed but not compelled.",
           "rec": "Add a brief qualifier — 'If you're managing NHS and private income, approaching a pension decision, or have never had an accountant who understood medical finance, this is for you.'"
         },
         {
           "v": "fail",
           "check": "Cost/pricing addressed",
-          "note": "See Copywriting — no pricing context anywhere on the site. Noted here as the primary buyer question for any service business.",
+          "note": "No pricing information exists anywhere on the site — see Copywriting for the full finding. For context: when asked what they most want to know before contacting a service business, 'how much does it cost' is the answer most buyers give.",
           "rec": "N/A — see Copywriting section."
         },
         {
           "v": "fail",
           "check": "Comparisons addressed",
-          "note": "The site doesn't address why DrAccountant over a generalist, over a larger firm, or over self-managing. A doctor who is already with an accountant and wondering whether to switch has no help making that comparison.",
+          "note": "The site doesn't address why DrAccountant over a generalist accountant, a larger firm, or simply staying put with who they have. Most potential clients will already have an accountant — without help making the comparison, a doctor thinking 'mine seems fine' has nothing to challenge that assumption.",
           "rec": "Add a short comparison section or FAQ entry: 'What makes you different from my current accountant?'"
         },
         {
           "v": "fail",
           "check": "How-to/educational content",
-          "note": "The three blog posts are all authored by Visuable (the web agency) and include a post dated 2019 that appears to be a Squarespace template placeholder. There is no genuine educational content from the business.",
+          "note": "The three blog posts cover surface-level topics and one still shows a 2019 placeholder date that was never updated — none demonstrate the specialist expertise a doctor is actually looking for. A business that teaches what it knows builds trust before any sales conversation starts; a blog that looks untouched does the opposite.",
           "rec": "Replace the agency content with one article written by Dr. Othman on a real, common issue — NHS pension annual allowance charges, for example — to demonstrate expertise before a call."
         }
       ]
@@ -271,35 +271,35 @@
         {
           "v": "pass",
           "check": "One clear CTA above the fold on every page",
-          "note": "'Book your Free Consultation Today' is the single, consistent call to action across every page. There's no choice paralysis — one obvious next step everywhere."
+          "note": "'Book your Free Consultation Today' is the single, consistent call to action across every page — one obvious next step everywhere. Giving visitors multiple CTAs at once splits their attention and reduces the chance they act on any of them, so this is exactly right."
         },
         {
           "v": "pass",
           "check": "3-click path to enquiry",
-          "note": "Homepage to contact form is one click. The CTA button is in the nav and repeated throughout every page."
+          "note": "Homepage to contact form is a single click, with the CTA button in the nav and repeated throughout every page. Every extra step between interest and action loses a percentage of visitors — this removes almost all of that friction."
         },
         {
           "v": "partial",
           "check": "Homepage tells a logical story",
-          "note": "The flow is roughly: headline → who we are → services → testimonials → case studies → why us → how it works → CTA. It's broadly logical, but 'who we are' appears before any problem or tension is established, and 'why us' arrives very late after case studies.",
+          "note": "The homepage introduces the business before establishing any problem or tension — 'who we are' comes before a visitor has been given a reason to care. A visitor who doesn't feel the problem first won't feel the value of the solution, so leading with the business rather than the client's situation costs you the emotional connection that drives action.",
           "rec": "Move the 'why us' points earlier and lead with the client's situation before introducing the business."
         },
         {
           "v": "partial",
           "check": "Contact/booking genuinely low-friction",
-          "note": "A contact form with first name, last name, email, subject, and message plus reCAPTCHA is present, but there's no direct booking tool and no phone number visible. A doctor who wants to act now has to wait for a response before anything is confirmed.",
+          "note": "The contact form requires five fields, a reCAPTCHA, and then a wait for a manual reply before anything is confirmed. That gap between clicking 'get in touch' and having a call actually booked is where most enquiries fall apart — a direct booking link removes it entirely.",
           "rec": "Add a Calendly link alongside the form — see Fixes — so instant booking is possible."
         },
         {
           "v": "partial",
           "check": "Navigation serves new visitors, not existing clients",
-          "note": "The nav includes a redundant 'Home' link (the logo already does this) and lists Resources before Contact, which de-prioritises the most important conversion action. No client login in the nav, which is good.",
+          "note": "The nav has a redundant Home link (the logo already does this) and lists Resources before Contact — which buries the most important action behind content most first-time visitors won't want first. Nav order signals priority; anything that pushes Contact further right reduces the chance it gets clicked.",
           "rec": "Remove the Home link and move Contact before Resources in the nav order."
         },
         {
           "v": "fail",
           "check": "Clear next step after enquiry",
-          "note": "The contact page gives no indication of what happens after you submit — no response time commitment, no description of what the first conversation looks like, no reassurance that you won't be ambushed by a sales call.",
+          "note": "The contact page gives no indication of what happens after you submit — how quickly you'll hear back, what the first call looks like, or that there's no obligation attached. Uncertainty at the exact moment of action is one of the most common reasons people don't follow through, even after they've decided they want to.",
           "rec": "Add three lines below the form: when you'll hear back, what the first call covers, and that there's no obligation."
         }
       ]
@@ -310,43 +310,43 @@
         {
           "v": "partial",
           "check": "Content is easy to find and navigate",
-          "note": "Resources is in the main nav and is one click away. However with only three posts and no categories or search, there's very little to navigate.",
+          "note": "Resources is in the main nav and one click away, which is the right instinct. With only three posts though, discoverability isn't the problem — the lack of content worth finding is.",
           "rec": "Once real content exists, add category tags so visitors can find relevant posts quickly."
         },
         {
           "v": "fail",
           "check": "Content hub exists with real, recent articles",
-          "note": "The Resources page has three posts: two dated December 2024, and one showing a March 2019 date that's a Squarespace template placeholder that was never updated. All three use default web addresses like /blog-post-title-one-fsjre, signalling the blog was set up at launch and left.",
+          "note": "The Resources page has three posts — two from December 2024 and one with a 2019 placeholder date that was never changed — all with auto-generated web addresses that were never updated. A blog that looks abandoned is worse than no blog: it signals a business that doesn't follow through, which is a damaging message for an accountant to send.",
           "rec": "Publish at least one genuine article from Dr. Othman or Lucas with a properly written web address — even one real post immediately changes the credibility of the page."
         },
         {
           "v": "fail",
           "check": "Content covers the topics buyers actually search for",
-          "note": "The three posts cover GP financial efficiency, burnout, and tax simplification at a surface level. No pricing discussion, no comparisons, no 'problems we've seen', no reviews or best-of content — the topics buyers actually search for are missing.",
+          "note": "The three posts cover generic financial topics that don't demonstrate specialist medical accounting expertise — none tackle the specific questions a doctor types into Google before choosing an accountant. Content that answers real buying questions is what brings qualified visitors to the site in the first place; the current posts won't attract them or convert them.",
           "rec": "Plan five posts: 'How much does a specialist medical accountant cost?', 'NHS pension annual allowance — what most doctors get wrong', 'Do I need a specialist or will any accountant do?', a client story, and a how-to guide."
         },
         {
           "v": "fail",
           "check": "FAQs answer real buyer questions",
-          "note": "There are no FAQs anywhere on the site. The questions a doctor would ask before enquiring — how much does it cost, what's included, how is this different from my current accountant — go completely unanswered.",
+          "note": "There are no FAQs anywhere on the site, which means the questions a doctor has before picking up the phone — cost, process, what makes you different from their current accountant — go completely unanswered. Every unanswered question becomes a reason to hesitate rather than a reason to get in touch.",
           "rec": "Add a simple FAQ section to the services or contact page covering cost, process, and who this is for."
         },
         {
           "v": "fail",
           "check": "Video content present",
-          "note": "There is no video anywhere on the site. A short 'meet the founders' video from Dr. Othman would do more trust-building work than any written content — the GP angle is the business's strongest asset and video is the fastest way to make it real.",
+          "note": "There is no video anywhere on the site. A 90-second clip of Dr. Othman explaining why he set this business up would do more trust-building in one watch than every paragraph on the page — seeing and hearing a GP say 'I've been through exactly what you're dealing with' is something no written sentence can replicate.",
           "rec": "Record a 90-second video of Dr. Othman explaining why he co-founded DrAccountant and embed it on the homepage or About page."
         },
         {
           "v": "fail",
           "check": "Guided path to prepare visitors before they get in touch",
-          "note": "There is no guided path, no 'before we talk' page, and no recommended reading sequence. A doctor who wants to understand what they're signing up for before booking a call has nowhere to start.",
+          "note": "There's no guided path for a doctor who wants to do their research before committing to a call — no suggested reading, no 'here's what to know before we speak.' A prospect who arrives having already read three pieces of your content is already half-sold; right now, that opportunity doesn't exist.",
           "rec": "Create a simple 'Before your consultation' page that links to two or three pieces of content a prospect should read first — it pre-educates leads and shortens the first call significantly."
         },
         {
           "v": "fail",
           "check": "Content helps visitors feel ready before they make contact",
-          "note": "The three blog posts cover broad, surface-level topics that don't demonstrate the specific expertise a doctor is looking for — none address the questions that come up before a first call, like pension annual allowance charges or how to structure private practice income.",
+          "note": "The three blog posts cover generic topics that don't tackle the specific questions that come up before a first call, like NHS pension annual allowance or how to structure private practice income. When content does this job well, first calls are faster and clients arrive more qualified; right now the site sends none of that groundwork.",
           "rec": "N/A — see 'Content hub exists' above; fixing that fixes this."
         }
       ]
@@ -357,28 +357,28 @@
         {
           "v": "pass",
           "check": "Site connection is secure",
-          "note": "The site is served over HTTPS and returned a 200 status. No browser warnings."
+          "note": "The site loads securely and a padlock appears in the browser — no warnings or errors for visitors. This matters because a security warning before a word is read is enough to make many visitors leave immediately, so getting this right is non-negotiable."
         },
         {
           "v": "pass",
           "check": "Easy to update without a developer",
-          "note": "Built on Squarespace — the founders can update any page, add a blog post, or change a testimonial themselves without needing to call a developer."
+          "note": "Built on Squarespace, which means the founders can update any page, add a blog post, or change a testimonial without calling a developer. Sites that depend on external help to make any change go stale quickly — and a stale site costs enquiries."
         },
         {
           "v": "pass",
           "check": "Easy to find when someone searches for you by name",
-          "note": "Searching for 'DrAccountant' on Google returns this site as the first result. Anyone who's been referred or heard the name can find it immediately."
+          "note": "Searching for 'DrAccountant' on Google returns this site as the first result. Anyone who's been referred or heard the name can find it immediately — which matters because word of mouth is likely one of the main ways new clients arrive."
         },
         {
           "v": "partial",
           "check": "Contact forms and booking tools working",
-          "note": "The contact form is present and the CTA buttons all link correctly to /contact. However there is no booking tool — a doctor who wants to lock in a time has to wait for a manual response, which adds unnecessary friction.",
+          "note": "The contact form is present and all CTA buttons link correctly to the contact page. However there is no booking tool — a doctor who wants to lock in a time has to wait for a manual response, which adds an entirely avoidable step between deciding to act and actually acting.",
           "rec": "Add a Calendly or equivalent booking link so visitors can self-schedule — see Fixes."
         },
         {
           "v": "fail",
           "check": "Web addresses are clear and descriptive",
-          "note": "Blog posts and case studies are using Squarespace's default web addresses — URLs like /resources/blog-post-title-one-fsjre and /case-studies/case-study-2 were never updated when the content was added. These URLs rank for nothing and signal to anyone who notices that the site was set up and left.",
+          "note": "Blog posts and case studies use Squarespace's auto-generated web addresses — /blog-post-title-one-fsjre and /case-study-2 — which were never updated when the content was published. These rank for nothing in search results and signal to anyone who notices that the site was built and left.",
           "rec": "Update each post and case study URL to match its title — Squarespace lets you edit the web address in page settings without a developer."
         }
       ]

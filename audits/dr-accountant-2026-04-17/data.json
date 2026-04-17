@@ -76,7 +76,7 @@
         },
         {
           "v": "fail",
-          "check": "Direct CTA + transitional CTA both present",
+          "check": "Main call to action and a lower-commitment option both present",
           "note": "Every CTA on the site pushes straight to booking a consultation, with nothing for a doctor who's interested but not ready to commit yet. Most visitors won't book on a first visit — without a lower-stakes option like a guide or newsletter, those warm leads leave with no way to bring them back.",
           "rec": "Add one transitional option — a downloadable resource on NHS pension decisions, or a newsletter signup — so there's a path for warm visitors who aren't ready to book yet."
         }
@@ -103,7 +103,7 @@
         },
         {
           "v": "partial",
-          "check": "Internal problem acknowledged",
+          "check": "The emotional frustration behind the practical problem is addressed",
           "note": "The real emotional driver — the stress of managing finances while running an already demanding medical career — is buried on the About page rather than leading the homepage. People act on emotional problems, not logical ones; moving this to where the decision is actually made changes the entire conversion dynamic.",
           "rec": "Move one sentence about the emotional reality of being a doctor managing finances into the opening section of the homepage."
         },
@@ -121,13 +121,13 @@
         },
         {
           "v": "fail",
-          "check": "Philosophical stakes implied",
+          "check": "The bigger picture — what's really at stake — comes through",
           "note": "There's no sense of the bigger picture — no acknowledgement that financial mistakes cost doctors years of retirement security, or that getting this right is what enables the career and life they've worked two decades to build. Without that framing, hiring an accountant feels like a chore; with it, it feels like one of the most important decisions they'll make.",
           "rec": "Add one sentence about what's really at stake: getting NHS pension decisions wrong isn't a financial inconvenience, it's a retirement problem that takes decades to play out."
         },
         {
           "v": "fail",
-          "check": "Cost of inaction present",
+          "check": "There's a reason to act now, not later",
           "note": "Nothing on the site suggests what a doctor is silently losing by not having this sorted — no mention of overpaying tax, pension penalties, or missed allowances that can't be recovered after the fact. Without a reason to act now rather than later, most visitors will bookmark the site and never come back.",
           "rec": "Add one line to the opening section about what's silently at risk: 'Most doctors overpay tax by thousands every year simply because their accountant doesn't know how NHS income works.'"
         }
@@ -168,7 +168,7 @@
         {
           "v": "fail",
           "check": "No weasel words or filler",
-          "note": "'Tailored' appears at least eight times across the site; 'comprehensive', 'seamless', and 'dedicated' fill the rest. Every accountancy website in the country uses these words — which means they give a visitor no reason to choose this one over any other.",
+          "note": "'Tailored' appears repeatedly throughout the site — in headlines, service descriptions, and the 'why us' section — alongside 'comprehensive', 'seamless', and 'dedicated'. Every accountancy website in the country uses these words, which means they give a visitor no reason to choose this one over any other.",
           "rec": "Do a find-and-replace on 'tailored', 'comprehensive', and 'personalized' — every instance should be replaced with a specific claim or deleted entirely."
         },
         {
@@ -258,7 +258,7 @@
       "findings": [
         {
           "v": "pass",
-          "check": "One clear CTA above the fold on every page",
+          "check": "One clear next step on every page",
           "note": "'Book your Free Consultation Today' is the single, consistent call to action across every page — one obvious next step everywhere. Giving visitors multiple CTAs at once splits their attention and reduces the chance they act on any of them, so this is exactly right."
         },
         {
@@ -355,7 +355,7 @@
         {
           "v": "fail",
           "check": "Easy to find when someone searches for you by name",
-          "note": "Searching for 'DrAccountant' on Google does not return this site as the first result. Anyone who's been referred or heard the name and tries to look it up may not find it — which means word-of-mouth referrals fall through the gap.",
+          "note": "Searching for 'DrAccountant' returns no results for this site — unrelated pages appear instead. Anyone who's been referred or heard the name and tries to look it up won't find it, which means word-of-mouth referrals fall through the gap before they've even seen the site.",
           "rec": "Check that the site title and meta description include 'DrAccountant' clearly, and set up a Google Business profile — both help Google connect a name search to the right website."
         },
         {

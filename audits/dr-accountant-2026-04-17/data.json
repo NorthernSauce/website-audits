@@ -3,11 +3,11 @@
   "url": "draccountant.org",
   "date": "17 April 2026",
   "rag": "red",
-  "passed": 12,
-  "failed": 21,
+  "passed": 11,
+  "failed": 22,
   "partial": 18,
   "na": 0,
-  "score": 24,
+  "score": 22,
   "verdict": "A doctor landing here would sense this is the right specialist, but leave without enquiring — because there's no pricing, no real content to build trust, and the copy keeps talking about the business instead of the doctor's situation.",
   "scope_note": "This audit looks at strategy, messaging, and content — the things that determine whether a visitor becomes an enquiry. Design is a whole separate conversation, and one that's much more meaningful once we understand your clients, your goals, and what you're trying to achieve. That's a call worth having.",
   "fixes": [
@@ -353,9 +353,10 @@
           "note": "Built on Squarespace, which means the founders can update any page, add a blog post, or change a testimonial without calling a developer. Sites that depend on external help to make any change go stale quickly — and a stale site costs enquiries."
         },
         {
-          "v": "pass",
+          "v": "fail",
           "check": "Easy to find when someone searches for you by name",
-          "note": "Searching for 'DrAccountant' on Google returns this site as the first result. Anyone who's been referred or heard the name can find it immediately — which matters because word of mouth is likely one of the main ways new clients arrive."
+          "note": "Searching for 'DrAccountant' on Google does not return this site as the first result. Anyone who's been referred or heard the name and tries to look it up may not find it — which means word-of-mouth referrals fall through the gap.",
+          "rec": "Check that the site title and meta description include 'DrAccountant' clearly, and set up a Google Business profile — both help Google connect a name search to the right website."
         },
         {
           "v": "partial",

@@ -22,12 +22,12 @@
   <div class="score-row">
     <div class="score-card">
       <div class="score-label">Checks passed</div>
-      <div class="score-val">12</div>
+      <div class="score-val">11</div>
       <div class="score-sub">out of 51 applicable</div>
     </div>
     <div class="score-card">
       <div class="score-label">Failed</div>
-      <div class="score-val">21</div>
+      <div class="score-val">22</div>
       <div class="score-sub">need attention</div>
     </div>
     <div class="score-card">
@@ -37,7 +37,7 @@
     </div>
     <div class="score-card">
       <div class="score-label">Overall score</div>
-      <div class="score-val">24%</div>
+      <div class="score-val">22%</div>
       <div class="score-sub">red — significant gaps</div>
     </div>
   </div>
@@ -541,10 +541,10 @@
   <div class="audit-sec-head" onclick="toggleSec('s8')">
     <span class="sec-badge b-tech">Technical</span>
     <h2>Technical</h2>
-    <span class="sec-score">3 / 5 &nbsp;·&nbsp; 60%</span>
+    <span class="sec-score">2 / 5 &nbsp;·&nbsp; 40%</span>
     <span class="chev" id="chev-s8">▼</span>
   </div>
-  <div class="sec-prog-wrap"><div class="sec-prog-bar b-tech" style="width:60%"></div></div>
+  <div class="sec-prog-wrap"><div class="sec-prog-bar b-tech" style="width:40%"></div></div>
   <div class="findings-list" id="body-s8">
   <div class="sec-desc">Are the basics in place and actually working? A site that's hard to find, has a broken contact form, or can't be updated without a developer will leak enquiries before a word is read.</div>
     <div class="finding">
@@ -562,10 +562,11 @@
       </div>
     </div>
     <div class="finding">
-      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="verdict-dot"><span class="verdict-tag v-fail">FAIL</span></div>
       <div class="finding-body">
         <div class="finding-check">Easy to find when someone searches for you by name</div>
-        <div class="finding-note">Searching for 'DrAccountant' on Google returns this site as the first result. Anyone who's been referred or heard the name can find it immediately — which matters because word of mouth is likely one of the main ways new clients arrive.</div>
+        <div class="finding-note">Searching for 'DrAccountant' on Google does not return this site as the first result. Anyone who's been referred or heard the name and tries to look it up may not find it — which means word-of-mouth referrals fall through the gap.</div>
+      <div class="finding-rec"><strong>Fix:</strong> Check that the site title and meta description include 'DrAccountant' clearly, and set up a Google Business profile — both help Google connect a name search to the right website.</div>
       </div>
     </div>
     <div class="finding">

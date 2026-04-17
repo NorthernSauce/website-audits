@@ -4,7 +4,7 @@
   "date": "17 April 2026",
   "rag": "red",
   "passed": 13,
-  "failed": 20,
+  "failed": 21,
   "partial": 18,
   "na": 0,
   "score": 25,
@@ -37,8 +37,8 @@
     },
     {
       "title": "Replace agency-written content with one real article and one real case study",
-      "detail": "Every blog post and every case study on the site is published under Visuable's name — the web agency that built the site. A prospect who clicks through will see 'Written by Visuable' and an agency bio, which signals this content was never really from you.",
-      "action": "Write one article as Dr. Othman — pick a real GP tax mistake you've seen repeatedly — and rewrite the £30,000 case study in the first person, removing Visuable's authorship.",
+      "detail": "Click into any blog post or case study and you'll see it was published under Visuable's name — the web agency that built the site — complete with their agency bio and promotional copy. It's not on the homepage, but any prospect who reads a post will see it, and it signals the content was never really from you.",
+      "action": "Write one article as Dr. Othman — a real GP tax mistake you've seen repeatedly — and rewrite the £30,000 case study in the first person with Visuable's authorship removed.",
       "type": "project"
     }
   ],
@@ -373,6 +373,12 @@
           "check": "Contact forms and booking tools working",
           "note": "The contact form is present and the CTA buttons all link correctly to /contact. However there is no booking tool — a doctor who wants to lock in a time has to wait for a manual response, which adds unnecessary friction.",
           "rec": "Add a Calendly or equivalent booking link so visitors can self-schedule — see Fixes."
+        },
+        {
+          "v": "fail",
+          "check": "URL slugs are descriptive and SEO-ready",
+          "note": "Blog posts and case studies are using Squarespace's default template slugs — URLs like /resources/blog-post-title-one-fsjre and /case-studies/case-study-2 were never updated when the content was added. These URLs rank for nothing and signal to anyone who notices that the site was set up and left.",
+          "rec": "Update each post and case study URL to match its title — Squarespace lets you edit the URL slug in page settings without a developer."
         }
       ]
     }

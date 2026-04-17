@@ -3,12 +3,12 @@
   "url": "sinclairaccountingservices.co.uk",
   "date": "17 April 2026",
   "rag": "red",
-  "passed": 4,
-  "failed": 27,
+  "passed": 2,
+  "failed": 26,
   "partial": 12,
-  "na": 8,
-  "score": 9,
-  "verdict": "A small business owner who finds this site can tell Jack is an accountant \u2014 but they'll leave without getting in touch because every question they came with (how much does it cost, who else have you helped, why should I pick you) goes unanswered.",
+  "na": 7,
+  "score": 5,
+  "verdict": "You're clearly set up as an accountant for small businesses \u2014 but visitors are leaving without getting in touch because every question they arrived with (how much does it cost, who have you helped, why you over anyone else) goes completely unanswered.",
   "scope_note": "This report looks at whether your site is set up to turn visitors into enquiries \u2014 the strategy, messaging, and content that make someone decide to get in touch. Design matters too, but judging it properly needs a conversation about your business, your clients, and your goals. That's one for a call.",
   "fixes": [
     {
@@ -348,32 +348,6 @@
           "v": "na",
           "note": "No content exists to evaluate whether it prepares prospects for a first conversation.",
           "check": "Content would help a prospect feel ready for a first conversation"
-        }
-      ]
-    },
-    {
-      "id": "tech",
-      "findings": [
-        {
-          "v": "pass",
-          "check": "Site connection is secure",
-          "note": "The site loads securely over HTTPS with no browser warning \u2014 visitors aren't met with a security alert before they've read a single word."
-        },
-        {
-          "v": "fail",
-          "check": "Contact forms and booking tools are working",
-          "note": "There's no contact form or booking tool on the site \u2014 only phone and email links. The 'Learn More' buttons work in that they scroll to the contact section, but there's no mechanism for a visitor to leave their details directly.",
-          "rec": "Add a contact form or Calendly booking link so visitors can take action without switching to another app."
-        },
-        {
-          "v": "na",
-          "note": "The site platform can't be verified from a scrape \u2014 whether Jack can update it himself is unverifiable without knowing the builder.",
-          "check": "The business can update the site themselves"
-        },
-        {
-          "v": "pass",
-          "check": "Easy to find when someone searches for the business by name",
-          "note": "Searching for 'Sinclair Accounting Services Chester-le-Street' returns your site as the first result \u2014 anyone who already knows about you will find you immediately."
         }
       ]
     }

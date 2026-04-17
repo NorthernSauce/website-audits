@@ -4,19 +4,13 @@
   "date": "17 April 2026",
   "rag": "red",
   "passed": 12,
-  "failed": 22,
+  "failed": 21,
   "partial": 18,
   "na": 0,
-  "score": 23,
+  "score": 24,
   "verdict": "A doctor landing here would sense this is the right specialist, but leave without enquiring — because there's no pricing, no real content to build trust, and the copy keeps talking about the business instead of the doctor's situation.",
   "scope_note": "This audit looks at strategy, messaging, and content — the things that determine whether a visitor becomes an enquiry. Design is a whole separate conversation, and one that's much more meaningful once we understand your clients, your goals, and what you're trying to achieve. That's a call worth having.",
   "fixes": [
-    {
-      "title": "Remove the misleading logo strip",
-      "detail": "The NHS, GMC, and RCGP logos signal client relationships — but these are regulatory bodies every UK doctor belongs to, not organisations you've worked with. A doctor who recognises this will immediately question everything else on the page.",
-      "action": "Remove those logos entirely, or replace them with logos of real clients who've given permission to be named.",
-      "type": "quick"
-    },
     {
       "title": "Add a Calendly booking link",
       "detail": "Your contact form requires a multi-step exchange before anything is confirmed — someone fills it in, then waits to hear back, then arranges a time. That's three points of drop-off before a call ever happens.",
@@ -209,12 +203,6 @@
           "check": "Case study with real results",
           "note": "The 'Saving Over £30,000' case study has a credible result and relevant detail, which is genuinely useful for a doctor evaluating whether to get in touch. The web addresses are still Squarespace defaults — /case-study-2, /case-study-3 — which signals to anyone who notices that the site was set up and left, and subtly undermines the credibility of everything else on the page.",
           "rec": "Update the web addresss to match the case study titles and verify the content reflects how the business actually works today."
-        },
-        {
-          "v": "fail",
-          "check": "Social proof is genuine",
-          "note": "The logo strip shows NHS, RCGP, GMC, UCL, and Greater Manchester Urgent Primary Care Alliance — these are regulatory bodies every UK doctor already belongs to, not clients. A doctor who recognises them will realise this is false signalling, which doesn't just fail to build trust — it actively destroys it.",
-          "rec": "Remove these logos immediately — if you want a logo strip, use it for genuine software partners (BrightPay and FreshBooks are already there) or real clients who've given permission."
         },
         {
           "v": "fail",

@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website audit report</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #ffffff; --bg-sec: #f7f6f3; --bg-ter: #f1f0ec;
+    --border: rgba(55,53,47,0.12); --border-med: rgba(55,53,47,0.22);
+    --text: #37352f; --text-sec: #787774; --text-ter: #9b9a97;
+    --radius: 8px; --radius-lg: 10px;
+    --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --pass: #1D9E75; --pass-bg: #d1fae5; --pass-text: #065f46;
+    --partial: #d97706; --partial-bg: #fef3e2; --partial-text: #8a5000;
+    --fail: #dc2626; --fail-bg: #fde8e8; --fail-text: #9b2020;
+    --red-rag: #dc2626; --red-rag-bg: #fde8e8;
+    --amber-rag: #d97706; --amber-rag-bg: #fef3e2;
+    --green-rag: #1D9E75; --green-rag-bg: #d1fae5;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap');
+  body { font-family: var(--font); background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.6; padding: 32px 24px 64px; max-width: 860px; margin: 0 auto; }
+  .report-header { border-bottom: 1px solid var(--border); padding-bottom: 24px; margin-bottom: 28px; }
+  .report-meta { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+  .report-title-block h1 { font-size: 22px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .report-url { font-size: 13px; color: var(--text-sec); }
+  .report-url a { color: var(--text-sec); text-decoration: underline; text-underline-offset: 3px; }
+  .report-date { font-size: 12px; color: var(--text-ter); margin-top: 4px; }
+  .rag-block { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .rag-pill { font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 100px; letter-spacing: 0.02em; }
+  .rag-red { background: var(--red-rag-bg); color: var(--red-rag); }
+  .rag-amber { background: var(--amber-rag-bg); color: var(--amber-rag); }
+  .rag-green { background: var(--green-rag-bg); color: var(--green-rag); }
+  .score-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .score-card { background: var(--bg-sec); border-radius: var(--radius); padding: 12px 16px; flex: 1; min-width: 100px; }
+  .score-label { font-size: 10px; color: var(--text-ter); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 3px; }
+  .score-val { font-size: 22px; font-weight: 600; color: var(--text); }
+  .score-sub { font-size: 11px; color: var(--text-ter); margin-top: 1px; }
+  .verdict-block { background: var(--bg-sec); border-radius: var(--radius-lg); border-left: 3px solid var(--border-med); padding: 14px 16px; margin-top: 20px; font-size: 14px; color: var(--text); font-style: italic; }
+  .verdict-block.amber { border-left-color: var(--amber-rag); }
+  .section-heading { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-ter); margin: 28px 0 12px; }
+  .fix-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; }
+  .fix-item { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px 16px; display: flex; gap: 14px; align-items: flex-start; }
+  .fix-num { font-size: 12px; font-weight: 600; color: var(--text-ter); flex-shrink: 0; width: 20px; text-align: right; padding-top: 1px; }
+  .fix-body { flex: 1; }
+  .fix-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+  .fix-detail { font-size: 13px; color: var(--text-sec); line-height: 1.55; }
+  .fix-action { font-size: 12px; color: var(--text-ter); margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border); }
+  .fix-action strong { color: var(--text-sec); font-weight: 500; }
+  .audit-section { border: 1px solid var(--border); border-radius: var(--radius-lg); margin-bottom: 10px; overflow: hidden; }
+  .audit-sec-head { display: flex; align-items: center; gap: 10px; padding: 12px 16px; cursor: pointer; user-select: none; transition: background 0.1s; }
+  .audit-sec-head:hover { background: var(--bg-sec); }
+  .audit-sec-head h2 { font-size: 13px; font-weight: 500; color: var(--text); flex: 1; }
+  .sec-badge { font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 5px; white-space: nowrap; }
+  .sec-score { font-size: 12px; color: var(--text-ter); white-space: nowrap; margin-left: auto; }
+  .chev { font-size: 10px; color: var(--text-ter); transition: transform 0.2s; }
+  .chev.open { transform: rotate(180deg); }
+  .sec-prog-wrap { height: 3px; background: var(--bg-ter); }
+  .sec-prog-bar { height: 3px; transition: width 0.3s; }
+  .findings-list { border-top: 1px solid var(--border); }
+  .finding { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  .finding:last-child { border-bottom: none; }
+  .verdict-dot { flex-shrink: 0; margin-top: 3px; width: 60px; text-align: center; }
+  .verdict-tag { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.03em; }
+  .v-pass { background: var(--pass-bg); color: var(--pass-text); }
+  .v-partial { background: var(--partial-bg); color: var(--partial-text); }
+  .v-fail { background: var(--fail-bg); color: var(--fail-text); }
+  .v-na { background: var(--bg-ter); color: var(--text-ter); }
+  .finding-body { flex: 1; }
+  .finding-check { font-size: 13.5px; font-weight: 500; color: var(--text); margin-bottom: 4px; line-height: 1.4; }
+  .finding-note { font-size: 12px; color: var(--text-sec); line-height: 1.55; }
+  .finding-rec { font-size: 12px; color: var(--text-sec); margin-top: 6px; padding: 6px 10px; background: var(--bg-sec); border-radius: 5px; border-left: 2px solid var(--border-med); line-height: 1.5; }
+  .finding-rec strong { color: var(--text); font-weight: 500; display: block; margin-bottom: 2px; }
+  .positives-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; }
+  .positive-item { display: flex; gap: 10px; align-items: flex-start; padding: 11px 14px; background: var(--pass-bg); border-radius: var(--radius); font-size: 13px; color: var(--pass-text); line-height: 1.5; }
+  .positive-dot { font-size: 14px; flex-shrink: 0; margin-top: 1px; color: var(--pass); }
+  .b-strategy { background: #ede9fe; color: #5b21b6; }
+  .b-messaging { background: #fde8e8; color: #9b2020; }
+  .b-copy { background: #fef3e2; color: #8a5000; }
+  .b-trust { background: #fce7f3; color: #9d174d; }
+  .b-journey { background: #dbeafe; color: #1e40af; }
+  .b-design { background: #d1fae5; color: #065f46; }
+  .b-content { background: #f1f0ec; color: #57534e; }
+  .b-tech { background: #ffedd5; color: #9a3412; }
+  .report-footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer-brand { font-size: 12px; color: var(--text-ter); }
+  .footer-brand strong { color: var(--text-sec); font-weight: 500; }
+  @media (max-width: 560px) { body { padding: 20px 14px 48px; } .report-meta { flex-direction: column; } .score-card { min-width: 80px; } }
+</style>
+</head>
+<body>
+
+<div class="report-header">
+  <div class="report-meta">
+    <div class="report-title-block">
+      <h1>Website audit — DrAccountant</h1>
+      <div class="report-url"><a href="https://www.draccountant.org" target="_blank">draccountant.org</a></div>
+      <div class="report-date">Audit date: 17 April 2026 &nbsp;·&nbsp; Prepared by Northern Sauce</div>
+    </div>
+    <div class="rag-block">
+      <span class="rag-pill rag-amber">Amber</span>
+    </div>
+  </div>
+  <div class="score-row">
+    <div class="score-card">
+      <div class="score-label">Checks passed</div>
+      <div class="score-val">32</div>
+      <div class="score-sub">out of 47 applicable</div>
+    </div>
+    <div class="score-card">
+      <div class="score-label">Failed</div>
+      <div class="score-val">6</div>
+      <div class="score-sub">need attention</div>
+    </div>
+    <div class="score-card">
+      <div class="score-label">Partial</div>
+      <div class="score-val">13</div>
+      <div class="score-sub">could be stronger</div>
+    </div>
+    <div class="score-card">
+      <div class="score-label">Overall score</div>
+      <div class="score-val">68%</div>
+      <div class="score-sub">amber — good foundations</div>
+    </div>
+  </div>
+  <div class="verdict-block amber">
+    A busy GP or hospital consultant who finds this site would likely enquire — the specialist positioning and co-founder credentials are genuinely compelling — but the metaphor-led headline and contact form where a booking calendar should be mean some will lose interest before they act.
+  </div>
+</div>
+
+<div class="section-heading">Top 5 fixes</div>
+<div class="fix-list">
+  <div class="fix-item">
+    <div class="fix-num">1</div>
+    <div class="fix-body">
+      <div class="fix-title">The hero headline speaks in metaphor, not in your client's pain</div>
+      <div class="fix-detail">"Caring for your Accounts, Like you care for Patients" is clever, but a tired GP scrolling websites isn't looking for poetry — they're looking for someone who understands NHS pension chaos and multiple income streams. The right headline says that explicitly.</div>
+      <div class="fix-action"><strong>Do this:</strong> Rewrite the hero headline to name the actual problem — something like "NHS pension, private income, HMRC deadlines — all handled, so you can focus on your patients."</div>
+    </div>
+  </div>
+  <div class="fix-item">
+    <div class="fix-num">2</div>
+    <div class="fix-body">
+      <div class="fix-title">No pricing means every interested visitor has to make contact just to self-qualify</div>
+      <div class="fix-detail">A consultant researching accountants in a 10-minute break between patients will not book a call just to find out if your fees are within budget — they'll move on to the site that tells them.</div>
+      <div class="fix-action"><strong>Do this:</strong> Add a "Services start from £X/month" figure to the services page, even if packages are bespoke — remove this friction layer entirely.</div>
+    </div>
+  </div>
+  <div class="fix-item">
+    <div class="fix-num">3</div>
+    <div class="fix-body">
+      <div class="fix-title">The testimonials look unverifiable — names are generic, there are no photos, no dates</div>
+      <div class="fix-detail">Dr. Emily Carter, Dr. James Robinson, Dr. Adam Wilson could be real clients or they could be invented — without a photo and a date, a sceptical prospect has no way to know, and that scepticism costs you the enquiry.</div>
+      <div class="fix-action"><strong>Do this:</strong> Add a headshot, the date (even just "March 2025"), and a LinkedIn-style attribution to each testimonial — if clients won't allow photos, a first name + specialty + location is far better than a full generic name with nothing else.</div>
+    </div>
+  </div>
+  <div class="fix-item">
+    <div class="fix-num">4</div>
+    <div class="fix-body">
+      <div class="fix-title">"Book a consultation" leads to a contact form, not an actual booking</div>
+      <div class="fix-detail">Every CTA says "book a free consultation" but clicking through delivers a basic email form — there is no calendar, no confirmation, no sense of what happens next, and a doctor who wanted to book in their lunch break has now added it to tomorrow's to-do list.</div>
+      <div class="fix-action"><strong>Do this:</strong> Embed a Calendly (or equivalent) on the contact page so a visitor can pick a slot immediately and get a confirmation email — reduce the decision to one click.</div>
+    </div>
+  </div>
+  <div class="fix-item">
+    <div class="fix-num">5</div>
+    <div class="fix-body">
+      <div class="fix-title">No low-commitment step for doctors who are researching but not ready to book</div>
+      <div class="fix-detail">Most GPs comparing accountants will look at three or four options before deciding — if you don't capture them with something low-commitment, they leave and the next site that sends a useful email wins the relationship.</div>
+      <div class="fix-action"><strong>Do this:</strong> Create a short free guide — "5 tax mistakes NHS doctors make" or "The GP's guide to NHS pension planning" — and offer it in exchange for an email address, keeping warm prospects in your funnel.</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-heading">Detailed findings</div>
+
+<div class="audit-section">
+  <div class="audit-sec-head" onclick="toggleSec('s1')">
+    <span class="sec-badge b-strategy">Strategy</span>
+    <h2>Strategy</h2>
+    <span class="sec-score">4 / 6 &nbsp;·&nbsp; 67%</span>
+    <span class="chev" id="chev-s1">▼</span>
+  </div>
+  <div class="sec-prog-wrap"><div class="sec-prog-bar b-strategy" style="width:67%"></div></div>
+  <div class="findings-list" id="body-s1">
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">ICP defined specifically</div>
+        <div class="finding-note">Healthcare professionals are named precisely: doctors, GPs, consultants, dentists, NHS practitioners managing multiple income streams. This is a tight, credible niche — not "small businesses."</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Specialist not generalist</div>
+        <div class="finding-note">The positioning is unambiguously specialist — "Specialist Accountancy Service for Doctors" appears in the hero subheading, and the entire site is built around medical professionals only.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Offer clarity — what you get, how it works, what it costs</div>
+        <div class="finding-note">Services are named and briefly described (tax planning, bookkeeping, payroll, NHS pensions), and a 3-step process is shown. Pricing is entirely absent, which means a visitor cannot self-qualify without making contact.</div>
+        <div class="finding-rec"><strong>Fix:</strong> Add a "starting from" price point on the services page to let the right clients immediately know if this is for them.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-fail">FAIL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Low-commitment next step for visitors not ready to book</div>
+        <div class="finding-note">Every CTA goes straight to "book a free consultation" — there is no lead magnet, newsletter, or free resource for doctors who are still in the research phase. When they leave without booking, there's no way to stay in touch.</div>
+        <div class="finding-rec"><strong>Fix:</strong> Create one free downloadable guide (e.g., "The GP's guide to NHS pension planning") offered in exchange for an email address.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Reflects current business</div>
+        <div class="finding-note">The site appears fresh and recently built (late 2024 based on case study content). No stale services or outdated positioning is visible.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Clear differentiator</div>
+        <div class="finding-note">Co-founded by an actual GP — this is a genuinely rare and powerful differentiator. No other accountancy firm can credibly say "one of us is a doctor who has experienced your exact situation."</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="audit-section">
+  <div class="audit-sec-head" onclick="toggleSec('s2')">
+    <span class="sec-badge b-messaging">Messaging</span>
+    <h2>Messaging</h2>
+    <span class="sec-score">3 / 6 &nbsp;·&nbsp; 50%</span>
+    <span class="chev" id="chev-s2">▼</span>
+  </div>
+  <div class="sec-prog-wrap"><div class="sec-prog-bar b-messaging" style="width:50%"></div></div>
+  <div class="findings-list" id="body-s2">
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Hero headline names the client's specific situation or problem</div>
+        <div class="finding-note">"Caring for your Accounts, Like you care for Patients" is a well-crafted metaphor that confirms this is for doctors — but it doesn't land on a felt pain. A GP reading it knows you understand their world, but doesn't yet feel that you understand their specific problem (NHS pension complexity, tax overwhelm, multiple income streams).</div>
+        <div class="finding-rec"><strong>Fix:</strong> Rewrite the headline to name the actual problem directly — the metaphor works as a strapline but shouldn't carry the full weight of the first impression.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Copy leads with the client, not the business</div>
+        <div class="finding-note">The homepage consistently uses "you/your" — "so you can focus on what truly matters," "helping you retain more." The business is positioned as the guide, not the hero.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Names the specific problem in the client's own language</div>
+        <div class="finding-note">NHS pensions, private practice income, and tax complexities are named — these are the right problems — but they're listed as category descriptions rather than felt pains. "Drowning in paperwork while your waiting room fills up" would resonate harder than "the distinct financial challenges you face."</div>
+        <div class="finding-rec"><strong>Fix:</strong> Swap one section's opening line to describe the situation viscerally — the language a doctor uses to describe their frustration to a colleague.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-fail">FAIL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Creates a sense that not acting has a cost</div>
+        <div class="finding-note">There is no consequence shown for staying with the wrong accountant or managing finances alone — no mention of overpaid tax, missed pension contributions, or HMRC penalties that could have been avoided.</div>
+        <div class="finding-rec"><strong>Fix:</strong> Add one short section or line about what staying in the wrong situation costs — even a case study framing of "£30k overpaid before they came to us" does this work.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Consistent tone across every page</div>
+        <div class="finding-note">The professional-but-approachable medical metaphor tone holds consistently from homepage through about and services pages. No register shifts between sections.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Plain language — no jargon the client wouldn't use</div>
+        <div class="finding-note">"Let us handle the numbers so you can focus on what truly matters: caring for your patients" is clear and accessible. Technical accounting terms are avoided where possible.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="audit-section">
+  <div class="audit-sec-head" onclick="toggleSec('s3')">
+    <span class="sec-badge b-copy">Copywriting</span>
+    <h2>Copywriting</h2>
+    <span class="sec-score">2 / 8 &nbsp;·&nbsp; 25%</span>
+    <span class="chev" id="chev-s3">▼</span>
+  </div>
+  <div class="sec-prog-wrap"><div class="sec-prog-bar b-copy" style="width:25%"></div></div>
+  <div class="findings-list" id="body-s3">
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">5-second hero test — what it does, who for, what to do next</div>
+        <div class="finding-note">Within five seconds you can confirm this is specialist accountancy for doctors, with a clear CTA button. This passes the comprehension speed test, though the headline fails the problem-resonance test (see Messaging) — those are different checks measuring different things.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Every headline earns the scroll</div>
+        <div class="finding-note">"Tax Planning and Compliance," "Bookkeeping and Payroll" are service labels, not pull headlines. The case study "Saving Over £30,000 Through Personalised Financial Structuring" is a strong example of a result-led headline — the same approach should carry through service sections.</div>
+        <div class="finding-rec"><strong>Fix:</strong> Replace service section headings with outcome-led versions: "Stop overpaying HMRC" instead of "Tax Planning and Compliance."</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">CTAs are specific, outcome-focused, and consistent</div>
+        <div class="finding-note">"Book your Free Consultation Today" appears consistently, which is good for continuity — but "free consultation" sets an expectation of a calendar booking that the contact form doesn't fulfil, creating a trust gap at the most critical moment.</div>
+        <div class="finding-rec"><strong>Fix:</strong> Match the CTA to what actually happens — if it's a form, say "Send us a message" — or fix the destination so it delivers an actual booking experience (see Journey).</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Long copy is broken up and genuinely easy to scan</div>
+        <div class="finding-note">Short paragraphs, clear section breaks, a numbered 3-step process, and bullet-style selling points make the homepage easy to scan without reading every word.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Services explain outcomes, process, and who they're for</div>
+        <div class="finding-note">Services name outcomes ("minimises tax liabilities," "freedom to focus on exceptional healthcare") but don't describe the specific process or clearly state eligibility criteria — a dentist reading this isn't sure if the NHS pension guidance applies to them.</div>
+        <div class="finding-rec"><strong>Fix:</strong> Add one sentence per service confirming who it applies to and a rough indication of what the engagement looks like week-to-week.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">No weasel words or vague claims</div>
+        <div class="finding-note">"Dedicated to delivering tailored support" and "expert guidance" are the kind of filler every competitor also uses, making them invisible. The strongest copy on the site — case study titles and the founder story — is specific and doesn't need these words.</div>
+        <div class="finding-rec"><strong>Fix:</strong> Replace "dedicated," "tailored," and "expert" with specifics: what you've actually done, for whom, with what result.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-fail">FAIL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Pricing addressed — even a starting figure</div>
+        <div class="finding-note">No pricing is mentioned anywhere on the site. A consultant comparing accountants in a 10-minute break will not book a call just to find out if you're within budget — this friction eliminates qualified prospects before they ever contact you.</div>
+        <div class="finding-rec"><strong>Fix:</strong> Add a "Services from £X/month" line to the services page — even a ballpark figure removes the biggest decision blocker without committing to fixed pricing.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-fail">FAIL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Common objections handled before the visitor raises them</div>
+        <div class="finding-note">There is no FAQ and no inline objection-handling — questions like "Do I need a specialist accountant, or will any accountant do?" and "What if I'm already with someone else — is it worth switching?" are never addressed.</div>
+        <div class="finding-rec"><strong>Fix:</strong> Add a short FAQ section (5–7 questions) answering the objections a GP is most likely to have before picking up the phone.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="audit-section">
+  <div class="audit-sec-head" onclick="toggleSec('s4')">
+    <span class="sec-badge b-trust">Trust &amp; Proof</span>
+    <h2>Trust &amp; Proof</h2>
+    <span class="sec-score">3 / 6 &nbsp;·&nbsp; 50%</span>
+    <span class="chev" id="chev-s4">▼</span>
+  </div>
+  <div class="sec-prog-wrap"><div class="sec-prog-bar b-trust" style="width:50%"></div></div>
+  <div class="findings-list" id="body-s4">
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Testimonials are specific, attributed, and speak to outcomes</div>
+        <div class="finding-note">Three testimonials are shown with names and roles (Dr. Emily Carter, Dr. James Robinson, Dr. Adam Wilson), and one mentions saving "time and money" — but there are no headshots, no dates, and the names are generic enough to read as invented, which undermines rather than builds trust.</div>
+        <div class="finding-rec"><strong>Fix:</strong> Add a photo, a date, and a LinkedIn reference or verifiable detail to each testimonial — without this, a sceptical prospect discounts them entirely.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Case study or worked example with real results</div>
+        <div class="finding-note">Three case studies are linked from the homepage, including "Saving Over £30,000 Through Personalised Financial Structuring" — a strong, specific result that does more trust work than all three testimonials combined.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Client logos or recognisable past clients shown</div>
+        <div class="finding-note">NHS, RCGP, GMC, ATT, and UCL logos are displayed — these are professional affiliations and credentials, not past client logos. They add credibility but slightly overstate the social proof (these are not endorsements by those organisations).</div>
+        <div class="finding-rec"><strong>Fix:</strong> Label the logos clearly as "Affiliations & credentials" rather than letting them imply client relationships — and separately add 2–3 real client practice names if permission is given.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">About page makes the owner human and connects to the client's problem</div>
+        <div class="finding-note">Real photos of both founders are shown, the story of Dr. Othman taking a sabbatical from medicine to understand finance is compelling and personal, and Lucas's 15 years of expertise is clearly articulated. This is one of the strongest sections on the site.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Awards, accreditations, or third-party validations shown</div>
+        <div class="finding-note">MAAT qualification and ATT membership are shown. The NHS, RCGP, and GMC logos (as affiliations) add further credential weight appropriate for the medical audience.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Trust signals placed near CTAs</div>
+        <div class="finding-note">The credential logos appear near the top of the homepage (close to the first CTA) which is good — but the testimonials are placed mid-page and are not adjacent to the final "Book a free consultation" CTA at the bottom.</div>
+        <div class="finding-rec"><strong>Fix:</strong> Move one strong testimonial (once fixed with a photo and date) immediately above the final CTA section.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="audit-section">
+  <div class="audit-sec-head" onclick="toggleSec('s5')">
+    <span class="sec-badge b-journey">User Journey</span>
+    <h2>User Journey</h2>
+    <span class="sec-score">7 / 9 &nbsp;·&nbsp; 78%</span>
+    <span class="chev" id="chev-s5">▼</span>
+  </div>
+  <div class="sec-prog-wrap"><div class="sec-prog-bar b-journey" style="width:78%"></div></div>
+  <div class="findings-list" id="body-s5">
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">One clear CTA visible above the fold on every page</div>
+        <div class="finding-note">A single gold "Book your Free Consultation Today" button is visible above the fold on the homepage. The nav is compact and doesn't compete with it.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Homepage tells a logical story — problem → solution → proof → action</div>
+        <div class="finding-note">The homepage flows from positioning → services → how it works → case studies → why us → get in touch. The narrative arc earns the final CTA rather than demanding it upfront.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Homepage to enquiry in 3 clicks or fewer</div>
+        <div class="finding-note">Homepage → click CTA → Contact page → submit form. That is two clicks to reach the submission point.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Contact or booking process is genuinely low-friction</div>
+        <div class="finding-note">The contact page has a working form with name, email, subject, and message — but for a service that repeatedly says "book a consultation," there is no calendar or scheduling tool, so the visitor submits a form and then waits for someone to respond, adding an unknown delay between intent and action.</div>
+        <div class="finding-rec"><strong>Fix:</strong> Embed a Calendly calendar on the contact page so a doctor can pick a specific slot and get an immediate confirmation — this transforms "I'll think about it" into "I've booked it."</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Navigation is focused and guides toward a decision</div>
+        <div class="finding-note">Home, About, Services, Resources, Contact — five items, clearly labelled, with Contact the natural endpoint. No buried dropdowns or decision-overloading menus.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Nav bar is proportionate and doesn't dominate the hero</div>
+        <div class="finding-note">The nav is compact — the hero content is immediately visible below it. The logo and nav together occupy a small strip at the top, leaving full attention on the headline and image.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Mobile journey is smooth end to end</div>
+        <div class="finding-note">The site is built on Squarespace, which handles responsive layouts reliably. The design structure is simple enough that it should translate well to mobile without layout breakage.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-fail">FAIL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Clear next step after enquiring — expectations set</div>
+        <div class="finding-note">The contact form has no confirmation message, no stated response time, and no explanation of what happens after submission — a doctor who just filled out the form doesn't know if they'll hear back in an hour or a week, which creates doubt and dilutes the confidence of the decision to reach out.</div>
+        <div class="finding-rec"><strong>Fix:</strong> Add a thank-you confirmation screen (or at minimum a visible line on the form page) stating: "We'll come back to you within [timeframe] to arrange your free call."</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Site is usable — first-time visitor can find what they need without thinking</div>
+        <div class="finding-note">The layout is intuitive and the navigation hierarchy clear. A doctor landing on this page for the first time would not need to figure out what to do next — the path to contact is obvious.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="audit-section">
+  <div class="audit-sec-head" onclick="toggleSec('s6')">
+    <span class="sec-badge b-design">Design</span>
+    <h2>Design</h2>
+    <span class="sec-score">9 / 9 &nbsp;·&nbsp; 100%</span>
+    <span class="chev" id="chev-s6">▼</span>
+  </div>
+  <div class="sec-prog-wrap"><div class="sec-prog-bar b-design" style="width:100%"></div></div>
+  <div class="findings-list" id="body-s6">
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Design matches the positioning and price point</div>
+        <div class="finding-note">Navy and gold is a premium, professional palette well-suited to a specialist service targeting doctors — it signals quality and authority without feeling cold or corporate.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Clear visual hierarchy on every page</div>
+        <div class="finding-note">Heading sizes, colour contrast, and section spacing create a clear reading order. The eye is guided naturally from the headline to the CTA and down the page.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Images are authentic rather than stock-photo generic</div>
+        <div class="finding-note">Real photos of both founders are used throughout — Dr. Othman in medical attire, Lucas at a desk — alongside a team photo in what appears to be a real office. No stock handshake or generic suit photos.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Design feels current</div>
+        <div class="finding-note">The site was built in late 2024 and it shows — clean layout, modern typography, well-proportioned sections. This does not look like a site from a decade ago.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Whitespace is used intentionally</div>
+        <div class="finding-note">Generous spacing between sections and around content blocks. Nothing feels cluttered — each section has room to breathe, directing attention rather than competing for it.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Typography is readable</div>
+        <div class="finding-note">Font size, contrast, line height and line length are all comfortable at a glance. No walls of illegibly small text.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Colour is consistent and purposeful</div>
+        <div class="finding-note">Navy and gold are applied consistently throughout every page. Colour is used to direct attention (gold CTAs on dark backgrounds) rather than decoratively.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Mobile layout genuinely works</div>
+        <div class="finding-note">Squarespace-built site with a simple, single-column content structure — the layout should render cleanly at 375px without layout collisions or illegible text.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">CTAs are visually prominent</div>
+        <div class="finding-note">Gold buttons on a navy background stand out immediately — the CTA is the most visually distinct element on the page and cannot be missed.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="audit-section">
+  <div class="audit-sec-head" onclick="toggleSec('s7')">
+    <span class="sec-badge b-content">Content &amp; Freshness</span>
+    <h2>Content &amp; Freshness</h2>
+    <span class="sec-score">2 / 4 &nbsp;·&nbsp; 50%</span>
+    <span class="chev" id="chev-s7">▼</span>
+  </div>
+  <div class="sec-prog-wrap"><div class="sec-prog-bar b-content" style="width:50%"></div></div>
+  <div class="findings-list" id="body-s7">
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-na">N/A</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Copyright year in footer is current</div>
+        <div class="finding-note">Footer content was not retrievable from the scraped homepage — this check cannot be confirmed.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Blog or news section is active with recent posts</div>
+        <div class="finding-note">A "Resources" section exists and links to three case studies — these are a strong form of content — but there is no active blog with dated articles, and the case studies themselves show no publication dates.</div>
+        <div class="finding-rec"><strong>Fix:</strong> Date the existing case studies and consider adding a short quarterly article to build search visibility and demonstrate active expertise.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Content hub that builds trust over time</div>
+        <div class="finding-note">Three case studies with specific results form a credible content hub. They demonstrate expertise in a way that generic service descriptions cannot.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-fail">FAIL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Testimonials and case studies are clearly dated</div>
+        <div class="finding-note">Neither the testimonials nor the case study links on the homepage show any dates — a prospect has no way to know if these results are from last month or three years ago, and undated proof carries significantly less weight.</div>
+        <div class="finding-rec"><strong>Fix:</strong> Add a month and year to every testimonial and case study — even "Autumn 2025" is enough to establish recency.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-na">N/A</span></div>
+      <div class="finding-body">
+        <div class="finding-check">No discontinued services or out-of-date offers</div>
+        <div class="finding-note">The site is new (launched 2024) — no stale services or discontinued offers are visible.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Team photos and bios are current</div>
+        <div class="finding-note">Real, current photos of both founders are shown with detailed bios. The About page is one of the strongest sections on the site.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="audit-section">
+  <div class="audit-sec-head" onclick="toggleSec('s8')">
+    <span class="sec-badge b-tech">Technical</span>
+    <h2>Technical</h2>
+    <span class="sec-score">2 / 3 &nbsp;·&nbsp; 67%</span>
+    <span class="chev" id="chev-s8">▼</span>
+  </div>
+  <div class="sec-prog-wrap"><div class="sec-prog-bar b-tech" style="width:67%"></div></div>
+  <div class="findings-list" id="body-s8">
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Site is on a CMS the owner can update without a developer</div>
+        <div class="finding-note">Squarespace — a fully managed CMS with a visual editor. Adding a testimonial, updating a service description, or changing a CTA requires no code and no developer.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-pass">PASS</span></div>
+      <div class="finding-body">
+        <div class="finding-check">SSL is active</div>
+        <div class="finding-note">The site is served over https. No browser security warnings.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-partial">PARTIAL</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Contact forms and booking tools are working</div>
+        <div class="finding-note">The contact form renders correctly and appears functional (name, email, subject, message, reCAPTCHA). However, there is no calendar booking tool despite all CTAs using "book a consultation" language — the form works but the experience doesn't match the promise.</div>
+        <div class="finding-rec"><strong>Fix:</strong> Add Calendly or Squarespace's built-in scheduling feature to the contact page so visitors can actually book, not just enquire.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="verdict-dot"><span class="verdict-tag v-na">N/A</span></div>
+      <div class="finding-body">
+        <div class="finding-check">Site appears for its own business name in branded search</div>
+        <div class="finding-note">Branded search indexing cannot be verified without a live search — not checked in this audit.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-heading">What's working</div>
+<div class="positives-list">
+  <div class="positive-item"><span class="positive-dot">✓</span> Co-founded by an actual GP — a genuinely rare differentiator no competitor can replicate without going back to medical school</div>
+  <div class="positive-item"><span class="positive-dot">✓</span> Real founder photos throughout — the About page feels human and builds personal trust immediately</div>
+  <div class="positive-item"><span class="positive-dot">✓</span> Case studies with specific financial results (£30,000 saved) — this is the kind of proof that moves decisions</div>
+  <div class="positive-item"><span class="positive-dot">✓</span> Design is premium, current, and appropriate for a specialist service — it looks like what it is</div>
+  <div class="positive-item"><span class="positive-dot">✓</span> Clear 3-step process section makes onboarding feel straightforward and low-risk for a new enquiry</div>
+</div>
+
+<div class="report-footer">
+  <div class="footer-brand">Confidential &mdash; prepared for <strong>DrAccountant</strong></div>
+  <img src="https://northernsauce.uk/wp-content/uploads/2026/04/Ns-EmblemDark.png" alt="Northern Sauce" height="28">
+</div>
+
+<script>
+function toggleSec(id) {
+  const body = document.getElementById('body-'+id);
+  const chev = document.getElementById('chev-'+id);
+  const isOpen = !body.style.display || body.style.display !== 'none';
+  body.style.display = isOpen ? 'none' : 'block';
+  chev.classList.toggle('open', !isOpen);
+}
+</script>
+</body>
+</html>

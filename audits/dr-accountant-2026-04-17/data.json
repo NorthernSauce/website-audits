@@ -37,8 +37,8 @@
     },
     {
       "title": "Replace placeholder content with one real article and one real case study",
-      "detail": "The blog has three posts, one of which is dated March 2019 — a Squarespace template date that was never updated — and all three have URL slugs like /blog-post-title-one-fsjre that signal the content was set up at launch and never touched. A prospect who clicks through will notice both.",
-      "action": "Publish one article written by Dr. Othman on a real GP tax issue (and fix the URL slug when you do), and update the case study URLs from /case-study-2 to something descriptive.",
+      "detail": "The blog has three posts, one of which is dated March 2019 — a Squarespace template date that was never updated — and all three have web addresses like /blog-post-title-one-fsjre that signal the content was set up at launch and never touched. A prospect who clicks through will notice both.",
+      "action": "Publish one article written by Dr. Othman on a real GP tax issue (and set the web address to something descriptive when you do), and update the case study web addresses from /case-study-2 to something that matches the title.",
       "type": "project"
     }
   ],
@@ -208,7 +208,7 @@
           "v": "partial",
           "check": "Case study with real results",
           "note": "The 'Saving Over £30,000' case study has a credible result and relevant detail. However the case study URLs are template defaults — /case-studies/case-study-2 and /case-studies/case-study-3 — which signals they were set up at launch and never properly configured.",
-          "rec": "Update the URL slugs to match the case study titles and verify the content reflects how the business actually works today."
+          "rec": "Update the web addresss to match the case study titles and verify the content reflects how the business actually works today."
         },
         {
           "v": "fail",
@@ -316,12 +316,12 @@
         {
           "v": "fail",
           "check": "Content hub exists with real, recent articles",
-          "note": "The Resources page has three posts: two dated December 2024, and one showing a March 2019 date that's a Squarespace template placeholder that was never updated. All three use default URL slugs like /blog-post-title-one-fsjre, signalling the blog was set up at launch and left.",
-          "rec": "Publish at least one genuine article from Dr. Othman or Lucas with a properly written URL slug — even one real post immediately changes the credibility of the page."
+          "note": "The Resources page has three posts: two dated December 2024, and one showing a March 2019 date that's a Squarespace template placeholder that was never updated. All three use default web addresses like /blog-post-title-one-fsjre, signalling the blog was set up at launch and left.",
+          "rec": "Publish at least one genuine article from Dr. Othman or Lucas with a properly written web address — even one real post immediately changes the credibility of the page."
         },
         {
           "v": "fail",
-          "check": "Content covers the Big 5 topics",
+          "check": "Content covers the topics buyers actually search for",
           "note": "The three posts cover GP financial efficiency, burnout, and tax simplification at a surface level. No pricing discussion, no comparisons, no 'problems we've seen', no reviews or best-of content — the topics buyers actually search for are missing.",
           "rec": "Plan five posts: 'How much does a specialist medical accountant cost?', 'NHS pension annual allowance — what most doctors get wrong', 'Do I need a specialist or will any accountant do?', a client story, and a how-to guide."
         },
@@ -339,13 +339,13 @@
         },
         {
           "v": "fail",
-          "check": "'Start here' or assignment selling path exists",
-          "note": "There is no guided content path, no 'before we talk' page, and no recommended reading sequence. A doctor who wants to understand what they're signing up for before booking a call has nowhere to start.",
+          "check": "Guided path to prepare visitors before they get in touch",
+          "note": "There is no guided path, no 'before we talk' page, and no recommended reading sequence. A doctor who wants to understand what they're signing up for before booking a call has nowhere to start.",
           "rec": "Create a simple 'Before your consultation' page that links to two or three pieces of content a prospect should read first — it pre-educates leads and shortens the first call significantly."
         },
         {
           "v": "fail",
-          "check": "Content supports the sales process",
+          "check": "Content helps visitors feel ready before they make contact",
           "note": "The three blog posts cover broad, surface-level topics that don't demonstrate the specific expertise a doctor is looking for — none address the questions that come up before a first call, like pension annual allowance charges or how to structure private practice income.",
           "rec": "N/A — see 'Content hub exists' above; fixing that fixes this."
         }
@@ -356,18 +356,18 @@
       "findings": [
         {
           "v": "pass",
-          "check": "SSL active",
+          "check": "Site connection is secure",
           "note": "The site is served over HTTPS and returned a 200 status. No browser warnings."
         },
         {
           "v": "pass",
-          "check": "Owner-editable CMS",
-          "note": "Built on Squarespace — fully editable by the business without developer involvement. Adding a testimonial, a blog post, or updating a service description requires no technical help."
+          "check": "Easy to update without a developer",
+          "note": "Built on Squarespace — the founders can update any page, add a blog post, or change a testimonial themselves without needing to call a developer."
         },
         {
           "v": "pass",
-          "check": "Indexed for branded search",
-          "note": "A search for 'DrAccountant draccountant.org' returns the site as the first result. Branded search is working."
+          "check": "Easy to find when someone searches for you by name",
+          "note": "Searching for 'DrAccountant' on Google returns this site as the first result. Anyone who's been referred or heard the name can find it immediately."
         },
         {
           "v": "partial",
@@ -377,9 +377,9 @@
         },
         {
           "v": "fail",
-          "check": "URL slugs are descriptive and SEO-ready",
-          "note": "Blog posts and case studies are using Squarespace's default template slugs — URLs like /resources/blog-post-title-one-fsjre and /case-studies/case-study-2 were never updated when the content was added. These URLs rank for nothing and signal to anyone who notices that the site was set up and left.",
-          "rec": "Update each post and case study URL to match its title — Squarespace lets you edit the URL slug in page settings without a developer."
+          "check": "Web addresses are clear and descriptive",
+          "note": "Blog posts and case studies are using Squarespace's default web addresses — URLs like /resources/blog-post-title-one-fsjre and /case-studies/case-study-2 were never updated when the content was added. These URLs rank for nothing and signal to anyone who notices that the site was set up and left.",
+          "rec": "Update each post and case study URL to match its title — Squarespace lets you edit the web address in page settings without a developer."
         }
       ]
     }

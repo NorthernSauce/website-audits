@@ -13,14 +13,14 @@ import os
 from html import escape
 
 SECTION_META = {
-    "strategy":  ("Strategy",        "b-strategy"),
-    "messaging": ("Messaging",       "b-messaging"),
-    "copy":      ("Copywriting",     "b-copy"),
-    "trust":     ("Trust & Proof",   "b-trust"),
-    "buyer":     ("Buyer Questions", "b-buyer"),
-    "journey":   ("User Journey",    "b-journey"),
-    "hub":       ("Learning Hub",    "b-hub"),
-    "tech":      ("Technical",       "b-tech"),
+    "strategy":  ("Strategy",        "b-strategy",  "Is the site built around a clear story and a defined audience? The goal is for the right person to land on this site and immediately feel like they've found the right place — not a generic business that serves everyone."),
+    "messaging": ("Messaging",       "b-messaging", "Does the site speak to the right person about the right problem? Good messaging makes the ideal client feel understood before they're sold to. If the copy could belong to any business in the same category, it's not doing its job."),
+    "copy":      ("Copywriting",     "b-copy",      "Is the writing actually moving a visitor toward making contact? Every line should earn its place. If it doesn't bring the reader closer to getting in touch, it shouldn't be there."),
+    "trust":     ("Trust & Proof",   "b-trust",     "Is there enough evidence that this business can actually deliver? Claims without proof are ignored. This section checks whether the site gives visitors real reasons to believe — not just things the business says about itself."),
+    "buyer":     ("Buyer Questions", "b-buyer",     "Does the site answer the questions a buyer is actually asking — or only the ones the business wants to answer? If a question goes unanswered here, the visitor will go looking for a competitor who does answer it."),
+    "journey":   ("User Journey",    "b-journey",   "Can a visitor get from landing on the site to making contact without friction? This checks whether the path to an enquiry is clear, short, and easy — and what happens once someone decides they want to get in touch."),
+    "hub":       ("Learning Hub",    "b-hub",       "Does the site have content that educates, builds trust, and does the selling before anyone picks up the phone? The best websites work as 24/7 sales tools — answering objections and building confidence while the business owner gets on with their day."),
+    "tech":      ("Technical",       "b-tech",      "Are the basics in place and actually working? A site that's hard to find, has a broken contact form, or can't be updated without a developer will leak enquiries before a word is read."),
 }
 
 VERDICT_CLASS = {"pass": "v-pass", "partial": "v-partial", "fail": "v-fail", "na": "v-na"}
@@ -80,13 +80,15 @@ def render_finding(f):
 
 def render_section(sec, idx):
     sid = sec["id"]
-    name, badge = SECTION_META.get(sid, (sid.title(), "b-tech"))
+    meta = SECTION_META.get(sid, (sid.title(), "b-tech", ""))
+    name, badge, desc = meta
     findings = sec.get("findings", [])
     passed = sum(1 for f in findings if f.get("v") == "pass")
     applicable = sum(1 for f in findings if f.get("v") != "na")
     pct = round(passed / applicable * 100) if applicable else 0
     score_label = f"{passed} / {applicable} &nbsp;·&nbsp; {pct}%"
     findings_html = "\n".join(render_finding(f) for f in findings)
+    desc_html = f'\n  <div class="sec-desc">{e(desc)}</div>' if desc else ""
     n = idx + 1
     return f"""<div class="audit-section">
   <div class="audit-sec-head" onclick="toggleSec('s{n}')">
@@ -96,7 +98,7 @@ def render_section(sec, idx):
     <span class="chev" id="chev-s{n}">▼</span>
   </div>
   <div class="sec-prog-wrap"><div class="sec-prog-bar {badge}" style="width:{pct}%"></div></div>
-  <div class="findings-list" id="body-s{n}">
+  <div class="findings-list" id="body-s{n}">{desc_html}
 {findings_html}
   </div>
 </div>"""

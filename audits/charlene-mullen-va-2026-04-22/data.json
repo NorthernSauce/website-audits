@@ -1,0 +1,312 @@
+{
+  "business": "Charlene Mullen VA",
+  "url": "charlenemullenva.co.uk",
+  "date": "22 April 2026",
+  "rag": "red",
+  "passed": 13,
+  "failed": 13,
+  "partial": 13,
+  "na": 3,
+  "score": 33,
+  "verdict": "Your ideal client will land on this site, immediately understand what you do, and feel like you get their problem — but most will hold back from getting in touch because there's nothing yet to prove it's worked for someone else like them.",
+  "scope_note": "Everything in this report is about strategy, messaging, and content — how well the site speaks to the right person and gives them a reason to get in touch. It doesn't cover design; getting that right needs a proper understanding of your business and clients, and that's a conversation worth having on a call.",
+  "fixes": [
+    {
+      "title": "Someone ready to book has nowhere obvious to go — so they don't",
+      "detail": "The only way to get in touch is to send an email from scratch, which asks a lot of someone who's already stretched thin. A business owner who's been buried in emails all day is the last person who wants to write a considered introduction to a stranger — they want to pick a time, click it, and know it's done.",
+      "action": "Add a free Calendly booking link to the Contact page (and ideally the homepage too) so someone ready to act can book a 15-minute chat in one click.",
+      "type": "quick"
+    },
+    {
+      "title": "There's no proof it's worked for anyone — so a nervous client won't risk it",
+      "detail": "Handing over access to your inbox is a big step for any business owner, and the first thing they'll look for before saying yes is evidence that someone else took that leap and was glad they did. Right now there's nothing — no names, no results, no reassurance anywhere — and that gap is doing real damage to your enquiry rate.",
+      "action": "Ask your first client for a short quote with their name and what changed for them — even one specific testimonial on the homepage does more for trust than anything else you could add.",
+      "type": "quick"
+    },
+    {
+      "title": "Most visitors will say 'I'll think about it' — and never come back",
+      "detail": "Every page on the site assumes the visitor will return when they're ready. But someone who's drowning in admin will visit, nod along, and disappear straight back into their inbox — because there's nothing that makes the status quo feel uncomfortable enough to act today rather than later.",
+      "action": "Add a line about how many clients you take on at a time — 'I keep my client list small so I can do things properly; get in touch to check if I have space' — it creates gentle urgency without feeling pushy.",
+      "type": "quick"
+    },
+    {
+      "title": "Your best credential is buried on the About page where most people won't see it",
+      "detail": "A decade managing complaints at ombudsman level — in banking and energy — is an unusual and genuinely impressive background for someone handling inboxes. It tells a potential client that you can deal with anything, stay calm under pressure, and communicate well. But it's nowhere near the homepage where it would actually influence a decision.",
+      "action": "Pull one line from your About page story onto the homepage — something like 'I spent 10 years managing inboxes in banking; yours won't faze me' — positioned near the main call to action.",
+      "type": "quick"
+    },
+    {
+      "title": "A visitor who isn't quite ready has nothing to read — so they leave",
+      "detail": "Many of your ideal clients will land on the site genuinely interested but not ready to hand over inbox access to someone they've just found. Without any articles, guides, or FAQs, there's nothing to keep them engaged or build trust while they make up their mind — and they'll leave without giving you a second chance.",
+      "action": "Write three short articles answering the questions your ideal client is Googling: 'how do I know if I need a VA?', 'what can a VA actually take off my plate?', and 'how much does a VA cost?' — these bring the right people in and warm them up before they ever contact you.",
+      "type": "project"
+    }
+  ],
+  "sections": [
+    {
+      "id": "getting_in_touch",
+      "findings": [
+        {
+          "v": "partial",
+          "check": "One clear next step on every key section",
+          "note": "The homepage points to Services twice but never drives clearly toward a booking or enquiry, and there's no single consistent 'here's what to do next' that follows the visitor all the way through. The path loops rather than builds.",
+          "rec": "Pick one primary action — booking a call or sending an email — and make sure every section ends with a clear nudge toward that same thing."
+        },
+        {
+          "v": "fail",
+          "check": "Getting in touch is genuinely easy",
+          "note": "The contact page offers only an email address, which means someone ready to act has to stop, open their email app, and write a message from scratch to a stranger. That friction stops more people than you'd expect — especially the kind of busy business owner you're trying to attract.",
+          "rec": "Add a free booking link (Calendly or equivalent) so someone can pick a time and confirm in one click, without having to compose an introductory email first."
+        },
+        {
+          "v": "pass",
+          "check": "3 clicks or fewer from landing to enquiring",
+          "note": "Getting from the homepage to the contact page takes one click via the nav — well within the limit."
+        },
+        {
+          "v": "fail",
+          "check": "Main call to action AND a lower-commitment option both present",
+          "note": "The only path forward on the site is to get in touch directly, which asks a lot of someone who's still weighing things up. There's nothing for the visitor who's interested but not quite ready — no guide, no newsletter, nothing to take away.",
+          "rec": "Offer something low-commitment alongside your main contact option — even a short PDF guide gives an undecided visitor something to say yes to without having to make contact."
+        },
+        {
+          "v": "pass",
+          "check": "It's clear what happens after someone gets in touch",
+          "note": "The contact page says you'll reply within one working day and explains the next step is a 15-20 minute call — that removes the uncertainty a lot of people feel before reaching out."
+        },
+        {
+          "v": "pass",
+          "check": "Navigation is set up for first-time visitors, not existing clients",
+          "note": "The nav puts Services before About and is clean and logical — a first-time visitor can find their way around without confusion."
+        },
+        {
+          "v": "partial",
+          "check": "The page builds a case from start to finish",
+          "note": "The homepage moves from the problem through to the process and a services call to action, which is a reasonable flow. But there's no social proof anywhere in between — nothing to tip a hesitant visitor over the line before they're asked to act.",
+          "rec": "Add at least one named client result somewhere between the intro and the call to action — even a single quote at this stage would do a lot of work."
+        }
+      ]
+    },
+    {
+      "id": "stand_out",
+      "findings": [
+        {
+          "v": "fail",
+          "check": "Clear differentiator",
+          "note": "There's nothing on the site that tells a visitor why they should choose you over the dozens of other VAs offering inbox and admin support. Remove your name and logo and this site could belong to almost anyone in the category.",
+          "rec": "Your banking and complaint-management background is unusual and genuinely credible — bring that front and centre on the homepage rather than leaving it buried on the About page."
+        },
+        {
+          "v": "fail",
+          "check": "Specialist, not generalist",
+          "note": "The services page covers email management, inbox detox, social media, community management, and operational support — a wide range that positions you as a generalist. Generalists compete on price; specialists get chosen because they feel like the right fit.",
+          "rec": "Consider leading with one or two signature services you're known for, even if you offer more — it makes it much easier for the right client to say 'that's exactly what I need.'"
+        },
+        {
+          "v": "pass",
+          "check": "Offer clarity",
+          "note": "The pricing page is excellent — clear rates, transparent package prices, and a good explanation of the different options. Most VA sites avoid this entirely; yours removes a friction layer before the visitor even has to ask."
+        },
+        {
+          "v": "partial",
+          "check": "Why this business over the alternatives",
+          "note": "The 'What is a VA?' section makes a strong case for using a VA over hiring an employee, with a specific and useful cost comparison. But it doesn't address why a potential client should choose you specifically over another VA doing similar work.",
+          "rec": "Add a short line or section that speaks to what makes working with you different — your background, your approach, or the type of client you're particularly good at helping."
+        },
+        {
+          "v": "fail",
+          "check": "Honest about challenges and limitations",
+          "note": "The site doesn't mention who this service isn't right for. Businesses that only show positives can feel like they're trying to be everything to everyone, which makes it harder to trust them with something as personal as inbox access.",
+          "rec": "Add a short line — on the services or pricing page — about who you work best with and who might be better served elsewhere."
+        },
+        {
+          "v": "pass",
+          "check": "Reflects current business",
+          "note": "The site was updated as recently as April 2026 and the content reflects your current service offering — no stale pages or placeholder content."
+        }
+      ]
+    },
+    {
+      "id": "right_person",
+      "findings": [
+        {
+          "v": "partial",
+          "check": "The site opens in the client's world, not the business's",
+          "note": "The opening line names the problem ('tired of being buried in emails and admin'), which is a solid start. But the very next section pivots to 'Hi, I'm Charlene' — the site shifts to talking about you before it's really sat with the client's situation long enough.",
+          "rec": "Hold in the client's world a little longer before introducing yourself — describe the situation they're in first, then show yourself as the answer."
+        },
+        {
+          "v": "pass",
+          "check": "The core problem the client faces is named clearly",
+          "note": "Being 'buried in emails and admin' is specific and concrete — the right person reads that and immediately knows this is for them."
+        },
+        {
+          "v": "partial",
+          "check": "Opening headline connects to the client's desire or situation",
+          "note": "The page title 'Virtual Assistant for Busy Small Business Owners' passes the speed test — you know what it is in five seconds — but it labels a category rather than making the right client feel specifically found or pulled toward something they want. This is a comprehension pass but a resonance partial.",
+          "rec": "Try a headline that speaks to the result the client actually wants — 'Get your evenings back' or similar — rather than labelling what you do."
+        },
+        {
+          "v": "partial",
+          "check": "The emotional frustration behind the practical problem is addressed",
+          "note": "The pricing page has vivid copy that captures the real frustration of constant email interruptions ('then 40 minutes have passed you by'). That energy doesn't quite make it to the homepage, where the opening stays fairly surface-level.",
+          "rec": "Pull the most emotionally resonant copy from the pricing page up to the homepage opening section where it'll do the most work."
+        },
+        {
+          "v": "fail",
+          "check": "The bigger picture — what's really at stake — comes through",
+          "note": "The site doesn't clearly articulate what getting admin off your plate actually makes possible — in terms of the client's business or their life outside it. 'Focus on what matters' isn't specific enough to feel compelling.",
+          "rec": "Add one sentence that puts a real picture in the reader's head — closing the laptop at 5pm, taking on a new client without dread, actually going on holiday — something that makes the stakes feel personal."
+        },
+        {
+          "v": "partial",
+          "check": "The site shows it understands the client's situation before it sells anything",
+          "note": "The homepage starts with the problem then quickly moves into who you are and how the process works — the switch happens a bit early for a visitor who's still in 'does this person get me?' mode.",
+          "rec": "Give the problem section more breathing room — two or three lines that make a visitor feel genuinely understood before you introduce yourself."
+        },
+        {
+          "v": "partial",
+          "check": "What life looks like after working with this business is described",
+          "note": "The About page mentions going on holiday without your laptop, which is a vivid and appealing image. On the homepage, the vision of life after working with you stays at 'focus on what you do best' — too vague to feel like a real prospect.",
+          "rec": "Replace the generic benefit language with something more specific — name something concrete the client gets to do once you're handling the admin."
+        },
+        {
+          "v": "fail",
+          "check": "There's a reason to act now, not later",
+          "note": "There's nothing on the site to suggest a visitor should do anything today rather than bookmarking it and coming back later — and most won't come back.",
+          "rec": "Add a short line about your current availability — 'I take on a small number of clients at a time; get in touch to check if I have space' — to create gentle urgency without pressure."
+        }
+      ]
+    },
+    {
+      "id": "copy_works",
+      "findings": [
+        {
+          "v": "pass",
+          "check": "Clear within 5 seconds what you do and who for",
+          "note": "Within five seconds of landing you know this is a VA for small business owners covering inbox and admin — the page title and opening line handle that clearly."
+        },
+        {
+          "v": "partial",
+          "check": "Headings pull the reader forward, not just label sections",
+          "note": "Headings like 'How does it work?' and 'What is a Virtual Assistant (VA), anyway?' are functional and clear, but they describe what's coming rather than give a reason to keep reading. 'Take a Breath, We've Got This' on the services page is notably stronger.",
+          "rec": "Try headings that speak to the client's situation or curiosity rather than just labelling the section — small tweaks like this create more pull through the page."
+        },
+        {
+          "v": "partial",
+          "check": "Copy is written about the client, not the business",
+          "note": "The homepage intro opens with 'Hi! I'm Charlene Mullen' and the services page leads with 'I am here to…' — the 'I' appears more often than 'you' in the critical opening moments. The service descriptions themselves are more client-focused and work well.",
+          "rec": "Try swapping the first-person opener for a line that starts with the client's situation, then introduce yourself as the answer."
+        },
+        {
+          "v": "pass",
+          "check": "Services describe what the client gets, not just what the service is called",
+          "note": "Each service description leads with the outcome rather than the label — 'Keeping your inbox under control, so you can focus on what matters most' is outcome-focused throughout, and that's exactly right."
+        },
+        {
+          "v": "pass",
+          "check": "No empty claims that any competitor could also make",
+          "note": "The copy is refreshingly specific — no filler phrases like 'passionate' or 'dedicated.' Services and benefits are described in concrete, useful terms throughout."
+        },
+        {
+          "v": "pass",
+          "check": "Long copy is genuinely scannable",
+          "note": "The homepage is structured with clear steps, short sections, and an accessible layout that reads easily on a phone."
+        }
+      ]
+    },
+    {
+      "id": "trust",
+      "findings": [
+        {
+          "v": "fail",
+          "check": "Testimonials are specific, named, and show a real result",
+          "note": "There are no testimonials anywhere on the site. For someone considering handing over access to their inbox, this is the first thing they'll look for — and finding nothing makes it much harder to say yes.",
+          "rec": "Ask your first client for a short quote with their name and what specifically changed — even one testimonial on the homepage makes an immediate difference."
+        },
+        {
+          "v": "fail",
+          "check": "At least one case study with a real, measurable outcome",
+          "note": "There's no client story anywhere on the site. The problem descriptions on the pricing page are vivid and accurate — they'd be twice as convincing paired with a real before-and-after example.",
+          "rec": "Write up one short story — what situation a client was in, what you took off their plate, and what changed — and add it to the homepage or services page."
+        },
+        {
+          "v": "partial",
+          "check": "Logo strips and badges show genuine proof",
+          "note": "The PolicyBee insurance badge shows you're properly covered, which is genuinely reassuring for a client about to hand over inbox access. It's not client proof, but it does remove a legitimate concern."
+        },
+        {
+          "v": "pass",
+          "check": "The About page makes the owner human AND connects to why they do this work",
+          "note": "The About page is warm, personal, and credible — your decade in banking and complaint management gives real weight to the inbox management claim, and the tone makes you feel approachable and trustworthy."
+        },
+        {
+          "v": "partial",
+          "check": "Qualifications and credentials are visible",
+          "note": "Your work background — 10+ years in banking and energy, computing degree — is relevant and mentioned clearly on the About page. No specific VA qualifications or memberships are listed alongside it.",
+          "rec": "If you hold any VA-specific training or memberships (e.g. Society of Virtual Assistants), add that to the About page for an extra layer of external validation."
+        },
+        {
+          "v": "na",
+          "check": "Proof sits near the point where a decision is made",
+          "note": "No testimonials or case studies exist to assess for placement — see Trust finding 1."
+        },
+        {
+          "v": "fail",
+          "check": "Reviews and independent proof from outside the site",
+          "note": "A search for reviews finds your LinkedIn profile and some Facebook posts, but no Google Business Profile, Trustpilot listing, or other platform a prospective client would actually check during their research.",
+          "rec": "Set up a Google Business Profile and ask your first client to leave a review there — it's where most people look first and it builds trust before they even reach your website."
+        }
+      ]
+    },
+    {
+      "id": "pre_sold",
+      "findings": [
+        {
+          "v": "pass",
+          "check": "Pricing is addressed openly",
+          "note": "Pricing is fully transparent across three clear tiers — ad hoc at £34/hour, retainers, and fixed packages with specific prices. This is above and beyond what most VA sites offer and removes a friction point that typically delays decisions."
+        },
+        {
+          "v": "pass",
+          "check": "A visitor can work out whether this is right for them without contacting",
+          "note": "Between the service descriptions and the pricing page, a visitor can get a clear sense of what's available and what it costs — enough to self-qualify before reaching out."
+        },
+        {
+          "v": "fail",
+          "check": "Content exists — real, recent articles a visitor can actually learn from",
+          "note": "There's no blog, no articles, and no free resources anywhere on the site. A visitor who wants to learn more before committing has nowhere to go and nothing to take away.",
+          "rec": "Start with three short articles answering the questions your ideal client is Googling before they reach out — what a VA actually does, how much they cost, and when you know it's time to get one."
+        },
+        {
+          "v": "na",
+          "check": "Content covers the topics buyers actually search for",
+          "note": "No content exists to assess — see above."
+        },
+        {
+          "v": "fail",
+          "check": "FAQs answer the real questions buyers have before contacting",
+          "note": "There are no FAQs anywhere on the site. The 'What is a VA?' section addresses one common question, but the questions buyers most want answered before signing up — 'how does inbox access actually work?', 'what if I need to pause?', 'how do we communicate?' — aren't addressed.",
+          "rec": "Add a short FAQ section to the contact or pricing page covering the 3-4 questions clients actually ask before they sign up."
+        },
+        {
+          "v": "fail",
+          "check": "Video content present",
+          "note": "There's no video anywhere on the site. A short meet-the-founder clip would build trust faster than any written content for a service this personal — handing over inbox access is a relationship decision, and video makes you feel real.",
+          "rec": "Record a 90-second phone video introducing yourself and explaining how you work — it doesn't need to be polished, just warm and genuine."
+        },
+        {
+          "v": "partial",
+          "check": "There's a path for a visitor to get ready before they make contact",
+          "note": "The 4-step 'How does it work?' process on the homepage gives visitors a clear sense of what to expect before they enquire, which is genuinely useful. There's no further preparation resource for someone who wants to do their homework before a call.",
+          "rec": "A simple 'what to expect when we work together' section on the contact page would help clients arrive at the first call ready and confident."
+        }
+      ]
+    }
+  ],
+  "positives": [
+    "Pricing is fully transparent with clear rates and package options — most VA sites avoid this entirely, and yours removes a friction layer that typically delays decisions.",
+    "The 'What is a VA?' section proactively addresses the cost comparison question before a visitor even thinks to raise it — that's smart selling.",
+    "The About page is warm, specific, and genuinely credible — the banking and complaint-management background gives real weight to the inbox management claim."
+  ]
+}
